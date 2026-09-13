@@ -21,6 +21,35 @@ osatoteutuksilla.
 | `ct.snapshot` | palvelin → asiakas | `atTick, cmds[]` | Istunnon nykytila (kokoelma aktiivisia käskyjä) |
 | `ct.state` | asiakas → palvelin | `offsetMs, minRttMs, jitterMs, minLeadTicks, late[], degraded` | Asiakkaan telemetria- ja tilatiedot |
 
+## Viisi operaatiota
+
+`ct.cmd`-sanoman `op`-kenttä saa nämä viisi arvoa. Ydinoperaatiot takaavat
+yhteentoimivuuden; `param` on ainoa laajennuspiste, ja sen nimiavaruus kuuluu
+sovellukselle.
+
+| `op` | Mitä tekee | `value` | `rampTicks` |
+| --- | --- | --- | --- |
+| `start` | slot alkaa soittaa materiaaliaan | — | kyllä |
+| `stop` | slot lakkaa soittamasta | — | kyllä |
+| `gain` | slotin taso | desibeliä | kyllä |
+| `param` | sovelluskohtainen parametri | nimi + arvo | kyllä |
+| `material` | sijoittaa materiaalin slottiin | tunniste | **ei** |
+
+`material` on hetkellinen sijoitus eikä ota ramppia. Huomaa että `ct.load`
+**ei** sijoita materiaalia slottiin — se on sisältöosoitteinen haku ilman
+slottia, ja sijoitus on slotin tilaa ja siksi käsky.
+
+Materiaalimalli on tarkoituksella ohut: istunnolla on numeroituja **slotteja**,
+ja slot on joko tyhjä tai siinä on materiaali. Protokolla ei tiedä mitä
+materiaali on musiikillisesti — ei rooleja, ei instrumentteja, ei genreä.
+
+Materiaalin tunniste **on** muotoa `sha256:<hex>` pienaakkosin. Asiakkaan **on**
+hyväksyttävä ja säilytettävä `param`-nimi jota se ei tunne; etuliite `ct.` on
+varattu protokollan tuleville versioille, eikä sovellus **saa** käyttää sitä.
+
+Katso [Esimerkit](../examples.md) kokonaisesta sanomavuosta ja siitä miltä
+tilannekuva näyttää, kun kaksi käskyä kilpailee samasta slotista.
+
 ## Kaksi sääntöä, jotka tekevät ohjausliikenteestä täysin ennustettavan
 
 !!! note "N3 · Käskyihin ei vastata (Myöhästynytkin käsky suoritetaan aina)"

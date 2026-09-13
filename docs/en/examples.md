@@ -111,6 +111,40 @@ applied anyway, and the lateness is reported in the `late` list of `ct.state` as
     N10's phase and late commands show up immediately — but it is not a number
     to quote as given.
 
+## A late command
+
+**Implementation example, not normative.** N3 says a late command **is still
+applied**, and that the lateness is reported in the `late` list of `ct.state`.
+One executed `ct.state` shows three different magnitudes at once — and the
+magnitude tells you which case it is:
+
+```json
+{"type":"ct.state","offsetMs":0,"minRttMs":0,"jitterMs":1,"minLeadTicks":567,
+ "late":[{"id":1,"lateTicks":113480},
+         {"id":2,"lateTicks":113480},
+         {"id":3,"lateTicks":2},
+         {"id":4,"lateTicks":20002}],
+ "degraded":false}
+```
+
+| `id` | `lateTicks` | What it is |
+| --- | --- | --- |
+| 3 | **2** | `atTick` was "now". Late by the wire alone — 2 ticks is 1.06 ms at 118 BPM, because one millisecond is 1.888 ticks. |
+| 4 | **20,002** | A command from the past, deliberately 20,000 ticks. The other 2 is the same wire delay as `id` 3. |
+| 1, 2 | **113,480** | The session's opening commands at `atTick` 0, with the anchor about 60 s ago. |
+
+**Single digits are the network; five digits are history.** That is a practical
+rule you can read straight off the number.
+
+And from the same run, the proof that the commands were **applied** rather than
+discarded: slot 0's `gain` is −6 dB (command `id` 3), `param cutoff` is 800
+(command `id` 4, the one 20,000 ticks late), and the slot is sounding.
+
+!!! note "A caveat about the magnitude"
+    This run is a loopback, so `minRttMs` is 0 and `id` 3's two ticks are a
+    **floor**. A local network adds a fraction of a millisecond, so the figure
+    stays in single digits.
+
 ## Two commands competing for one slot
 
 **Normative rule (N8), the example illustrates it.** The highest `atTick` wins;
@@ -145,6 +179,89 @@ Three things to point at:
 
 The specification measured what its absence would cost: without it a late joiner
 would be off by **6,976 ticks**, 3.7 seconds of an 8.1-second loop (H19).
+
+## A client joining mid-loop
+
+**Implementation example, not normative.** This is N10's phase as concrete
+numbers — the thing a hand-written example cannot prove. The joiner arrives
+during the seventh iteration:
+
+```json
+{"type":"ct.snapshot","atTick":113289,
+ "cmds":[
+   {"id":1,"atTick":0,   "slot":0,"op":"material","value":"sha256:3f8a…d7e8","rampTicks":0},
+   {"id":2,"atTick":5760,"slot":0,"op":"start",   "value":null,"rampTicks":0},
+   {"id":3,"atTick":9600,"slot":0,"op":"gain",    "value":-6,  "rampTicks":0}]}
+```
+
+N10 by hand, with the joiner's own numbers:
+
+```
+T (the joiner's tick now)      113 600
+startAtTick                      5 760   ← the winning start command's own atTick,
+                                           NOT the snapshot's atTick 113 289
+lengthTicks                     15 360
+
+T − startAtTick                107 840
+107 840 mod 15 360                 320   ← the phase, and it is not zero
+iteration                            7
+```
+
+Two lines are worth reading twice. **`startAtTick` is 5,760 and not 113,289** —
+the snapshot's own timestamp is no good for measuring phase. And **the phase is
+320, not 0** — the joiner does not start from the top of the material. Both
+were bugs before version 1.1, and both cost a measured 6,976 ticks.
+
+### Why N1 binds the wire and not the read head
+
+From the same instant the implementation computed a phase of **320.9600** ticks,
+not 320. The difference is exactly `exactTick − floor(exactTick)` — the floor
+and nothing else. And that is deliberate:
+
+| | Phase | Sample in the material |
+| --- | --- | --- |
+| Control plane, integer tick (N1) | 320 | 8,135.6 |
+| Read head, fractional tick | 320.9600 | 8,160.0 |
+
+The difference is **24.4 samples, or 0.5 ms**. One tick is 25.42 samples at
+48 kHz, so a read head quantised to whole ticks would step audibly. N1 requires
+integers **on the control plane** — it is a promise that two implementations
+agree about time, not a requirement about how audio is rendered.
+
+!!! danger "Finding F19 · running this example exposed a gap"
+    The joiner's first `ct.state` carried `late: []` — even though it had just
+    received three commands whose `atTick` is 113,600 ticks in the past.
+
+    Two normative sentences point in different directions. **N3:** lateness
+    **must** be reported in the `late` list. **N8:** `ct.snapshot` is not a
+    special case but a set of `ct.cmd` payloads. Every command in a snapshot
+    has an `atTick` in the past by definition — that is the whole reason a
+    snapshot exists. **Which sentence wins is nowhere.**
+
+    The consequence if implementations differ: under one reading, every
+    joiner's first `ct.state` is a burst with one element per slot and
+    parameter — which means **a joining client looks identical in telemetry to
+    a client that has just lost the network.** And joins happen exactly when
+    telemetry is being read alongside a recording.
+
+    The item is recorded as an **unnumbered** finding and has not been
+    addressed. H-numbers are assigned by the specification.
+
+!!! warning "What in these flows is the implementation's choice"
+    With the same caveat as the value of `v` — none of these are dictated by
+    the specification:
+
+    - **`minLeadTicks` 567** is the *required* lead, `ceil(300 ms × 1.888)`.
+      Item **H34** is open, and worse than a gap: §4 gives the field no meaning
+      at all, and the non-normative Appendix A says "observed" where this
+      implementation reports required. The 300 ms is the implementation's own.
+    - **`jitterMs` 1** — the specification does not say how jitter is computed.
+      Here it is the highest minus the lowest RTT over the last 64 samples.
+    - **`offsetMs` 0** — N6 gives the formula, but what happens to the half
+      millisecond is the implementation's choice (an unnumbered finding).
+    - **The order of `cmds[]`** — N8 says "a set", so the order is free. Here it
+      is slot, `atTick`, `id`.
+    - **The anchor and the session id** are application layer, not protocol.
 
 ## The sample-count check
 

@@ -111,6 +111,40 @@ silti, ja myöhästyminen raportoidaan `ct.state`n `late`-listalla muodossa
     vaihe ja myöhästyneet käskyt näkyvät heti — mutta se ei ole luku jota
     kannattaa lainata sellaisenaan.
 
+## Myöhästynyt käsky
+
+**Toteutusesimerkki, ei normatiivinen.** N3 sanoo että myöhästynyt käsky
+**suoritetaan silti** ja että myöhästyminen raportoidaan `ct.state`n
+`late`-listalla. Yksi ajettu `ct.state` näyttää kolme eri mittaluokkaa
+kerralla — ja mittaluokka kertoo mistä tapauksesta on kyse:
+
+```json
+{"type":"ct.state","offsetMs":0,"minRttMs":0,"jitterMs":1,"minLeadTicks":567,
+ "late":[{"id":1,"lateTicks":113480},
+         {"id":2,"lateTicks":113480},
+         {"id":3,"lateTicks":2},
+         {"id":4,"lateTicks":20002}],
+ "degraded":false}
+```
+
+| `id` | `lateTicks` | Mistä on kyse |
+| --- | --- | --- |
+| 3 | **2** | `atTick` oli "nyt". Myöhässä vain langan verran — 2 tikkiä on 1,06 ms tempossa 118, koska yksi millisekunti on 1,888 tikkiä. |
+| 4 | **20 002** | Käsky menneisyydestä, tarkoituksella 20 000 tikkiä. Loput 2 on sama langan viive kuin id 3:lla. |
+| 1, 2 | **113 480** | Istunnon avauskäskyt `atTick`illa 0, ankkuri noin 60 s sitten. |
+
+**Yksinumeroinen on verkkoa, kymmentuhantinen on historiaa.** Se on käytännön
+sääntö jonka lukee suoraan luvusta.
+
+Ja samasta ajosta todiste siitä että käskyt **sovellettiin** eikä hylätty:
+slotin 0 `gain` on −6 dB (käsky id 3), `param cutoff` on 800 (käsky id 4, joka
+oli 20 000 tikkiä myöhässä), ja slot soi.
+
+!!! note "Varaus mittaluokkaan"
+    Tämä ajo on silmukkatakaisinkytkentä, joten `minRttMs` on 0 ja id 3:n kaksi
+    tikkiä on **alaraja**. Lähiverkko lisää murto-osan millisekunnista, eli
+    luku pysyy yksinumeroisena.
+
 ## Kaksi käskyä kilpailee samasta slotista
 
 **Normatiivinen sääntö (N8), esimerkki havainnollistaa.** Suurin `atTick`
@@ -146,6 +180,87 @@ Kolme asiaa osoitettavaksi:
 Määrittely mittasi mitä sen puuttuminen maksaisi: ilman tätä myöhään liittyvä
 asiakas olisi pielessä **6 976 kelloaskelta**, eli 3,7 sekuntia 8,1 sekunnin
 silmukasta (H19).
+
+## Liittyjä kesken silmukan
+
+**Toteutusesimerkki, ei normatiivinen.** Tämä on N10:n vaihe konkreettisina
+lukuina — se mitä käsin kirjoitettu esimerkki ei pysty todistamaan. Liittyjä
+tulee kesken seitsemättä kierrosta:
+
+```json
+{"type":"ct.snapshot","atTick":113289,
+ "cmds":[
+   {"id":1,"atTick":0,   "slot":0,"op":"material","value":"sha256:3f8a…d7e8","rampTicks":0},
+   {"id":2,"atTick":5760,"slot":0,"op":"start",   "value":null,"rampTicks":0},
+   {"id":3,"atTick":9600,"slot":0,"op":"gain",    "value":-6,  "rampTicks":0}]}
+```
+
+N10 käsin, liittyjän omilla luvuilla:
+
+```
+T (liittyjän kelloaskel nyt)   113 600
+startAtTick                      5 760   ← voittaneen start-käskyn oma atTick,
+                                           EI tilannekuvan atTick 113 289
+lengthTicks                     15 360
+
+T − startAtTick                107 840
+107 840 mod 15 360                 320   ← vaihe, ei nolla
+kierros                              7
+```
+
+Kaksi riviä kannattaa lukea kahdesti. **`startAtTick` on 5 760 eikä 113 289** —
+tilannekuvan oma aikaleima ei kelpaa vaiheen mittaamiseen. Ja **vaihe on 320
+eikä 0** — liittyjä ei aloita materiaalin alusta. Kumpikin oli virhe ennen
+versiota 1.1, ja kumpikin maksoi mitattuna 6 976 tikkiä.
+
+### Miksi N1 koskee lankaa eikä lukupäätä
+
+Toteutus laski samasta hetkestä vaiheeksi **320,9600** tikkiä, ei 320. Ero on
+tasan `exactTick − floor(exactTick)`, eli pelkkä lattia. Ja se on tarkoitus:
+
+| | Vaihe | Materiaalin näyte |
+| --- | --- | --- |
+| Ohjauskaista, kokonaislukutikki (N1) | 320 | 8 135,6 |
+| Lukupää, murtolukutikki | 320,9600 | 8 160,0 |
+
+Ero on **24,4 näytettä eli 0,5 ms**. Yksi kelloaskel on 25,42 näytettä
+48 kHz:llä, joten kokonaislukuun kvantisoitu lukupää askeltaisi kuuluvasti.
+N1 vaatii kokonaislukuja **ohjauskaistalla** — se on lupaus siitä että kaksi
+toteutusta on samaa mieltä ajasta, ei vaatimus siitä miten ääni renderöidään.
+
+!!! danger "Löydös F19 · tämän esimerkin ajaminen paljasti aukon"
+    Liittyjän ensimmäinen `ct.state` oli `late: []` — vaikka se oli juuri
+    saanut kolme käskyä, joiden `atTick` on 113 600 tikkiä menneisyydessä.
+
+    Kaksi normatiivista lausetta osoittaa eri suuntiin. **N3:** myöhästyminen
+    **on** raportoitava `late`-listalla. **N8:** `ct.snapshot` ei ole
+    erikoistapaus vaan joukko `ct.cmd`-kuormia. Tilannekuvan jokaisen käskyn
+    `atTick` on määritelmän mukaan menneisyydessä — se on koko syy sille että
+    tilannekuva on olemassa. **Kumpi lause voittaa, ei ole missään.**
+
+    Seuraus jos toteutukset eroavat: toisessa tulkinnassa jokaisen liittyjän
+    ensimmäinen `ct.state` on purske, jossa on yksi alkio per slotti ja
+    parametri — eli **liittyvä asiakas näyttää telemetriassa identtiseltä kuin
+    asiakas jolta on juuri kadonnut verkko.** Ja liittymisiä tapahtuu juuri
+    silloin kun telemetriaa luetaan nauhoituksen rinnalla.
+
+    Kohta on kirjattu **numeroimattomana** löydöksenä eikä sitä ole vielä
+    käsitelty. H-numeron antaa määrittely.
+
+!!! warning "Mikä näissä vuoissa on toteutuksen valintaa"
+    Samalla varauksella kuin `v`:n arvo — nämä eivät ole määrittelyn sanelemia:
+
+    - **`minLeadTicks` 567** on *tarvittava* ennakko, `ceil(300 ms × 1,888)`.
+      Kohta **H34** on auki, ja pahemmin kuin aukkona: §4 ei anna kentälle
+      merkitystä lainkaan, ja ei-normatiivinen liite A sanoo "havaittu" siinä
+      missä tämä toteutus raportoi tarvittavaa. Luku 300 ms on toteutuksen oma.
+    - **`jitterMs` 1** — määrittely ei sano miten jitter lasketaan. Tässä se on
+      suurin miinus pienin RTT viimeisestä 64 otoksesta.
+    - **`offsetMs` 0** — N6 antaa kaavan, mutta puolikkaan millisekunnin
+      käsittely on toteutuksen valinta (numeroimaton löydös).
+    - **`cmds[]`-järjestys** — N8 sanoo "joukko", joten järjestys on vapaa.
+      Tässä se on slotti, `atTick`, `id`.
+    - **Ankkuri ja istunnon tunniste** ovat sovelluskerrosta, eivät protokollaa.
 
 ## Näytemäärän tarkistus
 

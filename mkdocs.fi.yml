@@ -16,6 +16,8 @@ site_dir: site/fi
 theme:
   name: shadcn
   custom_dir: overrides
+  # Drives the theme's gettext catalogue (see locales/).
+  locale: fi
   show_title: true
   show_stargazers: false
   hide_source_files: true
@@ -42,6 +44,13 @@ extra_css:
 extra_javascript:
   - assets/js/readout.js
   - assets/js/langswitch.js
+
+plugins:
+  # Resolves to the theme's own search plugin, which subclasses the
+  # MkDocs one and carries the theme's mixins — declaring it here does
+  # not lose them. lang drives the lunr stemmer for the index.
+  - search:
+      lang: fi
 
 markdown_extensions:
   - abbr

@@ -1,0 +1,65 @@
+# Finnish translation of the mkdocs-shadcn theme UI.
+#
+# The theme ships fr and pt only, and loads catalogues from its own package
+# directory — so this one lives here and build.sh installs it. Keeping it in
+# the repo means a reinstalled venv cannot silently drop back to English.
+#
+# msgids are taken verbatim from the theme templates (14 of them as of
+# mkdocs-shadcn 0.12.1); if the theme adds one, it falls back to English
+# rather than breaking.
+msgid ""
+msgstr ""
+"Project-Id-Version: common-time-docs\n"
+"Language: fi\n"
+"Language-Team: Common Time\n"
+"Last-Translator: Common Time <noreply@common-time.dev>\n"
+"PO-Revision-Date: 2026-09-13 18:10+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Menu"
+msgstr "Valikko"
+
+msgid "Toggle Menu"
+msgstr "Näytä tai piilota valikko"
+
+msgid "Toggle layout"
+msgstr "Vaihda asettelua"
+
+msgid "Toggle theme"
+msgstr "Vaihda teemaa"
+
+msgid "Search..."
+msgstr "Hae..."
+
+msgid "Search documentation..."
+msgstr "Hae dokumentaatiosta..."
+
+msgid "On This Page"
+msgstr "Tällä sivulla"
+
+msgid "Previous"
+msgstr "Edellinen"
+
+msgid "Next"
+msgstr "Seuraava"
+
+msgid "Copy Page"
+msgstr "Kopioi sivu"
+
+msgid "last update (local time)"
+msgstr "viimeksi päivitetty (paikallista aikaa)"
+
+# Badge on a nav item, rendered as a title attribute on a small dot.
+msgid "New"
+msgstr "Uusi"
+
+# Footer reads: "{Built by} <author> — shadcn theme {provided by} @asiffer".
+# Both halves are translated to fit that sentence, not as isolated words.
+msgid "Built by"
+msgstr "Tehnyt"
+
+msgid "provided by"
+msgstr "tekijänä"

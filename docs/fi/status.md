@@ -3,9 +3,15 @@
 Protokollasivu joka väittää olevansa valmis ei kerro mitään tarkistettavaa.
 Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
-| Määrittely | Toteutuksia | Valinnaisia | Avoimia kohtia | Ristiin ajo |
+| Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
 | 1.2a | 2 | 0 | 12 | estetty |
+
+Luku 12 on **numeroitujen** kohtien määrä (H24–H35). Kirjattuja löydöksiä on
+enemmän: toteuttaja kirjaa löydöksen omalla tunnuksellaan (`F7`, `F-B2`) ja
+ehdottaa sitä katselmointiin, mutta H-numero syntyy vasta määrittelyssä. Osa
+kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
+kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
 
@@ -58,13 +64,26 @@ enää ratifiointia.
 Katso [Pyyntö](contribute.md) siitä mikä eroavuutta oikeasti ennustaa — se ei
 ole seurauksen suuruus.
 
+!!! note "Miksi tällä sivulla lukee H30 eikä H28"
+    H-numerot antaa määrittely, mutta toteuttajat eivät näe rekisteriä. Siksi
+    kaksi toteuttajaa ehdottaa väistämättä samaa numeroa eri asialle — ja niin
+    kävi kahdesti peräkkäin. `v`:n arvoa ehdotettiin numerolla **H28**, mutta
+    se on **H30**; `minLeadTicks`:n merkitystä numerolla H29, ja se on **H34**.
+    Määrittelyn omat H28 ja H29 ovat eri asioita: `ct.state`n kyvyttömyys
+    ilmoittaa sitä rajaa johon §6 viittaa, ja pienin sanomakoko jonka
+    toteutuksen on hyväksyttävä.
+
+    Törmäys ei ole kenenkään huolimattomuutta vaan seurausta siitä että
+    päätökset kulkevat välikäden kautta. Se on tämän sivun mitattavin esimerkki
+    siitä mitä välikäsi maksaa.
+
 ## Yhteentoimivuus ei enää odota laitteistoa
 
 Tämä on suunnitelmien tuorein muutos, ja se irrottaa yhteentoimivuusportin
 laitteistoportista.
 
-Asiakas joka **kieltäytyy jokaisesta latauksesta** (`ct.refuse`) ja vaikenee
-V3:n mukaan on täysin määrittelyn mukainen. Ristiin ajo sellaista asiakasta
+Asiakas joka **kieltäytyy jokaisesta latauksesta** — `ct.refuse`, syy
+`missing` — ja vaikenee V3:n mukaan on täysin määrittelyn mukainen. Ristiin ajo sellaista asiakasta
 vasten todistaa sen mitä skeema ei voi: että kaksi tilakonetta on yksimielisiä
 kädenpuristuksesta, liittymisjärjestyksestä ja tilannekuvan soveltamisesta.
 

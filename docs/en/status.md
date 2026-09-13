@@ -3,9 +3,16 @@
 A protocol page that claims to be finished is not telling you anything you can
 check. This one is deliberately specific about what is measured and what is not.
 
-| Specification | Implementations | Optional features | Open items | Cross-run |
+| Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
 | 1.2a | 2 | 0 | 12 | blocked |
+
+The 12 is the count of **numbered** items (H24–H35). More findings than that are
+recorded: an implementer records a finding under their own identifier (`F7`,
+`F-B2`) and proposes it for review, but the H-number is assigned by the
+specification. Some recorded findings are still waiting for one. Which number is
+correct depends on which is being asked for, and on this page it is the numbered
+ones.
 
 ## Decided
 
@@ -57,13 +64,26 @@ order (H32) **passes** when run. They are waiting only for ratification.
 See [The ask](contribute.md) for what actually predicts divergence — it is not
 the size of the consequence.
 
+!!! note "Why this page says H30 and not H28"
+    H-numbers are assigned by the specification, but the implementers cannot
+    see the register. Two implementers therefore propose the same number for
+    different things — which happened twice in a row. The value of `v` was
+    proposed as **H28**, but it is **H30**; the meaning of `minLeadTicks` as
+    H29, and it is **H34**. The specification's own H28 and H29 are different
+    matters: `ct.state` cannot report the bound §6 refers to, and the smallest
+    message size an implementation must accept.
+
+    The collision is nobody's carelessness. It follows from decisions passing
+    through an intermediary, and it is this page's most measurable example of
+    what that intermediary costs.
+
 ## Interoperability no longer waits for hardware
 
 This is the most recent change to the plans, and it separates the
 interoperability gate from the hardware gate.
 
-A client that **refuses every load** (`ct.refuse`) and stays silent under V3 is
-fully conforming. A cross-run against such a client proves what a schema cannot:
+A client that **refuses every load** — `ct.refuse` with reason `missing` — and
+stays silent under V3 is fully conforming. A cross-run against such a client proves what a schema cannot:
 that two state machines agree about the handshake, the joining order and the
 application of a snapshot.
 

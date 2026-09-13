@@ -157,6 +157,88 @@ Whether the material is *musically* at the session tempo is **not** a protocol
 check. Material at the wrong tempo sounds wrong in every client in the same way,
 so synchronisation holds.
 
+## The material pipeline in practice
+
+!!! warning "Application layer — not the protocol"
+    Everything in this section is **one application's** choices. §5 of the
+    specification puts retrieval of the bytes outside its scope, and the
+    protocol does not know what material is musically — no roles, no
+    instruments, no genre. A conforming implementation owes none of this
+    anything. It is here because it shows what one real material source looks
+    like.
+
+What the pipeline produces: **Ogg Opus**, 48,000 Hz, stereo, 96 kbit/s VBR,
+20 ms frames. One file per role, 3–6 roles per track, typically 16 bars at
+118 BPM — 32.54 s and 330–460 kB per role. Materials are loops, not one-shots,
+which is what the protocol requires (N9): a slot's material loops from `start`
+until `stop`, and one-shot playback does not exist.
+
+The digest is computed over the **finished .ogg bytes**, not over the source
+and not before encoding, and the whole `sha256:<hex>` including the prefix goes
+into the `material` field.
+
+### `lengthTicks` is derived from bars, not from the file
+
+This is where material and protocol meet, and the direction is the opposite of
+what one might expect:
+
+```
+lengthTicks = bars × beatsPerBar × ppq  =  16 × 4 × 960  =  61 440
+samples     = lengthTicks × 60 × sampleRate / (ppq × bpm)
+            = 61 440 × 60 × 48 000 / (960 × 118)
+            = 92 160 000 / 59
+            = 1 562 033.8983…  →  1 562 034
+```
+
+The file is not measured and the length is not derived from it. The length is
+computed from bars and **the file is cut to fit**: the pipeline generates
+something overlong, detects the tempo, stretches by at most 5 %, picks a musical
+cut point and trims exactly the computed sample count. The seam is crossfaded
+from the surplus, so the fade does not change the length.
+
+Note what the exact value is: `92,160,000 / 59`. The denominator is 59, so the
+number **cannot be an integer** at any bar count at this tempo. Rounding happens
+only at the end, and N4's gate accepts ±1 sample. Here the deviation is 0.1017
+samples.
+
+### Roles and slots
+
+The protocol knows only numbered slots. The mapping from role to slot is an
+**application convention**, not the protocol's:
+
+| Slot | 0 | 1 | 2 | 3 | 4 | 5 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Role | DRUMS | BASS | SEQ | CHORD | LEAD | VOX |
+
+A missing role is silence in its own slot, not an error — which is exactly what
+V3 requires.
+
+### Three things that went wrong, all measured
+
+**Opus does not preserve peak.** An encoded file can exceed the source's true
+peak by roughly 0.4–0.6 dB. If the peak is measured from the wav before
+encoding, tracks reach playback over zero. The peak must be measured from the
+**decoded** Opus. This is structurally the same mistake as N14: the correct
+figure only exists after the conversion, and the figure measured before it looks
+entirely plausible.
+
+**Granule position is not duration.** The last granule of an Ogg Opus file
+includes the pre-skip, so the correct duration is
+`(last granule − pre-skip) / 48000`. Without the subtraction every loop is a few
+milliseconds too long — and since V2 forbids concatenating iterations the error
+does not accumulate in playback, but it makes a file that N4's check rejects.
+
+**The sum of six stems is not one stem.** Six tracks each normalised to −14 LUFS
+summed to +10.2 dBFS and clipped 1.8 % of samples. The sum is now normalised
+with one common gain, which preserves the relative levels between tracks.
+
+!!! note "Open: no real multi-client session has been run"
+    On the material side only a single-deck run has been measured. Publishing
+    is three HTTP calls and playback starts with one, which reads a track's
+    arrangement and sends `start` commands at each section's first bar — 64
+    bars, at most three tracks at once. But several clients have not been run
+    together over a real network, so there is no figure for it here.
+
 ## The same loop, at different tempi
 
 This is what a fractional bar position does not give. Loop length **in ticks**

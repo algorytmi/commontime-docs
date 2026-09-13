@@ -160,6 +160,87 @@ Onko materiaali *musiikillisesti* istunnon tempossa, **ei ole** protokollan
 tarkistus. Väärässä tempossa oleva materiaali kuulostaa väärältä jokaisessa
 asiakkaassa samalla tavalla, joten synkronointi pitää.
 
+## Materiaaliputki käytännössä
+
+!!! warning "Sovelluskerros — ei protokolla"
+    Kaikki tässä osiossa on **yhden sovelluksen** ratkaisuja. Määrittely sanoo
+    §5:ssä että materiaalin tavujen hankinta on sen ulkopuolella, eikä
+    protokolla tiedä mitä materiaali on musiikillisesti — ei rooleja, ei
+    instrumentteja, ei genreä. Määrittelyn mukainen toteutus ei ole näille
+    mitään velkaa. Ne ovat tässä koska ne näyttävät miltä yksi oikea
+    materiaalilähde näyttää.
+
+Mitä putki tuottaa: **Ogg Opus**, 48 000 Hz, stereo, 96 kbit/s VBR,
+20 ms kehys. Yksi tiedosto per rooli, 3–6 roolia per kappale, tyypillisesti
+16 tahtia 118 BPM:ssä eli 32,54 s ja 330–460 kB per rooli. Materiaalit ovat
+silmukoita, eivät kertaotoksia — mikä on protokollan vaatimus (N9): slotin
+materiaali silmukoituu `start`ista `stop`iin, eikä kertatoistoa ole olemassa.
+
+Tiiviste lasketaan **valmiista .ogg-tavuista**, ei lähdemateriaalista eikä
+ennen enkoodausta, ja `material`-kenttään menee koko `sha256:<hex>` etuliitteineen.
+
+### `lengthTicks` johdetaan tahdeista, ei tiedostosta
+
+Tämä on se kohta jossa materiaali ja protokolla kohtaavat, ja suunta on
+odottamaton päin:
+
+```
+lengthTicks = tahdit × beatsPerBar × ppq  =  16 × 4 × 960  =  61 440
+näytteet    = lengthTicks × 60 × sampleRate / (ppq × bpm)
+            = 61 440 × 60 × 48 000 / (960 × 118)
+            = 92 160 000 / 59
+            = 1 562 033,8983…  →  1 562 034
+```
+
+Tiedostoa ei mitata ja pituutta johdeta siitä. Pituus lasketaan tahdeista,
+ja **tiedosto leikataan siihen**: putki generoi ylipitkän, tunnistaa tempon,
+venyttää enintään 5 %, valitsee musikaalisen leikkauskohdan ja leikkaa
+täsmälleen lasketun näytemäärän. Sauma ristiinhäivytetään ylijäävästä osasta,
+joten häivytys ei muuta pituutta.
+
+Huomaa mitä tarkka arvo on: `92 160 000 / 59`. Nimittäjä on 59, joten luku
+**ei voi olla kokonaisluku** millään tahtimäärällä tässä tempossa. Pyöristys
+tehdään vasta lopussa, ja N4:n portti hyväksyy ±1 näytteen. Tässä tapauksessa
+poikkeama on 0,1017 näytettä.
+
+### Roolit ja slotit
+
+Protokolla tuntee vain numeroituja slotteja. Rooli–slotti-vastaavuus on
+**sovelluksen sopimus**, ei protokollan:
+
+| Slot | 0 | 1 | 2 | 3 | 4 | 5 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Rooli | DRUMS | BASS | SEQ | CHORD | LEAD | VOX |
+
+Puuttuva rooli on hiljaisuus omassa slotissaan, ei virhe — mikä on tasan se
+mitä V3 vaatii.
+
+### Kolme asiaa jotka menivät pieleen, kaikki mitattuja
+
+**Opus ei säilytä huippua.** Enkoodattu tiedosto voi ylittää lähteen todellisen
+huipun noin 0,4–0,6 dB. Jos huippu mitataan wavista ennen enkoodausta, soittoon
+päätyy raitoja jotka ovat plussalla. Huippu on mitattava **dekoodatusta**
+Opuksesta. Tämä on rakenteeltaan sama virhe kuin N14: oikea luku syntyy vasta
+muunnoksen jälkeen, ja ennen muunnosta mitattu luku näyttää täysin uskottavalta.
+
+**Granule position ei ole kesto.** Ogg Opuksen viimeinen granule sisältää
+pre-skipin, joten oikea kesto on `(viimeinen granule − pre-skip) / 48000`.
+Ilman vähennystä jokainen silmukka on muutaman millisekunnin liian pitkä — ja
+koska V2 kieltää kierrosten ketjuttamisen, virhe ei kertaudu itse toistossa,
+mutta se tekee tiedostosta sellaisen jonka N4:n tarkistus hylkää.
+
+**Kuuden stemmin summa ei ole yksi stemmi.** Kuusi erikseen −14 LUFSiin
+normalisoitua raitaa summautui +10,2 dBFS:ään ja leikkasi 1,8 % näytteistä.
+Summa normalisoidaan nyt yhdellä yhteisellä vahvistuksella, jolloin raitojen
+keskinäiset suhteet säilyvät.
+
+!!! note "Avoin: oikeaa monen asiakkaan istuntoa ei ole vielä ajettu"
+    Materiaalipuolelta on mitattu vain yhden dekin ajo. Julkaisu on kolme
+    HTTP-kutsua ja soitto lähtee yhdellä, joka lukee kappaleen sovituksen ja
+    lähettää `start`-käskyt kunkin osion aloitustahdille — 64 tahtia,
+    enimmillään kolme raitaa yhtä aikaa. Mutta montaa asiakasta ei ole ajettu
+    yhtä aikaa oikean verkon yli, joten tässä ei ole lukua siitä.
+
 ## Sama silmukka, eri tempo
 
 Tämä on se ominaisuus jota murtolukuinen tahtisijainti ei anna. Silmukan pituus

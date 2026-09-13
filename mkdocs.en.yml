@@ -15,6 +15,7 @@ site_dir: site/en
 
 theme:
   name: shadcn
+  custom_dir: overrides
   show_title: true
   show_stargazers: false
   hide_source_files: true
@@ -27,11 +28,17 @@ theme:
     light: shadcn-light
     dark: github-dark
 
+extra:
+  lang_switch_href: https://common-time.dev/fi/
+  lang_switch_label: "Suomeksi"
+
 extra_css:
   - assets/css/readout.css
+  - assets/css/lang.css
 
 extra_javascript:
   - assets/js/readout.js
+  - assets/js/langswitch.js
 
 markdown_extensions:
   - abbr
@@ -59,4 +66,3 @@ nav:
   - Status: status.md
   - The ask: contribute.md
   - Documents: documents.md
-  - "Suomeksi": https://common-time.dev/fi/

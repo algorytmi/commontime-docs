@@ -3,6 +3,12 @@
 Tämä sivusto ei ole määrittely. Normatiivinen teksti on oma dokumenttinsa, ja
 ristiriidassa se voittaa tämän sivuston — katso [Dokumentit](documents.md).
 
+## Lähdekoodi
+
+Sivuston lähde on **[github.com/algorytmi/commontime-docs](https://github.com/algorytmi/commontime-docs)**,
+MIT-lisenssillä. Repo sisältää sivuston sisällön, käännösskriptin ja staattisen
+palvelimen — ei määrittelyä, joka on oma dokumenttinsa.
+
 ## Teema
 
 Sivusto käyttää **[mkdocs-shadcn](https://github.com/asiffer/mkdocs-shadcn)**

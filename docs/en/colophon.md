@@ -3,6 +3,12 @@
 This site is not the specification. The normative text is its own document and
 wins over this site in case of conflict — see [Documents](documents.md).
 
+## Source
+
+The site's source is **[github.com/algorytmi/commontime-docs](https://github.com/algorytmi/commontime-docs)**,
+MIT licensed. The repository holds the site's content, the build script and the
+static server — not the specification, which is its own document.
+
 ## Theme
 
 The site uses the **[mkdocs-shadcn](https://github.com/asiffer/mkdocs-shadcn)**

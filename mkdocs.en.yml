@@ -8,6 +8,11 @@ site_description: >-
   the wire — only an anchor, ticks and transport commands.
 site_url: https://common-time.dev/en/
 site_author: Common Time (Juho Hietala)
+# Renders as the GitHub mark in the top bar. show_stargazers stays off:
+# it would make every visitor's browser call the GitHub API, and this
+# site otherwise makes no third-party request at all.
+repo_url: https://github.com/algorytmi/commontime-docs
+repo_name: algorytmi/commontime-docs
 copyright: commontime/1 · 1.2a
 
 docs_dir: docs/en

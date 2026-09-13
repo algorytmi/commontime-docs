@@ -96,6 +96,21 @@ A client that cannot meet the request answers `ct.refuse`.
 applied anyway, and the lateness is reported in the `late` list of `ct.state` as
 `{ id, lateTicks }`.
 
+!!! warning "If you copy this flow"
+    **The value of `v` is this implementation's choice, not a decision.** The
+    specification gives the field's type and what follows from a mismatch, but
+    not what the string is — see the last section of this page.
+
+    **`sha256:3f8a…d7e8` is an abbreviation for reading, not a valid
+    identifier.** N13 requires exactly 64 hex characters in lower case, and the
+    abbreviated form does not parse — a validator rejects it. The full value is
+    on the `ct.load` line above.
+
+    **`anchorEpochMs` is the clock at the time of the run**, not a constant. A
+    copier gets a session whose anchor is in the past. That is in fact useful —
+    N10's phase and late commands show up immediately — but it is not a number
+    to quote as given.
+
 ## Two commands competing for one slot
 
 **Normative rule (N8), the example illustrates it.** The highest `atTick` wins;

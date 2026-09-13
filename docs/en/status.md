@@ -24,8 +24,11 @@ rather than by discussion.
 
 ## Measured
 
-The tick arithmetic passes 34 tests with no dependencies, in integers
-throughout. The measurement rig reads a known 10.0000 ms delay correctly — but
+The tick arithmetic passes **47 tests** with no dependencies, in integers
+throughout: `ct-core` pulls in nothing and touches no audio, no network and no
+browser. The whole suite — `ct-core`, the client, the clock server and
+conformance together — is 155 tests, with the rig's calibration another 18
+beside it. The measurement rig reads a known 10.0000 ms delay correctly — but
 only after PHAT weighting was added: unweighted cross-correlation read the same
 tape as **0.9086 ms**, exactly two periods off, with a correlation coefficient
 of 0.9969 and no warning of any kind. A correct engine holds p95 0.394 ms

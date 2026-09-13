@@ -97,6 +97,20 @@ pysty vastaamaan pyyntöön lähettää `ct.refuse`n.
 silti, ja myöhästyminen raportoidaan `ct.state`n `late`-listalla muodossa
 `{ id, lateTicks }`.
 
+!!! warning "Jos kopioit tämän vuon"
+    **`v`:n arvo on tämän toteutuksen valinta, ei päätös.** Määrittely antaa
+    kentän tyypin ja sen mitä eroavuudesta seuraa, muttei sitä mikä merkkijono
+    on — katso tämän sivun viimeinen osio.
+
+    **`sha256:3f8a…d7e8` on lyhennys lukemista varten, ei kelvollinen
+    tunniste.** N13 vaatii tasan 64 heksamerkkiä pienaakkosin, ja lyhennys ei
+    jäsenny — validaattori hylkää sen. Täysi arvo on `ct.load`-rivillä yllä.
+
+    **`anchorEpochMs` on ajohetken kello**, ei vakio. Kopioija saa istunnon
+    jonka ankkuri on menneisyydessä. Se on itse asiassa hyödyllistä — N10:n
+    vaihe ja myöhästyneet käskyt näkyvät heti — mutta se ei ole luku jota
+    kannattaa lainata sellaisenaan.
+
 ## Kaksi käskyä kilpailee samasta slotista
 
 **Normatiivinen sääntö (N8), esimerkki havainnollistaa.** Suurin `atTick`

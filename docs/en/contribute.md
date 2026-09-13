@@ -21,6 +21,42 @@ The more different the structure, the more it finds. Preferably one *without*
 arbitrary-precision integers, because that hits N12 and N14 from a direction
 neither existing implementation can.
 
+## What predicts divergence
+
+This is the most important finding of the exercise, and it runs against
+intuition.
+
+Divergence is **not predicted by the size of the consequence. It is predicted
+by the number of natural readings.**
+
+Two measured cases point in opposite directions:
+
+| | Natural readings | Consequence if they differ | Measured |
+| --- | --- | --- | --- |
+| **H25** · the type of `id` | one (an integer) | V4 — all interoperability | **convergent** |
+| **H30** · the value of `v` | two, equally natural | one string | **divergent, stopped the run** |
+
+For H25 the consequence would have been wide, but an integer is so nearly the
+only natural reading that two implementers hit it without consulting each other.
+For H30 the fix is one string long, but "protocol generation" and "document
+version" are both equally natural readings — and the cross-run stopped at the
+first message.
+
+Which gives the third implementer a practical rule: **when you meet a field, ask
+what its legal values are** — not only what its type is and what follows from a
+mismatch. That is exactly the question nobody asked about H30. The
+specification answered the type and the consequence, and no one noticed that the
+value was still unsaid.
+
+## When to stop
+
+The stopping rule is not the number of findings but the **overlap**. When a new
+implementation finds mostly items that are already known, the population is
+running out.
+
+22 % is nowhere near that. As long as the overlap is low, the cheapest next move
+is another implementation rather than another review pass.
+
 !!! note "Three rules, and the third is the one that matters"
     **Do not fix the specification.** If a passage is unclear, contradictory or
     missing, you do not resolve it — you record it and work around it, or you

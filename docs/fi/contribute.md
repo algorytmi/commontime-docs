@@ -21,6 +21,39 @@ Mitä erilaisempi rakenne, sitä enemmän se löytää. Mieluiten sellainen joss
 ole mielivaltaisen tarkkoja kokonaislukuja, koska se osuu N12:een ja N14:ään
 suunnasta josta kumpikaan olemassa oleva toteutus ei voi.
 
+## Mikä eroavuutta ennustaa
+
+Tämä on päivän tärkein havainto, ja se on vastoin intuitiota.
+
+Eroavuutta **ei ennusta seurauksen suuruus vaan luontevien lukutapojen määrä.**
+
+Kaksi mitattua tapausta osoittavat sen vastakkaisiin suuntiin:
+
+| | Luontevia lukutapoja | Seuraus jos eroaa | Mitattuna |
+| --- | --- | --- | --- |
+| **H25** · `id`:n tyyppi | yksi (kokonaisluku) | V4, eli kaikki yhteentoimivuus | **yhtenevä** |
+| **H30** · `v`:n arvo | kaksi yhtä luontevaa | yksi merkkijono | **eriävä, pysäytti ajon** |
+
+H25:llä seuraus olisi ollut laaja, mutta kokonaisluku on niin ainoa luonteva
+lukutapa että kaksi toteuttajaa osui siihen toisistaan tietämättä. H30:llä
+korjaus on yhden merkkijonon mittainen, mutta "protokollan sukupolvi" ja
+"dokumentin versio" ovat molemmat yhtä luontevia lukutapoja — ja ristiin ajo
+pysähtyi ensimmäiseen sanomaan.
+
+Tästä seuraa käytännön ohje kolmannelle toteuttajalle: **kun törmäät kenttään,
+kysy mitkä ovat sen lailliset arvot** — älä pelkästään mikä on sen tyyppi ja
+mitä eroavuudesta seuraa. Juuri se kysymys jäi H30:n kohdalla kysymättä.
+Määrittely vastasi tyypin ja seurauksen, ja kukaan ei huomannut että arvo jäi
+sanomatta.
+
+## Milloin lopettaa
+
+Pysäytyssääntö ei ole löydösten määrä vaan **päällekkäisyys**. Kun uusi
+toteutus löytää lähinnä jo tunnettuja kohtia, populaatio alkaa olla tyhjä.
+
+22 % ei ole lähellä sitä. Niin kauan kuin päällekkäisyys on matala, halvin
+seuraava siirto on uusi toteutus eikä uusi katselmointikierros.
+
 !!! note "Kolme sääntöä, ja kolmas on se joka ratkaisee"
     **Älä korjaa määrittelyä.** Jos kohta on epäselvä, ristiriitainen tai
     puuttuu, et ratkaise sitä — kirjaat sen ja jatkat sen ympäri, tai pysähdyt.

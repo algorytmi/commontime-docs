@@ -295,18 +295,20 @@ Two items are still open, and neither can be shown as an example without the
 example deciding the matter on the specification's behalf.
 
 **The joining client's message order.** Not specified. The two existing
-implementations differ: one sends a joiner `ct.hello` → `ct.session` →
-`ct.snapshot` and no `ct.load` messages at all; the other sends a `ct.load` for
-every material before the snapshot. The latter has a good reason: without
+implementations differ (item **H32**): one sends a joiner `ct.hello` →
+`ct.session` → `ct.snapshot` and no `ct.load` messages at all; the other sends a
+`ct.load` for every material before the snapshot. The latter has a good reason: without
 `ct.load` the client has no `lengthTicks`, so it cannot compute the N10
-position, and the slot stays silent permanently. The implementations interoperate
-— this is an open item, not an incompatibility.
+position, and the slot stays silent permanently. The implementations
+interoperate: H32 **passes** when run. This is an open item, not an
+incompatibility.
 
 **The value of the `v` field.** N16 says `v` **must** be a string and that
 differing values **must** close the connection, and that version negotiation
 **must not** exist. It does not say what the string is. One implementation sends
 `commontime/1`, the other `commontime/1.2`, and the cross-run ends at the
-handshake in both directions. See [Status](status.md).
+handshake in both directions. The item is **H30**, and it is the only measured
+blocker. See [Status](status.md).
 
 Items like these are why [a third implementation](contribute.md) is the most
 valuable thing anyone can do with this specification.

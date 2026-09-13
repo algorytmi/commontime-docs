@@ -34,6 +34,43 @@ measurement, and they are not the tolerance value. Nothing has yet run on two
 machines across a real network for three hours, which is the length of a set
 and not a safety margin.
 
+## Correction: "blocks" was a prediction, not a measurement
+
+The open-items table used to carry a single column, **Blocks**, and that was a
+mistake. The word reported two different quantities as one number:
+
+- **The consequence if implementations differ** is a property of the
+  specification, and it can be read from the text.
+- **Whether they differ** is a property of the implementations, and it cannot
+  be read at all — it has to be run.
+
+Presented as the product of the two, "blocks" is a figure nobody can check. The
+column is now split, and the measured column says only what has been run.
+
+Measured against two implementations, **four items thought to block V4 turned
+out to be convergent**: `id` as a non-negative integer compared numerically
+(H25), `bpm` as an integer (H26), `late[]` cleared on send (H27), and a
+parameter's nominal value before the first command (H35). Both implementers
+arrived at the same answer without consulting each other. The joining message
+order (H32) **passes** when run. They are waiting only for ratification.
+
+See [The ask](contribute.md) for what actually predicts divergence — it is not
+the size of the consequence.
+
+## Interoperability no longer waits for hardware
+
+This is the most recent change to the plans, and it separates the
+interoperability gate from the hardware gate.
+
+A client that **refuses every load** (`ct.refuse`) and stays silent under V3 is
+fully conforming. A cross-run against such a client proves what a schema cannot:
+that two state machines agree about the handshake, the joining order and the
+application of a snapshot.
+
+It needs no analogue output, no recorder and not one audio file — and it can be
+run the same day H30 is decided, which is before a two-input interface has even
+been ordered. Audio is a different gate and different work.
+
 !!! warning "The cross-run is blocked, and that is the gate working"
     Two independent implementations exist. The second was written from the
     specification text alone, by an author who has never seen the first
@@ -47,3 +84,10 @@ and not a safety margin.
     point of the exercise: a value agreed between two implementers is a private
     convention that no third party could reproduce. It belongs in the
     specification before it belongs in anybody's source file.
+
+    The item is recorded as **H30**, and it is **the only measured blocker**.
+    The recommendation awaiting ratification: `commontime/1`, a compatibility
+    token rather than a document version, compared byte for byte rather than
+    parsed as a version number, closed with code 4001 — a generic 1000 is
+    indistinguishable from a normal close, and the symptom is then "nothing
+    happens".

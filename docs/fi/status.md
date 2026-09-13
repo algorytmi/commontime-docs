@@ -34,6 +34,44 @@ mittaus, eivätkä ne ole toleranssiluku. Mitään ei ole vielä ajettu kahdella
 koneella oikean verkon yli kolme tuntia, joka on setin pituus eikä
 varmuusmarginaali.
 
+## Korjaus: "estää" oli ennuste eikä mittaus
+
+Avointen kohtien taulukko luki aiemmin yhtä saraketta, **Estää**, ja se oli
+virhe. Sana kertoi kaksi eri suuretta yhtenä lukuna:
+
+- **Seuraus jos toteutukset eroavat** on määrittelyn ominaisuus, ja se on
+  luettavissa tekstistä.
+- **Eroavatko ne** on toteutusten ominaisuus, eikä sitä voi tietää lukemalla —
+  se on ajettava.
+
+Näiden tulona esitetty "estää" on luku jota kukaan ei voi tarkistaa. Sarake on
+nyt jaettu kahtia, ja mitattu-sarakkeessa lukee vain se mikä on ajettu.
+
+Mitattuna kahta toteutusta vasten **neljä kohtaa, joita pidettiin V4:n
+estäjinä, osoittautui yhteneviksi**: `id` ei-negatiivisena kokonaislukuna ja
+numeerisena vertailuna (H25), `bpm` kokonaislukuna (H26), `late[]`
+tyhjennettynä lähetyksessä (H27) ja parametrin nominaaliarvo ennen ensimmäistä
+käskyä (H35). Molemmat toteuttajat päätyivät samaan vastaukseen toisistaan
+tietämättä. Liittyjän sanomajärjestys (H32) **läpäisee** ajettuna. Ne odottavat
+enää ratifiointia.
+
+Katso [Pyyntö](contribute.md) siitä mikä eroavuutta oikeasti ennustaa — se ei
+ole seurauksen suuruus.
+
+## Yhteentoimivuus ei enää odota laitteistoa
+
+Tämä on suunnitelmien tuorein muutos, ja se irrottaa yhteentoimivuusportin
+laitteistoportista.
+
+Asiakas joka **kieltäytyy jokaisesta latauksesta** (`ct.refuse`) ja vaikenee
+V3:n mukaan on täysin määrittelyn mukainen. Ristiin ajo sellaista asiakasta
+vasten todistaa sen mitä skeema ei voi: että kaksi tilakonetta on yksimielisiä
+kädenpuristuksesta, liittymisjärjestyksestä ja tilannekuvan soveltamisesta.
+
+Se ei tarvitse analogista lähtöä, tallenninta eikä yhtään äänitiedostoa — ja se
+on ajettavissa samana päivänä kun H30 on päätetty, eli ennen kuin
+kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
+
 !!! warning "Ristiin ajo on estetty, ja se on portin toimintaa"
     Kaksi itsenäistä toteutusta on olemassa. Toinen kirjoitettiin pelkän
     määrittelytekstin varassa, tekijän toimesta joka ei ole nähnyt ensimmäisen
@@ -47,3 +85,9 @@ varmuusmarginaali.
     koko harjoituksen tarkoitus: kahden toteuttajan kesken sovittu arvo on
     yksityinen käytäntö jota kukaan kolmas ei voisi toistaa. Se kuuluu
     määrittelyyn ennen kuin se kuuluu kenenkään lähdetiedostoon.
+
+    Kohta on kirjattu **H30**:ksi, ja se on **ainoa este mitattuna**. Suositus
+    odottaa ratifiointia: `commontime/1`, yhteensopivuustunnus eikä dokumentin
+    versio, tavuvertailuna eikä versionumeroksi jäsennettynä, sulkukoodilla
+    4001 — yleinen 1000 ei erotu normaalista sulkemisesta, jolloin oire on
+    "mitään ei tapahdu".

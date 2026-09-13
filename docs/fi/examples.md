@@ -298,18 +298,19 @@ Kaksi kohtaa on yhä auki, eikä kumpaakaan voi esittää esimerkkinä ilman ett
 esimerkki päättäisi asian sivun omin päin.
 
 **Liittyvän asiakkaan sanomajärjestys.** Ei määritelty. Kaksi olemassa olevaa
-toteutusta tekee eri tavalla: toinen lähettää liittyjälle `ct.hello` →
-`ct.session` → `ct.snapshot` eikä `ct.load`-sanomia lainkaan, toinen lähettää
-`ct.load`in jokaisesta materiaalista ennen tilannekuvaa. Jälkimmäisen perustelu
+toteutusta tekee eri tavalla (kohta **H32**): toinen lähettää liittyjälle
+`ct.hello` → `ct.session` → `ct.snapshot` eikä `ct.load`-sanomia lainkaan,
+toinen lähettää `ct.load`in jokaisesta materiaalista ennen tilannekuvaa. Jälkimmäisen perustelu
 on hyvä: ilman `ct.load`ia asiakkaalla ei ole `lengthTicks`iä, eikä se voi
 laskea N10:n mukaista sijaintia, jolloin slot vaikenee pysyvästi. Toteutukset
-ovat keskenään yhteensopivia — kyse on avoimesta kohdasta, ei ristiriidasta.
+ovat keskenään yhteensopivia: H32 **läpäisee** ajettuna. Kyse on avoimesta
+kohdasta, ei ristiriidasta.
 
 **`v`-kentän arvo.** N16 sanoo että `v` **on** merkkijono ja että eriävät arvot
 **on** johdettava yhteyden sulkemiseen, eikä versioneuvottelua **saa** olla.
 Se ei sano mikä merkkijono on. Toinen toteutus lähettää `commontime/1`, toinen
 `commontime/1.2`, ja ristiin ajo päättyy kädenpuristukseen molempiin suuntiin.
-Katso [Tila](status.md).
+Kohta on **H30**, ja se on ainoa este mitattuna. Katso [Tila](status.md).
 
 Näiden kaltaiset kohdat ovat syy siihen miksi
 [kolmas toteutus](contribute.md) on arvokkain asia jonka määrittelylle voi

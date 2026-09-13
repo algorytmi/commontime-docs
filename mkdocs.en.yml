@@ -75,6 +75,7 @@ nav:
       - "§2 · Anchor and ticks": spec/time.md
       - "§4 · Messages": spec/messages.md
       - "§6 · Obligations": spec/obligations.md
+  - Examples: examples.md
   - Status: status.md
   - The ask: contribute.md
   - Documents: documents.md

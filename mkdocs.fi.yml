@@ -75,6 +75,7 @@ nav:
       - "§2 · Aika ja kelloaskeleet": spec/time.md
       - "§4 · Sanomat": spec/messages.md
       - "§6 · Vaatimukset": spec/obligations.md
+  - Esimerkit: examples.md
   - Tila: status.md
   - Pyyntö: contribute.md
   - Dokumentit: documents.md

@@ -1,0 +1,62 @@
+# English build. See mkdocs.fi.yml for the Finnish one — two configs rather
+# than one, because mkdocs-shadcn has no content i18n and its own i18n is
+# gettext for the theme's UI strings only.
+site_name: Common Time
+site_description: >-
+  Common Time is a network protocol that synchronises playback of
+  pre-loaded audio across independent clients. No audio and no notes cross
+  the wire — only an anchor, ticks and transport commands.
+site_url: https://common-time.dev/en/
+site_author: Common Time
+copyright: commontime/1 · 1.2a
+
+docs_dir: docs/en
+site_dir: site/en
+
+theme:
+  name: shadcn
+  show_title: true
+  show_stargazers: false
+  hide_source_files: true
+  show_datetime: false
+  topbar_sections: false
+  icon: heroicons:clock
+  # Close to the accent the previous site used (#15618f).
+  accent: "oklch(48% 0.105 245)"
+  pygments_style:
+    light: shadcn-light
+    dark: github-dark
+
+extra_css:
+  - assets/css/readout.css
+
+extra_javascript:
+  - assets/js/readout.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+nav:
+  - Common Time: index.md
+  - Specification:
+      - "§1 · What crosses the wire": spec/crossing.md
+      - "§2 · Anchor and ticks": spec/time.md
+      - "§4 · Messages": spec/messages.md
+      - "§6 · Obligations": spec/obligations.md
+  - Status: status.md
+  - The ask: contribute.md
+  - Documents: documents.md
+  - "Suomeksi": https://common-time.dev/fi/

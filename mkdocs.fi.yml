@@ -1,0 +1,62 @@
+# Finnish build. See mkdocs.en.yml for the English one — two configs rather
+# than one, because mkdocs-shadcn has no content i18n and its own i18n is
+# gettext for the theme's UI strings only.
+site_name: Common Time
+site_description: >-
+  Common Time on verkkoprotokolla, joka synkronoi valmiiksi ladatun audion
+  toiston eri laitteilla. Verkossa ei siirretä ääntä, vaan ankkuriaika ja
+  kelloaskeleet.
+site_url: https://common-time.dev/fi/
+site_author: Common Time
+copyright: commontime/1 · 1.2a
+
+docs_dir: docs/fi
+site_dir: site/fi
+
+theme:
+  name: shadcn
+  show_title: true
+  show_stargazers: false
+  hide_source_files: true
+  show_datetime: false
+  topbar_sections: false
+  icon: heroicons:clock
+  # Close to the accent the previous site used (#15618f).
+  accent: "oklch(48% 0.105 245)"
+  pygments_style:
+    light: shadcn-light
+    dark: github-dark
+
+extra_css:
+  - assets/css/readout.css
+
+extra_javascript:
+  - assets/js/readout.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+nav:
+  - Common Time: index.md
+  - Määrittely:
+      - "§1 · Verkkoliikenne": spec/crossing.md
+      - "§2 · Aika ja kelloaskeleet": spec/time.md
+      - "§4 · Sanomat": spec/messages.md
+      - "§6 · Vaatimukset": spec/obligations.md
+  - Tila: status.md
+  - Pyyntö: contribute.md
+  - Dokumentit: documents.md
+  - "In English": https://common-time.dev/en/

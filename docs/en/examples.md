@@ -228,7 +228,15 @@ The difference is **24.4 samples, or 0.5 ms** — and it is exactly the floor:
 units, and nothing else separates these two rows.
 
 One tick is 25.42 samples at 48 kHz, so a read head quantised to whole ticks
-would step audibly. N1 requires
+would step audibly.
+
+**And one implementation choice that follows straight from V2.** This
+implementation stretches the material to the loop's exact duration rather than
+playing it at unity rate and cutting the end. The file's deviation then becomes
+a constant detune — **1.215 ppm** here — which resets on every iteration,
+because V2 requires each iteration's onset to be derived from session time and
+not from the end of the previous one. Unity rate would instead leave a
+sub-sample gap on every iteration, and that is a click rather than a detune. N1 requires
 integers **on the control plane** — it is a promise that two implementations
 agree about time, not a requirement about how audio is rendered.
 
@@ -288,6 +296,23 @@ That is exactly why the computation must be done in exact rational arithmetic
 and the check passes within **±1 sample**. Floating point and rounding would
 give different answers in different implementations, and the whole point of N4
 is that the verdict is identical in every one.
+
+**Why ±1 sample, and not looser or tighter.** A file's deviation from the exact
+value does not sit at the end of the file; it shows up in the read head's
+position, and it grows linearly with the phase. This loop's file is
+−0.4746 samples off exact:
+
+| Phase | Through the loop | Read-head deviation |
+| --- | --- | --- |
+| 0 | 0 % | ±0.0000 |
+| 3,840 | 25 % | −0.1186 |
+| 7,680 | 50 % | −0.2373 |
+| 15,360 | 100 % | −0.4746 |
+
+The deviation is zero at the start of the loop and reaches the file's own
+deviation at its end. A ±1 sample gate therefore bounds the positional error at
+one sample — and only at the loop's last sample. The gate is exactly as tight
+as the error it admits, not looser.
 
 Whether the material is *musically* at the session tempo is **not** a protocol
 check. Material at the wrong tempo sounds wrong in every client in the same way,

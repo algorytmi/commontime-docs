@@ -229,6 +229,14 @@ eikä mikään muu erota näitä kahta riviä toisistaan.
 
 Yksi kelloaskel on 25,42 näytettä 48 kHz:llä, joten kokonaislukuun kvantisoitu
 lukupää askeltaisi kuuluvasti.
+
+**Ja yksi toteutuksen valinta, joka seuraa suoraan V2:sta.** Tämä toteutus
+venyttää materiaalin silmukan tarkkaan kestoon sen sijaan että soittaisi sen
+ykkösnopeudella ja katkaisisi lopusta. Tiedoston poikkeamasta tulee silloin
+vakiovire — tässä tapauksessa **1,215 ppm** — joka nollautuu joka
+kierroksella, koska V2 vaatii että jokaisen kierroksen alku johdetaan istunnon
+ajasta eikä edellisen lopusta. Ykkösnopeus jättäisi sen sijaan alle näytteen
+raon jokaiselle kierrokselle, ja se olisi naksu eikä vire.
 N1 vaatii kokonaislukuja **ohjauskaistalla** — se on lupaus siitä että kaksi
 toteutusta on samaa mieltä ajasta, ei vaatimus siitä miten ääni renderöidään.
 
@@ -288,6 +296,23 @@ tahtimäärällä tässä tempossa. Juuri siksi laskenta on tehtävä tarkalla
 rationaaliaritmetiikalla ja tarkistus läpäisee **±1 näytteen** sisällä.
 Liukulukulasku ja pyöristäminen antaisivat eri vastauksen eri toteutuksissa,
 ja N4:n koko pointti on että tuomio on identtinen jokaisessa.
+
+**Miksi juuri ±1 näyte, eikä löysempi tai tiukempi.** Tiedoston poikkeama
+tarkasta arvosta ei jää tiedoston loppuun vaan näkyy lukupään sijainnissa, ja
+se kasvaa lineaarisesti vaiheen mukana. Tässä silmukassa tiedosto on
+−0,4746 näytettä tarkasta:
+
+| Vaihe | Osuus silmukasta | Lukupään poikkeama |
+| --- | --- | --- |
+| 0 | 0 % | ±0,0000 |
+| 3 840 | 25 % | −0,1186 |
+| 7 680 | 50 % | −0,2373 |
+| 15 360 | 100 % | −0,4746 |
+
+Poikkeama on nolla silmukan alussa ja saavuttaa tiedoston oman poikkeaman sen
+lopussa. Siksi ±1 näytteen portti rajaa sijaintivirheen enintään yhteen
+näytteeseen — ja täsmälleen silmukan viimeisellä näytteellä. Portti on tasan
+yhtä tiukka kuin virhe jonka se päästää läpi, ei löysempi.
 
 Onko materiaali *musiikillisesti* istunnon tempossa, **ei ole** protokollan
 tarkistus. Väärässä tempossa oleva materiaali kuulostaa väärältä jokaisessa

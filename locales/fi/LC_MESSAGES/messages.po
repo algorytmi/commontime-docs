@@ -63,3 +63,8 @@ msgstr "Tehnyt"
 
 msgid "provided by"
 msgstr "tekijänä"
+
+# Footer link to the colophon. Not a theme string — it belongs to the override
+# in overrides/templates/footer.html.
+msgid "About this site"
+msgstr "Tietoja sivustosta"

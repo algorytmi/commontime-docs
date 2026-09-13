@@ -41,11 +41,3 @@ Ajanoton yläraja (katto) on 9 007 199 254 740 991: kelloaskeleen on mahduttava
 | [Tila](status.md) | Mikä on mitattu ja mikä ei |
 | [Pyyntö](contribute.md) | Miksi kolmas toteutus on arvokkain asia |
 | [Dokumentit](documents.md) | Määrittely ja kaikki sen ympärillä |
-
-!!! warning "Tämä sivu ei ole normatiivinen"
-    Missä se eroaa määrittelystä, määrittely voittaa; missä kieliversiot
-    eroavat, englanti voittaa. Ei lyhennettä: yksikäsitteinen merkkijono on
-    `commontime`, pienellä.
-
-    Mikään tällä sivulla ei ole kiinni missään. Yllä oleva kelloaskel on tämän
-    sivun omaa aritmetiikkaa.

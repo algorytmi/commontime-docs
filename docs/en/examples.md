@@ -97,9 +97,9 @@ applied anyway, and the lateness is reported in the `late` list of `ct.state` as
 `{ id, lateTicks }`.
 
 !!! warning "If you copy this flow"
-    **The value of `v` is this implementation's choice, not a decision.** The
-    specification gives the field's type and what follows from a mismatch, but
-    not what the string is — see the last section of this page.
+    **The value of `v` is now decided (H30), and it is `commontime/1`.** It is
+    a compatibility token, not a document version: it does not change with
+    version 1.3. Do not copy a specification version number into it.
 
     **`sha256:3f8a…d7e8` is an abbreviation for reading, not a valid
     identifier.** N13 requires exactly 64 hex characters in lower case, and the
@@ -240,7 +240,7 @@ sub-sample gap on every iteration, and that is a click rather than a detune. N1 
 integers **on the control plane** — it is a promise that two implementations
 agree about time, not a requirement about how audio is rendered.
 
-!!! danger "Finding F19 · running this example exposed a gap"
+!!! danger "H36 · running this example exposed a gap"
     The joiner's first `ct.state` carried `late: []` — even though it had just
     received three commands whose `atTick` is 113,600 ticks in the past.
 
@@ -256,8 +256,10 @@ agree about time, not a requirement about how audio is rendered.
     a client that has just lost the network.** And joins happen exactly when
     telemetry is being read alongside a recording.
 
-    The item is recorded as an **unnumbered** finding and has not been
-    addressed. H-numbers are assigned by the specification.
+    The implementer recorded it as `F19`; the specification numbered it
+    **H36** on 13 September 2026. It is **open** and has not been decided.
+    Nor is divergence claimed: one implementation's behaviour is known, the
+    other's is not.
 
 !!! warning "What in these flows is the implementation's choice"
     With the same caveat as the value of `v` — none of these are dictated by
@@ -464,12 +466,14 @@ position, and the slot stays silent permanently. The implementations
 interoperate: H32 **passes** when run. This is an open item, not an
 incompatibility.
 
-**The value of the `v` field.** N16 says `v` **must** be a string and that
-differing values **must** close the connection, and that version negotiation
-**must not** exist. It does not say what the string is. One implementation sends
-`commontime/1`, the other `commontime/1.2`, and the cross-run ends at the
-handshake in both directions. The item is **H30**, and it is the only measured
-blocker. See [Status](status.md).
+**Lateness of commands applied from a snapshot.** N3 requires lateness to be
+reported in `late[]`; N8 says a snapshot's commands are processed as commands
+are, and their `atTick` is in the past by definition. Which sentence wins is not
+in the text. The item is **H36**, open — see above.
+
+**The value of `v` was the third item on this list, and it is now decided.**
+H30 was settled on 13 September 2026: the value is `commontime/1` as a
+compatibility token. See [Status](status.md) for the reasoning.
 
 Items like these are why [a third implementation](contribute.md) is the most
 valuable thing anyone can do with this specification.

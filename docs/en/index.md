@@ -36,11 +36,3 @@ floating point (N12). At 118 BPM that is roughly 151 000 years.
 | [Status](status.md) | What is measured and what is not |
 | [The ask](contribute.md) | Why a third implementation is worth the most |
 | [Documents](documents.md) | The specification and everything around it |
-
-!!! warning "This page is not normative"
-    Where it differs from the specification, the specification wins; where the
-    language versions differ, English wins. No acronym: the unambiguous token
-    is `commontime`, lower case.
-
-    Nothing on this page is connected to anything. The tick above is this
-    page's own arithmetic.

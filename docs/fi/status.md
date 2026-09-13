@@ -5,9 +5,11 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 12 | estetty |
+| 1.2a | 2 | 0 | 12 | eriävä |
 
-Luku 12 on **numeroitujen** kohtien määrä (H24–H35). Kirjattuja löydöksiä on
+Luku 12 on **numeroitujen** kohtien määrä (H24–H36, H30 päätetty).
+Se ei liikkunut, vaikka kaksi asiaa tapahtui: H30 ratkesi ja poistui listalta,
+ja F19 sai numeron H36 ja tuli tilalle. Sama luku, eri kaksitoista. Kirjattuja löydöksiä on
 enemmän: toteuttaja kirjaa löydöksen omalla tunnuksellaan (`F7`, `F-B2`) ja
 ehdottaa sitä katselmointiin, mutta H-numero syntyy vasta määrittelyssä. Osa
 kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
@@ -57,12 +59,20 @@ Näiden tulona esitetty "estää" on luku jota kukaan ei voi tarkistaa. Sarake o
 nyt jaettu kahtia, ja mitattu-sarakkeessa lukee vain se mikä on ajettu.
 
 Mitattuna kahta toteutusta vasten **neljä kohtaa, joita pidettiin V4:n
-estäjinä, osoittautui yhteneviksi**: `id` ei-negatiivisena kokonaislukuna ja
-numeerisena vertailuna (H25), `bpm` kokonaislukuna (H26), `late[]`
-tyhjennettynä lähetyksessä (H27) ja parametrin nominaaliarvo ennen ensimmäistä
-käskyä (H35). Molemmat toteuttajat päätyivät samaan vastaukseen toisistaan
-tietämättä. Liittyjän sanomajärjestys (H32) **läpäisee** ajettuna. Ne odottavat
-enää ratifiointia.
+estäjinä, osoittautui yhteneviksi** — mutta kaksi niistä kapeammin kuin
+ensin kirjattiin:
+
+| Kohta | Mitä yhtenevyys kattaa |
+| --- | --- |
+| **H25** `id` | Muodon (ei-negatiivinen kokonaisluku) ja vertailun (numeerinen). **Ei ylärajaa:** toinen vaatii 53 bitin turvarajan, toinen pelkän kokonaisluvun, ja ne eroavat arvosta 2⁵³+2 ylöspäin. Kasvava laskuri ei koskaan pääse sinne, joten eroa ei voi mitata normaalissa ajossa. |
+| **H26** `bpm` | Lukutyypin ja lukualueen, ilman varauksia. |
+| **H27** `late[]` | Kumulatiivisuuden ja `lateTicks`:n laskennan, ilman varauksia. |
+| **H35** `gain` | **Vain `gain`in** nollatason. Rekisterin otsikko puhui parametrin nominaaliarvosta yleisesti, mutta molempien todiste koskee `gain`ia — `param`illa ei ole mielekästä nollaa, koska nimiavaruus on sovelluksen ja arvo voi olla ei-numeerinen (N15). |
+
+Molemmat toteuttajat päätyivät samaan vastaukseen toisistaan tietämättä, ja
+H27:ssa samaan **päättelyketjuun**: toinen johti listan tyhjennyksen erikseen
+samasta perustelusta. Liittyjän sanomajärjestys (H32) **läpäisee** ajettuna.
+Ne odottavat enää ratifiointia.
 
 Katso [Pyyntö](contribute.md) siitä mikä eroavuutta oikeasti ennustaa — se ei
 ole seurauksen suuruus.
@@ -94,7 +104,7 @@ Se ei tarvitse analogista lähtöä, tallenninta eikä yhtään äänitiedostoa 
 on ajettavissa samana päivänä kun H30 on päätetty, eli ennen kuin
 kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
 
-!!! warning "Ristiin ajo on estetty, ja se on portin toimintaa"
+!!! warning "Ristiin ajo pysähtyi ensimmäiseen sanomaan, ja se oli portin toimintaa"
     Kaksi itsenäistä toteutusta on olemassa. Toinen kirjoitettiin pelkän
     määrittelytekstin varassa, tekijän toimesta joka ei ole nähnyt ensimmäisen
     toteutuksen koodia. Niiden ristiin ajo ei pääse **ensimmäistä sanomaa**
@@ -108,8 +118,41 @@ kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
     yksityinen käytäntö jota kukaan kolmas ei voisi toistaa. Se kuuluu
     määrittelyyn ennen kuin se kuuluu kenenkään lähdetiedostoon.
 
-    Kohta on kirjattu **H30**:ksi, ja se on **ainoa este mitattuna**. Suositus
-    odottaa ratifiointia: `commontime/1`, yhteensopivuustunnus eikä dokumentin
-    versio, tavuvertailuna eikä versionumeroksi jäsennettynä, sulkukoodilla
-    4001 — yleinen 1000 ei erotu normaalista sulkemisesta, jolloin oire on
-    "mitään ei tapahdu".
+    Kohta kirjattiin **H30**:ksi, ja se oli pitkään ainoa este mitattuna.
+
+    **H30 on päätetty 13.9.2026.** Arvo on `commontime/1`. Se on
+    **yhteensopivuustunnus eikä dokumentin versio** — se muuttuu jos ja vain jos
+    lanka rikkoutuu, eivätkä 1.1, 1.2, 1.2a tai tuleva 1.3 muuta sitä.
+    Vertailu on tavuvertailu, ei jäsennetty versionumero eikä normalisoitu.
+    Eroavuudella yhteys suljetaan koodilla **4001**; yleinen 1000 ei erotu
+    normaalista sulkemisesta, jolloin oire olisi "mitään ei tapahdu".
+
+    Perustelu on N16:n omassa logiikassa eikä kummankaan toteuttajan arvossa:
+    N16 kieltää versioneuvottelun ja vaatii sulkemista eroavuudella, joten jos
+    `v` kantaisi dokumentin version, **jokainen toimituksellinen korjaus
+    katkaisisi jokaisen käynnissä olevan yhteyden.** Versio 1.2a oli
+    ei-normatiivinen korjaus yhteen perustelulauseeseen. Määrittely on lisäksi
+    näyttänyt vastausta joka sivun ylälaidassa sanomatta sitä:
+    `commontime/1 · versio 1.2 · hyväksytty 13.9.2026` erottaa tunnuksen ja
+    version jo typografisesti.
+
+    **Mitä päätös muutti ja mitä ei.** Yksi sana ei riitä, koska kyse on
+    kahdesta eri suureesta — samasta erottelusta jonka H25 ja H26 opettivat,
+    nyt sovellettuna niiden oman ratkaisuprosessin tulokseen:
+
+    | | Ristiin ajo |
+    | --- | --- |
+    | **Määrittely** | ei estä — N16:n aukko on suljettu |
+    | **Mitattu** | **eriävä** — B lähettää yhä `commontime/1.2`, eikä päätös ole tavoittanut B:tä |
+
+    Päätös muutti ylemmän rivin, ei alempaa. Ohjaustason ristiin ajo on
+    määrittelyn puolesta esteetön, mutta se ei ole ajettu eikä ajettavissa
+    ennen kuin B omaksuu arvon — ja siihen asti A sulkee yhteyden kuten N16
+    vaatii. Ääni on tämän jälkeenkin eri portti.
+
+    **Päätös on tarkistettu toteutusta vasten**, ei vain kirjattu: arvo
+    (myös se ettei se ole 1.1, 1.2 tai 1.2a), tavuvertailu yhdeksällä
+    lähiosumalla — välilyönti kummassakin päässä, rivinvaihto, kirjainkoko
+    kahdesti, `commontime/1.0` versionumerona luettuna, `commontime/10`,
+    `commontime` etuliitteenä ja B:n `commontime/1.2` — sekä sulkukoodi 4001
+    ja se että se osuu sovellusalueelle 4000–4999. Kaikki kolme testeinä.

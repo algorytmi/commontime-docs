@@ -98,9 +98,9 @@ silti, ja myöhästyminen raportoidaan `ct.state`n `late`-listalla muodossa
 `{ id, lateTicks }`.
 
 !!! warning "Jos kopioit tämän vuon"
-    **`v`:n arvo on tämän toteutuksen valinta, ei päätös.** Määrittely antaa
-    kentän tyypin ja sen mitä eroavuudesta seuraa, muttei sitä mikä merkkijono
-    on — katso tämän sivun viimeinen osio.
+    **`v`:n arvo on nyt päätetty (H30), ja se on `commontime/1`.** Se on
+    yhteensopivuustunnus eikä dokumentin versio: se ei muutu version 1.3
+    mukana. Älä kopioi siihen määrittelyn versionumeroa.
 
     **`sha256:3f8a…d7e8` on lyhennys lukemista varten, ei kelvollinen
     tunniste.** N13 vaatii tasan 64 heksamerkkiä pienaakkosin, ja lyhennys ei
@@ -240,7 +240,7 @@ raon jokaiselle kierrokselle, ja se olisi naksu eikä vire.
 N1 vaatii kokonaislukuja **ohjauskaistalla** — se on lupaus siitä että kaksi
 toteutusta on samaa mieltä ajasta, ei vaatimus siitä miten ääni renderöidään.
 
-!!! danger "Löydös F19 · tämän esimerkin ajaminen paljasti aukon"
+!!! danger "H36 · tämän esimerkin ajaminen paljasti aukon"
     Liittyjän ensimmäinen `ct.state` oli `late: []` — vaikka se oli juuri
     saanut kolme käskyä, joiden `atTick` on 113 600 tikkiä menneisyydessä.
 
@@ -256,8 +256,10 @@ toteutusta on samaa mieltä ajasta, ei vaatimus siitä miten ääni renderöidä
     asiakas jolta on juuri kadonnut verkko.** Ja liittymisiä tapahtuu juuri
     silloin kun telemetriaa luetaan nauhoituksen rinnalla.
 
-    Kohta on kirjattu **numeroimattomana** löydöksenä eikä sitä ole vielä
-    käsitelty. H-numeron antaa määrittely.
+    Toteuttaja kirjasi kohdan tunnuksella `F19`; määrittely antoi sille
+    numeron **H36** 13.9.2026. Se on **avoin** eikä sitä ole vielä päätetty.
+    Eroavuutta ei myöskään väitetä: toisen toteutuksen käytös tunnetaan,
+    toisen ei.
 
 !!! warning "Mikä näissä vuoissa on toteutuksen valintaa"
     Samalla varauksella kuin `v`:n arvo — nämä eivät ole määrittelyn sanelemia:
@@ -464,11 +466,14 @@ laskea N10:n mukaista sijaintia, jolloin slot vaikenee pysyvästi. Toteutukset
 ovat keskenään yhteensopivia: H32 **läpäisee** ajettuna. Kyse on avoimesta
 kohdasta, ei ristiriidasta.
 
-**`v`-kentän arvo.** N16 sanoo että `v` **on** merkkijono ja että eriävät arvot
-**on** johdettava yhteyden sulkemiseen, eikä versioneuvottelua **saa** olla.
-Se ei sano mikä merkkijono on. Toinen toteutus lähettää `commontime/1`, toinen
-`commontime/1.2`, ja ristiin ajo päättyy kädenpuristukseen molempiin suuntiin.
-Kohta on **H30**, ja se on ainoa este mitattuna. Katso [Tila](status.md).
+**Tilannekuvan käskyjen myöhästyminen.** N3 vaatii että myöhästyminen
+raportoidaan `late[]`-listalla; N8 sanoo että tilannekuvan käskyt käsitellään
+kuin käskyt, ja niiden `atTick` on määritelmän mukaan menneisyydessä. Kumpi
+lause voittaa, ei ole tekstissä. Kohta on **H36**, avoin — katso yllä.
+
+**`v`-kentän arvo oli tämän listan kolmas kohta, ja se on nyt päätetty.**
+H30 ratkesi 13.9.2026: arvo on `commontime/1` yhteensopivuustunnuksena.
+Katso [Tila](status.md) perusteluineen.
 
 Näiden kaltaiset kohdat ovat syy siihen miksi
 [kolmas toteutus](contribute.md) on arvokkain asia jonka määrittelylle voi

@@ -5,9 +5,12 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 12 | blocked |
+| 1.2a | 2 | 0 | 12 | divergent |
 
-The 12 is the count of **numbered** items (H24–H35). More findings than that are
+The 12 is the count of **numbered** items (H24–H36, with H30 decided).
+It did not move although two things happened: H30 was settled and left the
+list, and F19 was numbered H36 and took its place. The same number, a different
+twelve. More findings than that are
 recorded: an implementer records a finding under their own identifier (`F7`,
 `F-B2`) and proposes it for review, but the H-number is assigned by the
 specification. Some recorded findings are still waiting for one. Which number is
@@ -58,11 +61,19 @@ Presented as the product of the two, "blocks" is a figure nobody can check. The
 column is now split, and the measured column says only what has been run.
 
 Measured against two implementations, **four items thought to block V4 turned
-out to be convergent**: `id` as a non-negative integer compared numerically
-(H25), `bpm` as an integer (H26), `late[]` cleared on send (H27), and a
-parameter's nominal value before the first command (H35). Both implementers
-arrived at the same answer without consulting each other. The joining message
-order (H32) **passes** when run. They are waiting only for ratification.
+out to be convergent** — but two of them more narrowly than was first recorded:
+
+| Item | What the convergence covers |
+| --- | --- |
+| **H25** `id` | The form (a non-negative integer) and the comparison (numeric). **Not the upper bound:** one requires the 53-bit safe limit, the other only an integer, and they differ from 2⁵³+2 upward. A counter that only increases never reaches it, so no ordinary run can measure the difference. |
+| **H26** `bpm` | The number type and the range, without reservation. |
+| **H27** `late[]` | Cumulativity and the computation of `lateTicks`, without reservation. |
+| **H35** `gain` | **Only `gain`'s** zero. The register's heading spoke of a parameter's nominal value in general, but both implementers' evidence concerns `gain` — a `param` has no meaningful zero, because the namespace belongs to the application and the value need not be numeric (N15). |
+
+Both implementers arrived at the same answer without consulting each other, and
+for H27 at the same **chain of reasoning**: one derived the clearing of the list
+separately, from the same argument. The joining message order (H32) **passes**
+when run. They are waiting only for ratification.
 
 See [The ask](contribute.md) for what actually predicts divergence — it is not
 the size of the consequence.
@@ -94,7 +105,7 @@ It needs no analogue output, no recorder and not one audio file — and it can b
 run the same day H30 is decided, which is before a two-input interface has even
 been ordered. Audio is a different gate and different work.
 
-!!! warning "The cross-run is blocked, and that is the gate working"
+!!! warning "The cross-run stopped at the first message, and that was the gate working"
     Two independent implementations exist. The second was written from the
     specification text alone, by an author who has never seen the first
     implementation's code. Their cross-run does not get past the **first
@@ -108,9 +119,45 @@ been ordered. Audio is a different gate and different work.
     convention that no third party could reproduce. It belongs in the
     specification before it belongs in anybody's source file.
 
-    The item is recorded as **H30**, and it is **the only measured blocker**.
-    The recommendation awaiting ratification: `commontime/1`, a compatibility
-    token rather than a document version, compared byte for byte rather than
-    parsed as a version number, closed with code 4001 — a generic 1000 is
-    indistinguishable from a normal close, and the symptom is then "nothing
-    happens".
+    The item was recorded as **H30**, and for a long time it was the only
+    measured blocker.
+
+    **H30 was decided on 13 September 2026.** The value is `commontime/1`. It is
+    a **compatibility token, not a document version** — it changes if and only
+    if the wire breaks, and 1.1, 1.2, 1.2a and the coming 1.3 do not change it.
+    The comparison is byte for byte, not parsed as a version number and not
+    normalised. On a mismatch the connection closes with code **4001**; a
+    generic 1000 is indistinguishable from a normal close, and the symptom would
+    then be "nothing happens".
+
+    The reasoning rests on N16's own logic rather than on either implementer's
+    value. N16 forbids version negotiation and requires closing on mismatch, so
+    if `v` carried the document version, **every editorial correction would
+    sever every running connection.** Version 1.2a was a non-normative fix to a
+    single sentence of rationale. And the specification had been showing the
+    answer at the top of every page without stating it:
+    `commontime/1 · version 1.2 · approved 13 September 2026` already separates
+    the token from the version typographically.
+
+    **What the decision changed, and what it did not.** One word will not do,
+    because these are two different quantities — the same distinction H25 and
+    H26 taught, now applied to the outcome of their own resolution:
+
+    | | Cross-run |
+    | --- | --- |
+    | **Specification** | does not block it — N16's gap is closed |
+    | **Measured** | **divergent** — B still sends `commontime/1.2`, and the decision has not reached B |
+
+    The decision changed the upper row, not the lower one. The control-plane
+    cross-run is clear as far as the specification goes, but it has not been run
+    and cannot be until B adopts the value — and until then A closes the
+    connection exactly as N16 requires. Audio remains a separate gate after
+    that.
+
+    **The decision was verified against an implementation**, not merely
+    recorded: the value (including that it is not 1.1, 1.2 or 1.2a), the byte
+    comparison against nine near misses — a space at either end, a newline, case
+    twice, `commontime/1.0` read as a version number, `commontime/10`,
+    `commontime` as a prefix, and B's `commontime/1.2` — and close code 4001,
+    together with its falling in the application range 4000–4999. All three as
+    tests.

@@ -7,7 +7,7 @@ site_description: >-
   pre-loaded audio across independent clients. No audio and no notes cross
   the wire — only an anchor, ticks and transport commands.
 site_url: https://common-time.dev/en/
-site_author: Common Time
+site_author: Common Time (Juho Hietala)
 copyright: commontime/1 · 1.2a
 
 docs_dir: docs/en
@@ -87,3 +87,4 @@ nav:
   - Status: status.md
   - The ask: contribute.md
   - Documents: documents.md
+  - About this site: colophon.md

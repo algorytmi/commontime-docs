@@ -7,7 +7,7 @@ site_description: >-
   toiston eri laitteilla. Verkossa ei siirretä ääntä, vaan ankkuriaika ja
   kelloaskeleet.
 site_url: https://common-time.dev/fi/
-site_author: Common Time
+site_author: Common Time (Juho Hietala)
 copyright: commontime/1 · 1.2a
 
 docs_dir: docs/fi
@@ -87,3 +87,4 @@ nav:
   - Tila: status.md
   - Pyyntö: contribute.md
   - Dokumentit: documents.md
+  - Tietoja sivustosta: colophon.md

@@ -223,8 +223,12 @@ tasan `exactTick − floor(exactTick)`, eli pelkkä lattia. Ja se on tarkoitus:
 | Ohjauskaista, kokonaislukutikki (N1) | 320 | 8 135,6 |
 | Lukupää, murtolukutikki | 320,9600 | 8 160,0 |
 
-Ero on **24,4 näytettä eli 0,5 ms**. Yksi kelloaskel on 25,42 näytettä
-48 kHz:llä, joten kokonaislukuun kvantisoitu lukupää askeltaisi kuuluvasti.
+Ero on **24,4 näytettä eli 0,5 ms** — ja se on tasan se lattia: `0,96 × 25,42`
+näytettä per kelloaskel on 24,4. Sama jakojäännös näkyy kummassakin yksikössä,
+eikä mikään muu erota näitä kahta riviä toisistaan.
+
+Yksi kelloaskel on 25,42 näytettä 48 kHz:llä, joten kokonaislukuun kvantisoitu
+lukupää askeltaisi kuuluvasti.
 N1 vaatii kokonaislukuja **ohjauskaistalla** — se on lupaus siitä että kaksi
 toteutusta on samaa mieltä ajasta, ei vaatimus siitä miten ääni renderöidään.
 

@@ -223,8 +223,12 @@ and nothing else. And that is deliberate:
 | Control plane, integer tick (N1) | 320 | 8,135.6 |
 | Read head, fractional tick | 320.9600 | 8,160.0 |
 
-The difference is **24.4 samples, or 0.5 ms**. One tick is 25.42 samples at
-48 kHz, so a read head quantised to whole ticks would step audibly. N1 requires
+The difference is **24.4 samples, or 0.5 ms** — and it is exactly the floor:
+`0.96 × 25.42` samples per tick is 24.4. The same remainder shows up in both
+units, and nothing else separates these two rows.
+
+One tick is 25.42 samples at 48 kHz, so a read head quantised to whole ticks
+would step audibly. N1 requires
 integers **on the control plane** — it is a promise that two implementations
 agree about time, not a requirement about how audio is rendered.
 

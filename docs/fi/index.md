@@ -1,3 +1,5 @@
+<img class="ct-mark" src="assets/img/ctp-mark-beat.svg" alt="Common Time Protocol — CTP" width="160" height="160">
+
 # Protokolla, joka pakottaa eri asiakassovellukset samaan nuottiin
 
 Common Time on verkkoprotokolla, joka synkronoi valmiiksi ladatun audion

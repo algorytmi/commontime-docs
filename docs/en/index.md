@@ -1,3 +1,5 @@
+<img class="ct-mark" src="assets/img/ctp-mark-beat.svg" alt="Common Time Protocol — CTP" width="160" height="160">
+
 # A protocol for making independent clients agree on musical time
 
 No audio crosses the wire. One anchor does, and after that only integer ticks

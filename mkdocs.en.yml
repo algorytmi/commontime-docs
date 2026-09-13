@@ -21,7 +21,10 @@ theme:
   hide_source_files: true
   show_datetime: false
   topbar_sections: false
-  icon: heroicons:clock
+  # Inlined by the theme (read_file | safe), not linked — currentColor
+  # therefore follows the top bar into dark mode.
+  icon: assets/img/ctp-mark.svg
+  favicon: assets/img/ctp-favicon.svg
   # Close to the accent the previous site used (#15618f).
   accent: "oklch(48% 0.105 245)"
   pygments_style:

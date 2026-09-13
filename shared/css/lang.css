@@ -23,3 +23,12 @@
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
+
+/* The beating mark at the head of the front page. Sized in rem so it tracks
+   the reader's text size rather than a fixed pixel count. */
+.ct-mark {
+  display: block;
+  width: 5.5rem;
+  height: auto;
+  margin: 0 0 1.5rem;
+}

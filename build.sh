@@ -13,7 +13,7 @@ for lang in fi en; do
   # in rather than referenced. Regenerated every build; git-ignored.
   rm -rf "docs/$lang/assets"
   mkdir -p "docs/$lang/assets"
-  cp -r shared/js shared/css "docs/$lang/assets/"
+  cp -r shared/js shared/css shared/img "docs/$lang/assets/"
   "$MKDOCS" build --strict -q -f "mkdocs.$lang.yml"
   echo "built: site/$lang"
 done

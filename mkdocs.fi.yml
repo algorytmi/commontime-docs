@@ -24,8 +24,14 @@ theme:
   show_datetime: false
   topbar_sections: false
   # Inlined by the theme (read_file | safe), not linked — currentColor
-  # therefore follows the top bar into dark mode.
-  icon: assets/img/ctp-mark.svg
+  # therefore follows the top bar into dark mode. The culled six-ring
+  # variant at 32 px: the full mark was measured muddy at 32 and
+  # unreadable at 16, and the 32-47 px band is what the variant is for.
+  icon: assets/img/ctp-symbol-small.svg
+  # Below the measured floor. A favicon is drawn at 16 px, where the
+  # mark's documentation calls for a separately drawn version that does
+  # not exist yet — it awaits the author's decision. The culled variant
+  # is the least bad thing available, not a compliant one.
   favicon: assets/img/ctp-favicon.svg
   # Close to the accent the previous site used (#15618f).
   accent: "oklch(48% 0.105 245)"
@@ -40,10 +46,12 @@ extra:
 extra_css:
   - assets/css/readout.css
   - assets/css/lang.css
+  - assets/css/mark.css
 
 extra_javascript:
   - assets/js/readout.js
   - assets/js/langswitch.js
+  - assets/js/mark.js
 
 plugins:
   # Resolves to the theme's own search plugin, which subclasses the

@@ -68,6 +68,14 @@ added by script rather than by the stylesheet, so a page without scripting shows
 a still mark instead of an unsynchronised one. An `<img>`-embedded mark cannot
 be locked and must therefore be static.
 
+## Branches
+
+`main` is what is published to `algorytmi/commontime-docs`. Work here.
+
+`master` is kept locally only. It is the history from before publication and it
+contains the private material in its commits, so **it is never pushed.** Nothing
+from `../common-time-private/` belongs in a commit on `main`.
+
 ## Building
 
 ```bash

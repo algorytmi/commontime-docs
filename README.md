@@ -66,7 +66,10 @@ the interpretation rather than the text — and the cross-run between two
 independent implementations is the only test that says whether this is a
 protocol or a library.
 
-## Credits
+## Licence
 
-The theme is mkdocs-shadcn by [@asiffer](https://github.com/asiffer), MIT
-licensed. The full notice is on the site's colophon.
+MIT — see `LICENSE`. This covers everything in the repository, the mark's
+geometry included.
+
+The theme is mkdocs-shadcn by [@asiffer](https://github.com/asiffer), also MIT.
+Its full notice is on the site's colophon.

@@ -1,24 +1,29 @@
-# §1 · What crosses the wire
+# §1 · What crosses the wire?
 
-## Carried
+## Only minimal control information travels the network
 
-- `anchorEpochMs` · `bpm` · `beatsPerBar` · `ppq`
-- integer ticks
-- `start` · `stop` · `gain` · `param` · `material`
-- `sha256:<hex>`
-- telemetry
+- **Synchronisation parameters:** the starting instant (`anchorEpochMs`), the
+  tempo (`bpm`), the beats in a bar (`beatsPerBar`) and the clock's resolution
+  (`ppq`).
+- **Timestamps:** mathematically exact ticks, as integers.
+- **Transport commands and parameters:** start (`start`), stop (`stop`), level
+  (`gain`), other parameters (`param`), and the material to be played
+  (`material`).
+- **Identifiers:** the SHA-256 digest that identifies a material uniquely.
+- **Diagnostics:** the system's telemetry.
 
-## Never carried
+## What is never carried
 
-- audio
-- note data
-- prompts · model identifiers
-- rights metadata · user identity
-- world state · directives · suggestions
+- Audio signal, or note data such as MIDI.
+- AI prompts, model identifiers, directives or suggestions.
+- Rights metadata, user identity, or the application's world state.
 
-!!! note "Why material is audio, not a sequence"
-    Two implementations with different instruments would render the same note
-    sequence as different audio. Material is therefore pre-rendered audio,
-    addressed by content digest, and the protocol carries only **identity and
-    time**. How the material was produced, stretched, resampled or generated is
-    not the protocol's business.
+!!! note "Why the material is pre-rendered audio rather than a note sequence"
+    If two different applications played the same note sequence, they would
+    produce different audio with different instruments. To guarantee that they
+    agree completely, the material must be pre-rendered audio, referred to by an
+    unambiguous content digest.
+
+    The protocol carries only what is played (identity) and when it is played
+    (time). How the material was originally produced, stretched, resampled or
+    generated is left entirely to the client.

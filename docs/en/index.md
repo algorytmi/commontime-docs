@@ -7,9 +7,10 @@
 
 # A protocol for making independent clients agree on musical time
 
-No audio crosses the wire. One anchor does, and after that only integer ticks
-and commands placed on them. Every client already holds the material; the
-protocol decides *when*.
+Common Time is a network protocol that synchronises the playback of pre-loaded
+audio across independent devices. No audio and no note data cross the wire —
+only an immutable anchor instant, integer ticks and transport commands. The
+system guarantees exact synchronisation, with no rounding error.
 
 <div data-readout
      data-label-region="Session readout"
@@ -21,9 +22,11 @@ protocol decides *when*.
 
 This page derives its own tick from a fixed anchor — *13 September 2026, 00:00
 UTC* — using integer arithmetic and floored division, exactly as a client must
-(N14). It is what a client does, minus the audio. The ceiling is
-9 007 199 254 740 991: a tick must fit in 53 bits, because JSON numbers are
-floating point (N12). At 118 BPM that is roughly 151 000 years.
+(N14). A client does the same in the background, entirely without audio.
+
+The ceiling on timekeeping is 9 007 199 254 740 991: a tick has to fit in 53
+bits, because numbers in JSON are handled as floating point (N12). At the
+present tempo of 118 BPM that limit holds unbroken for roughly 151 000 years.
 
 ## Where to start
 

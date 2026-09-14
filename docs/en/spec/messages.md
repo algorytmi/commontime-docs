@@ -1,9 +1,10 @@
 # §4 · Ten messages, five operations, no optional fields
 
-JSON over WebSocket, one message per frame, a `type` field on every message.
-There is no extension point other than `param`, and there are no optional
-features to negotiate — a conformance profile is something an implementation
-can hide behind.
+The protocol uses JSON over a WebSocket connection, one message per frame, and
+every message **must** carry a `type` field. There are no optional fields and no
+optional features for devices to negotiate over. The only room for extension is
+the messages' `param` field. This ensures that every implementation supports the
+protocol in exactly the same form, and that none can hide behind a partial one.
 
 | Message | Direction | Fields | Meaning |
 | --- | --- | --- | --- |
@@ -50,15 +51,25 @@ snapshot looks like when two commands compete for one slot.
 
 ## Two rules that make the control plane replayable
 
-!!! note "N3 · a command is never answered"
-    A command whose `atTick` has already passed is **still applied**, and its
-    effect is computed as if it had been applied at `atTick`. Lateness is
-    reported in telemetry, not negotiated. A command is never discarded for
-    lateness alone.
+!!! note "N3 · commands are never answered (a late command is always executed)"
+    Commands sent by the server (`ct.cmd`) are not answered separately. If a
+    command's execution instant (`atTick`) has already passed because of network
+    delay, the client **executes it anyway**.
 
-!!! note "N8 · state monotonicity"
-    For a given slot and parameter, the command with the highest `atTick` wins.
-    Application is therefore idempotent and order-independent: two clients
-    receiving the same commands in different orders arrive at the same state. A
-    snapshot is not a special structure — it **is** the set of winning
-    commands, each with its original `atTick`.
+    The command's effect is computed mathematically as though it had begun at
+    exactly the right instant (`atTick`), and playback is "wound forward" to the
+    right point. Any lateness is reported in the background through telemetry
+    (`ct.state`), but a command is never discarded merely for being late.
+
+!!! note "N8 · state monotonicity (independence of order)"
+    If several commands arrive for a given channel (`slot`) and parameter, the
+    one with the highest `atTick` — the latest in the timeline — always wins.
+
+    Because of this, handling commands is entirely independent of order and
+    immune to a stuttering network: even if two different client devices receive
+    the same commands in completely different orders, they end in exactly the
+    same state.
+
+    Nor is a snapshot a separate, complicated data structure. It is simply a
+    collection of the commands currently in force, each of which has kept its
+    original `atTick` timestamp.

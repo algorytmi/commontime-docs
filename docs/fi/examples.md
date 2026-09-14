@@ -193,6 +193,14 @@ silmukasta (H19).
     jätti selaimen hiljaiseksi koko kappaleen ajaksi, muiden kuullessa
     musiikin normaalisti — ja lokit näyttivät terveiltä.
 
+    Mitattuna **molemmat olemassa olevat toteutukset rikkoutuvat tästä, mutta
+    vastakkaisiin suuntiin.** Toinen menettää `start`in ja vaikenee. Toinen
+    rajaa arvioinnin muotoon `atTick ≤ nyt`, joten sen liittyjä löytää `start`in
+    ja vaihe on oikein — mutta ajoitettu `stop` katoaa tilannekuvasta, eikä
+    liittynyt asiakas koskaan lopeta. Jälkimmäinen oire on vaikeampi tunnistaa,
+    koska se on **äänekäs eikä hiljainen**: kappaleen jälkeen yksin soittava
+    asiakas kuulostaa ensin siltä että joku unohti napin.
+
     Kaksi asiaa on määrittelemättä yhtä aikaa: mikä on "parametri" `start`in ja
     `stop`in kohdalla, ja tarkoittaako *voittaa* korkeinta `atTick`iä vai
     korkeinta `atTick`iä joka ei ole arviointihetkeä myöhempi. Jälkimmäistä

@@ -42,6 +42,17 @@ For H30 the fix is one string long, but "protocol generation" and "document
 version" are both equally natural readings — and the cross-run stopped at the
 first message.
 
+!!! warning "And a refinement that cost a production fault"
+    The rule is not "how many readings can I think of". An implementer
+    considered one such item, reasoned that the other reading had no credible
+    reader, and **rejected the finding on that basis.** The other implementation
+    read it exactly that way, and the result was a production fault (H37).
+
+    **Two plausible readings does not mean two sensible readings. It means two
+    that somebody actually reads.** Judging whether a reading is credible is the
+    same act as resolving the gap, and it fails the same way. Record the
+    finding; do not assess the reader.
+
 Which gives the third implementer a practical rule: **when you meet a field, ask
 what its legal values are** — not only what its type is and what follows from a
 mismatch. That is exactly the question nobody asked about H30. The

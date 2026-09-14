@@ -193,6 +193,14 @@ would be off by **6,976 ticks**, 3.7 seconds of an 8.1-second loop (H19).
     browser silent for the whole track while everyone else heard the music — and
     the logs looked healthy.
 
+    Measured, **both existing implementations break on this, in opposite
+    directions.** One loses the `start` and goes silent. The other restricts
+    evaluation to `atTick ≤ now`, so its joiner does find the `start` and the
+    phase is right — but the scheduled `stop` is missing from the snapshot, and
+    that client never stops. The second symptom is the harder one to recognise,
+    because it is **loud rather than quiet**: a client still playing after the
+    track has ended sounds at first like somebody forgot a button.
+
     Two things are undefined at once: what a "parameter" is for `start` and
     `stop`, and whether *wins* means the highest `atTick` or the highest
     `atTick` no later than the tick being evaluated. That restriction appears

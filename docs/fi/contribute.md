@@ -40,6 +40,17 @@ korjaus on yhden merkkijonon mittainen, mutta "protokollan sukupolvi" ja
 "dokumentin versio" ovat molemmat yhtä luontevia lukutapoja — ja ristiin ajo
 pysähtyi ensimmäiseen sanomaan.
 
+!!! warning "Ja tarkennus, joka maksoi tuotantovian"
+    Sääntö ei ole "montako lukutapaa keksin". Toteuttaja harkitsi erästä
+    kohtaa, päätteli ettei toisella lukutavalla ole uskottavaa lukijaa, ja
+    **hylkäsi löydöksen sillä perusteella.** Toinen toteutus luki sen juuri
+    niin, ja seuraus oli tuotantovika (H37).
+
+    **Kaksi uskottavaa lukutapaa ei tarkoita kahta järkevää lukutapaa vaan
+    kahta jotka joku oikeasti lukee.** Sen arvioiminen, onko lukutapa
+    uskottava, on sama teko kuin aukon ratkaiseminen — ja se epäonnistuu
+    samalla tavalla. Kirjaa löydös, älä arvioi lukijaa.
+
 Tästä seuraa käytännön ohje kolmannelle toteuttajalle: **kun törmäät kenttään,
 kysy mitkä ovat sen lailliset arvot** — älä pelkästään mikä on sen tyyppi ja
 mitä eroavuudesta seuraa. Juuri se kysymys jäi H30:n kohdalla kysymättä.

@@ -181,6 +181,23 @@ Määrittely mittasi mitä sen puuttuminen maksaisi: ilman tätä myöhään lii
 asiakas olisi pielessä **6 976 kelloaskelta**, eli 3,7 sekuntia 8,1 sekunnin
 silmukasta (H19).
 
+!!! danger "H37 · pelkät voittajat eivät riitä, ja tämä esimerkki ei näytä sitä"
+    Yllä olevassa tilannekuvassa ei ole `stop`-käskyä, ja siksi se toimii. Jos
+    lähde ajoittaa `start`in ja sen oman `stop`in etukäteen — mitä osion
+    käynnistys tai ristivaihto tekee — niin koko sen ajan kun slot soi
+    **suurin `atTick` kuuluu lopetukselle.** Pelkkien voittajien tilannekuva
+    kertoo liittyjälle milloin raita loppuu eikä koskaan että se soi, jolloin
+    `startAtTick` puuttuu eikä N10:n vaihetta voi laskea lainkaan.
+
+    Toteuttaja havaitsi tämän **tuotannossa**: sivun lataus kesken kappaleen
+    jätti selaimen hiljaiseksi koko kappaleen ajaksi, muiden kuullessa
+    musiikin normaalisti — ja lokit näyttivät terveiltä.
+
+    Kaksi asiaa on määrittelemättä yhtä aikaa: mikä on "parametri" `start`in ja
+    `stop`in kohdalla, ja tarkoittaako *voittaa* korkeinta `atTick`iä vai
+    korkeinta `atTick`iä joka ei ole arviointihetkeä myöhempi. Jälkimmäistä
+    rajausta ei ole tekstissä. Kohta on **avoin**.
+
 ## Liittyjä kesken silmukan
 
 **Toteutusesimerkki, ei normatiivinen.** Tämä on N10:n vaihe konkreettisina

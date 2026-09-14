@@ -5,11 +5,12 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 12 | eriävä |
+| 1.2a | 2 | 0 | 13 | ei ajettu |
 
-Luku 12 on **numeroitujen** kohtien määrä (H24–H36, H30 päätetty).
-Se ei liikkunut, vaikka kaksi asiaa tapahtui: H30 ratkesi ja poistui listalta,
-ja F19 sai numeron H36 ja tuli tilalle. Sama luku, eri kaksitoista. Kirjattuja löydöksiä on
+Luku 13 on **numeroitujen** avointen kohtien määrä (H24–H37, joista H30 on
+päätetty). Se on liikkunut kahdesti: H30 ratkesi ja poistui, F19 sai numeron
+H36 ja tuli tilalle — ja nyt toteuttajan tuotannossa havaitsema F-B11 on
+saanut numeron **H37**. Kirjattuja löydöksiä on
 enemmän: toteuttaja kirjaa löydöksen omalla tunnuksellaan (`F7`, `F-B2`) ja
 ehdottaa sitä katselmointiin, mutta H-numero syntyy vasta määrittelyssä. Osa
 kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
@@ -143,7 +144,7 @@ kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
     | | Ristiin ajo |
     | --- | --- |
     | **Määrittely** | ei estä — N16:n aukko on suljettu |
-    | **Mitattu** | **eriävä** — B lähettää yhä `commontime/1.2`, eikä päätös ole tavoittanut B:tä |
+    | **Mitattu** | **ei vielä ajettu** — molemmat toteutukset lähettävät nyt `commontime/1`, mutta ristiin ajoa ei ole suoritettu |
 
     Päätös muutti ylemmän rivin, ei alempaa. Ohjaustason ristiin ajo on
     määrittelyn puolesta esteetön, mutta se ei ole ajettu eikä ajettavissa

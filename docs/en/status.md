@@ -5,12 +5,11 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 12 | divergent |
+| 1.2a | 2 | 0 | 13 | not run |
 
-The 12 is the count of **numbered** items (H24–H36, with H30 decided).
-It did not move although two things happened: H30 was settled and left the
-list, and F19 was numbered H36 and took its place. The same number, a different
-twelve. More findings than that are
+The 13 is the count of **numbered** open items (H24–H37, of which H30 is
+decided). It has moved twice: H30 was settled and left, F19 was numbered H36
+and took its place — and now **H37**, which an implementer found in production. More findings than that are
 recorded: an implementer records a finding under their own identifier (`F7`,
 `F-B2`) and proposes it for review, but the H-number is assigned by the
 specification. Some recorded findings are still waiting for one. Which number is
@@ -146,7 +145,7 @@ been ordered. Audio is a different gate and different work.
     | | Cross-run |
     | --- | --- |
     | **Specification** | does not block it — N16's gap is closed |
-    | **Measured** | **divergent** — B still sends `commontime/1.2`, and the decision has not reached B |
+    | **Measured** | **not yet run** — both implementations now send `commontime/1`, but the cross-run has not been executed |
 
     The decision changed the upper row, not the lower one. The control-plane
     cross-run is clear as far as the specification goes, but it has not been run

@@ -180,6 +180,24 @@ Three things to point at:
 The specification measured what its absence would cost: without it a late joiner
 would be off by **6,976 ticks**, 3.7 seconds of an 8.1-second loop (H19).
 
+!!! danger "H37 · winners alone are not enough, and this example does not show it"
+    The snapshot above carries no `stop`, which is why it works. If a source
+    schedules a `start` and its own `stop` ahead of time — which is what
+    starting a section, or a crossfade, looks like — then for the whole time
+    the slot is sounding **the highest `atTick` belongs to the stop.** A
+    snapshot of winners tells a joining client when the slot will end and never
+    that it is playing, so `startAtTick` is missing and N10's position cannot be
+    computed at all.
+
+    An implementer found this **in production**: a page load mid-track left that
+    browser silent for the whole track while everyone else heard the music — and
+    the logs looked healthy.
+
+    Two things are undefined at once: what a "parameter" is for `start` and
+    `stop`, and whether *wins* means the highest `atTick` or the highest
+    `atTick` no later than the tick being evaluated. That restriction appears
+    nowhere in the text. The item is **open**.
+
 ## A client joining mid-loop
 
 **Implementation example, not normative.** This is N10's phase as concrete

@@ -48,6 +48,30 @@ mismatch. That is exactly the question nobody asked about H30. The
 specification answered the type and the consequence, and no one noticed that the
 value was still unsaid.
 
+## The test that could not have failed
+
+This project has run into one shape of mistake four times, in four different
+places, and each time it looked like a different fault. It is worth learning the
+name before writing a single test: **the instrument was right about what it
+measured, it just did not measure what anyone thought.**
+
+| Where | How it looked | What was happening |
+| --- | --- | --- |
+| A rejected test vector (N5) | Passed | A 40 ms offset at 118 BPM is two percent of a bar, so the corrected and uncorrected answers rounded to the same number |
+| The cross-correlation coefficient | 0.9969 — near perfect | The answer was entirely wrong: 10.0000 ms read as 0.9086 ms, off by exactly two periods. The coefficient cannot see periodicity bias at all |
+| A five-minute run | Practically clean, 0.27 ms | The same implementation breaks at 12.47 ms over three hours. A concatenation fault does not show in a short run |
+| This site's own snapshot example | Worked | It carries no `stop`, and **worked because of that** — it showed the matter settled when it is not (H37) |
+
+The first three are measured figures. The fourth was on this site, and an
+implementer found it, not a review.
+
+A practical rule for the third implementer: **a passing test tells you nothing
+unless it could have failed.** Write down, for every test, the wrong answer it
+is supposed to reject — if you cannot write that, the test discriminates
+nothing. It is the same requirement N5 places on test vectors, and it holds for
+examples just as well: an example that succeeds only because it avoids the hard
+case is more dangerous than a missing example.
+
 ## When to stop
 
 The stopping rule is not the number of findings but the **overlap**. When a new

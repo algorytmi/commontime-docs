@@ -46,6 +46,30 @@ mitä eroavuudesta seuraa. Juuri se kysymys jäi H30:n kohdalla kysymättä.
 Määrittely vastasi tyypin ja seurauksen, ja kukaan ei huomannut että arvo jäi
 sanomatta.
 
+## Testi joka ei voinut epäonnistua
+
+Tämä projekti on törmännyt samaan virheen muotoon neljä kertaa, eri paikoissa,
+ja joka kerta se on näyttänyt eri vialta. Nimi sille kannattaa opetella ennen
+kuin kirjoittaa ensimmäisenkään testin: **mittari oli oikeassa siitä mitä se
+mittasi, se ei vain mitannut sitä mitä luultiin.**
+
+| Missä | Miltä näytti | Mitä oikeasti tapahtui |
+| --- | --- | --- |
+| Hylätty testivektori (N5) | Läpäisi | 40 ms:n poikkeama 118 BPM:n tempossa on kaksi prosenttia tahdista, joten korjattu ja korjaamaton vastaus pyöristyivät samaksi luvuksi |
+| Ristikorrelaation kerroin | 0,9969 — lähes täydellinen | Vastaus oli täysin väärä: 10,0000 ms luettiin 0,9086 ms:nä, virhe tasan kaksi jaksoa. Kerroin ei havaitse jaksollisuusharhaa lainkaan |
+| Viiden minuutin ajo | Käytännössä puhdas, 0,27 ms | Sama toteutus hajoaa kolmessa tunnissa lukuun 12,47 ms. Ketjutusvika ei näy lyhyessä ajossa |
+| Tämän sivuston oma tilannekuvaesimerkki | Toimi | Se ei sisällä `stop`-käskyä, ja **toimi siksi** — se näytti asian ratkaistuna vaikkei se ole (H37) |
+
+Kolme ensimmäistä ovat mitattuja lukuja. Neljäs oli tällä sivustolla, ja sen
+löysi toteuttaja eikä katselmointi.
+
+Käytännön sääntö kolmannelle toteuttajalle: **läpäisevä testi ei kerro mitään,
+ellei se olisi voinut epäonnistua.** Kirjaa jokaisesta testistä myös se väärä
+vastaus jonka sen pitäisi hylätä — jos et osaa kirjoittaa sitä, testi ei erottele
+mitään. Se on sama vaatimus jonka N5 asettaa testivektoreille, ja se pätee
+esimerkkeihin yhtä lailla: esimerkki joka onnistuu vain koska se välttää vaikean
+tapauksen on vaarallisempi kuin puuttuva esimerkki.
+
 ## Milloin lopettaa
 
 Pysäytyssääntö ei ole löydösten määrä vaan **päällekkäisyys**. Kun uusi

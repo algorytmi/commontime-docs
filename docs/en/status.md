@@ -5,7 +5,7 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 6 | not run |
+| 1.3 | 2 | 0 | 6 | not run |
 
 The 6 is the count of **numbered** open items: H24, H28, H31, H32, H33 and
 H34. **On 18 September 2026 the owner ratified nine items in one act** — H25,

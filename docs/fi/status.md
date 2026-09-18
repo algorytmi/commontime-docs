@@ -5,7 +5,7 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 6 | ei ajettu |
+| 1.3 | 2 | 0 | 6 | ei ajettu |
 
 Luku 6 on **numeroitujen** avointen kohtien määrä: H24, H28, H31, H32, H33 ja
 H34. **Omistaja ratifioi 18.9.2026 yhdellä päätöksellä yhdeksän kohtaa** —

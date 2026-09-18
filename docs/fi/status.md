@@ -85,6 +85,11 @@ H27:ssa samaan **päättelyketjuun**: toinen johti listan tyhjennyksen erikseen
 samasta perustelusta. Liittyjän sanomajärjestys (H32) **läpäisee** ajettuna.
 **Neljä yhtenevää ratifioitiin 18.9.2026** yllä olevin rajauksin.
 
+Mitattu 1.3:n jälkeen: H26 **oli sitova toiselle toteutukselle**. Vastaus
+sanoi 20–300, koodi hyväksyi nollan — ja nollalla kelloaskel ei etene koskaan,
+eikä mikään kerro siitä. Yhtenevä vastaus ei ole yhtenevä koodi; siksi
+jokaisella kohdalla on kaksi riviä, määrittely ja mitattu.
+
 Katso [Pyyntö](contribute.md) siitä mikä eroavuutta oikeasti ennustaa — se ei
 ole seurauksen suuruus.
 
@@ -135,6 +140,8 @@ kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
     **yhteensopivuustunnus eikä dokumentin versio** — se muuttuu jos ja vain jos
     lanka rikkoutuu, eivätkä 1.1, 1.2, 1.2a tai 1.3 muuta sitä.
     Vertailu on tavuvertailu, ei jäsennetty versionumero eikä normalisoitu.
+    Versio 1.3 on säännön ensimmäinen todiste: se muutti yhdeksän kohtaa
+    eikä `v`:n arvoa, koska lanka ei rikkoutunut.
     Eroavuudella yhteys suljetaan koodilla **4001**; yleinen 1000 ei erotu
     normaalista sulkemisesta, jolloin oire olisi "mitään ei tapahdu".
 

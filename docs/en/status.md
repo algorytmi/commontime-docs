@@ -28,8 +28,9 @@ ones.
 
 ## Decided
 
-Version 1.2a is approved. All twenty-three review items raised during drafting
-were addressed. The specification has exactly **one deliberate gap**: the
+Version 1.3 was approved on 18 September 2026. It closed nine of the fifteen
+items raised after 1.2a; the twenty-three raised during drafting had all been
+addressed before that. The specification has exactly **one deliberate gap**: the
 tolerance value that V1 and V4 refer to. It is absent because the measurement
 that determines it has not been performed, and it will be closed by measurement
 rather than by discussion.
@@ -134,7 +135,7 @@ been ordered. Audio is a different gate and different work.
 
     **H30 was decided on 13 September 2026.** The value is `commontime/1`. It is
     a **compatibility token, not a document version** — it changes if and only
-    if the wire breaks, and 1.1, 1.2, 1.2a and the coming 1.3 do not change it.
+    if the wire breaks, and 1.1, 1.2, 1.2a and 1.3 do not change it.
     The comparison is byte for byte, not parsed as a version number and not
     normalised. On a mismatch the connection closes with code **4001**; a
     generic 1000 is indistinguishable from a normal close, and the symptom would

@@ -27,8 +27,9 @@ kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
 
-Versio 1.2a on hyväksytty. Kaikki kaksikymmentäkolme laadinnan aikana noussutta
-katselmointikohtaa on käsitelty. Määrittelyssä on täsmälleen **yksi
+Versio 1.3 on hyväksytty 18.9.2026. Se sulki yhdeksän kohtaa 1.2a:n jälkeen
+nousseesta viidestätoista; kaikki laadinnan aikaiset kaksikymmentäkolme oli
+käsitelty jo aiemmin. Määrittelyssä on täsmälleen **yksi
 tarkoituksellinen aukko**: toleranssiluku johon V1 ja V4 viittaavat. Se puuttuu
 koska sen määräävää mittausta ei ole tehty, ja se suljetaan mittaamalla eikä
 keskustelemalla.
@@ -132,7 +133,7 @@ kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
 
     **H30 on päätetty 13.9.2026.** Arvo on `commontime/1`. Se on
     **yhteensopivuustunnus eikä dokumentin versio** — se muuttuu jos ja vain jos
-    lanka rikkoutuu, eivätkä 1.1, 1.2, 1.2a tai tuleva 1.3 muuta sitä.
+    lanka rikkoutuu, eivätkä 1.1, 1.2, 1.2a tai 1.3 muuta sitä.
     Vertailu on tavuvertailu, ei jäsennetty versionumero eikä normalisoitu.
     Eroavuudella yhteys suljetaan koodilla **4001**; yleinen 1000 ei erotu
     normaalista sulkemisesta, jolloin oire olisi "mitään ei tapahdu".

@@ -167,10 +167,11 @@ been ordered. Audio is a different gate and different work.
     | **Measured** | **not yet run** — both implementations now send `commontime/1`, but the cross-run has not been executed |
 
     The decision changed the upper row, not the lower one. The control-plane
-    cross-run is clear as far as the specification goes, but it has not been run
-    and cannot be until B adopts the value — and until then A closes the
-    connection exactly as N16 requires. Audio remains a separate gate after
-    that.
+    cross-run is clear as far as the specification goes. B adopted the value,
+    measured from code on 18 September 2026; the same day the owner decided
+    the process for the conformance suite, and the run is authorised. The
+    lower row changes when the run has been run, not before. Audio remains a
+    separate gate after that.
 
     **The decision was verified against an implementation**, not merely
     recorded: the value (including that it is not 1.1, 1.2 or 1.2a), the byte

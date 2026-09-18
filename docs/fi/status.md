@@ -164,9 +164,10 @@ kaksituloista liitäntää on edes tilattu. Ääni on eri portti ja eri työ.
     | **Mitattu** | **ei vielä ajettu** — molemmat toteutukset lähettävät nyt `commontime/1`, mutta ristiin ajoa ei ole suoritettu |
 
     Päätös muutti ylemmän rivin, ei alempaa. Ohjaustason ristiin ajo on
-    määrittelyn puolesta esteetön, mutta se ei ole ajettu eikä ajettavissa
-    ennen kuin B omaksuu arvon — ja siihen asti A sulkee yhteyden kuten N16
-    vaatii. Ääni on tämän jälkeenkin eri portti.
+    määrittelyn puolesta esteetön. B omaksui arvon ja se on mitattu koodista
+    18.9.2026; samana päivänä omistaja päätti konformanssisarjan prosessista,
+    ja ajo on luvallinen. Alempi rivi muuttuu kun ajo on ajettu, ei ennen.
+    Ääni on tämän jälkeenkin eri portti.
 
     **Päätös on tarkistettu toteutusta vasten**, ei vain kirjattu: arvo
     (myös se ettei se ole 1.1, 1.2 tai 1.2a), tavuvertailu yhdeksällä

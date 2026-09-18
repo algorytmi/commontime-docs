@@ -45,7 +45,7 @@ demonstration that the protocol is flexible.
     client to retry a fetch.** An implementation that tries once, fails and
     never tries again follows V3 to the letter and is silent for ever. Any
     wording for the first point binds nothing against such a client, so the two
-    have to be settled together. The item is **open**.
+    had to be settled together. **Ratified 18 September 2026.**
 
     The obligation also needs a bound, and that too has been measured. When the
     implementer built the retry and tried it against a material whose fetch

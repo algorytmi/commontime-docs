@@ -86,4 +86,6 @@ snapshot looks like when two commands compete for one slot.
     And the moment a client is obliged to keep trying (H38), a second question
     follows that has never been asked: **a client that refused may later
     succeed.** Is the refusal final for that `ref`, so the server issues a new
-    `ct.load`, or may the client send a late `ct.ready`? The item is **open**.
+    `ct.load`, or may the client send a late `ct.ready`? **Ratified
+    18 September 2026:** a load is answered exactly once, and a refusal is
+    final for that `ref`.

@@ -91,4 +91,5 @@ tilannekuva näyttää, kun kaksi käskyä kilpailee samasta slotista.
     kysymys jota ei ole koskaan esitetty: **kieltäytynyt asiakas voi myöhemmin
     onnistua.** Onko kieltäytyminen lopullinen sille `ref`ille — jolloin
     palvelin lähettää uuden `ct.load`in — vai saako asiakas lähettää myöhässä
-    tulevan `ct.ready`n? Kohta on **avoin**.
+    tulevan `ct.ready`n? **Ratifioitu 18.9.2026:** lataus vastataan tasan
+    kerran, ja kieltäytyminen on lopullinen sille `ref`ille.

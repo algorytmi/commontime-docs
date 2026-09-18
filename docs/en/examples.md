@@ -204,7 +204,9 @@ would be off by **6,976 ticks**, 3.7 seconds of an 8.1-second loop (H19).
     Two things are undefined at once: what a "parameter" is for `start` and
     `stop`, and whether *wins* means the highest `atTick` or the highest
     `atTick` no later than the tick being evaluated. That restriction appears
-    nowhere in the text. The item is **open**.
+    nowhere in the text. **Ratified 18 September 2026:** a snapshot carries
+    the command in force and every later one, and *wins* means the highest
+    `atTick` no later than the tick being evaluated.
 
 ## A client joining mid-loop
 
@@ -283,9 +285,8 @@ agree about time, not a requirement about how audio is rendered.
     telemetry is being read alongside a recording.
 
     The implementer recorded it as `F19`; the specification numbered it
-    **H36** on 13 September 2026. It is **open** and has not been decided.
-    Nor is divergence claimed: one implementation's behaviour is known, the
-    other's is not.
+    **H36** on 13 September 2026. **Ratified 18 September 2026:** a command
+    applied from a snapshot is not late and does not appear in `late[]`.
 
 !!! warning "What in these flows is the implementation's choice"
     With the same caveat as the value of `v` — none of these are dictated by
@@ -495,7 +496,7 @@ incompatibility.
 **Lateness of commands applied from a snapshot.** N3 requires lateness to be
 reported in `late[]`; N8 says a snapshot's commands are processed as commands
 are, and their `atTick` is in the past by definition. Which sentence wins is not
-in the text. The item is **H36**, open — see above.
+in the text. The item was **H36**, ratified 18 September 2026 — see above.
 
 **The value of `v` was the third item on this list, and it is now decided.**
 H30 was settled on 13 September 2026: the value is `commontime/1` as a

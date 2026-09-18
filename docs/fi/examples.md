@@ -204,7 +204,9 @@ silmukasta (H19).
     Kaksi asiaa on määrittelemättä yhtä aikaa: mikä on "parametri" `start`in ja
     `stop`in kohdalla, ja tarkoittaako *voittaa* korkeinta `atTick`iä vai
     korkeinta `atTick`iä joka ei ole arviointihetkeä myöhempi. Jälkimmäistä
-    rajausta ei ole tekstissä. Kohta on **avoin**.
+    rajausta ei ole tekstissä. **Ratifioitu 18.9.2026:** tilannekuva kantaa
+    voimassa olevan käskyn ja kaikki sitä myöhemmät, ja *voittaa* tarkoittaa
+    suurinta `atTick`iä joka ei ole arviointihetkeä myöhempi.
 
 ## Liittyjä kesken silmukan
 
@@ -282,9 +284,8 @@ toteutusta on samaa mieltä ajasta, ei vaatimus siitä miten ääni renderöidä
     silloin kun telemetriaa luetaan nauhoituksen rinnalla.
 
     Toteuttaja kirjasi kohdan tunnuksella `F19`; määrittely antoi sille
-    numeron **H36** 13.9.2026. Se on **avoin** eikä sitä ole vielä päätetty.
-    Eroavuutta ei myöskään väitetä: toisen toteutuksen käytös tunnetaan,
-    toisen ei.
+    numeron **H36** 13.9.2026. **Ratifioitu 18.9.2026:** tilannekuvasta
+    sovellettu käsky ei ole myöhässä eikä esiinny `late[]`-listalla.
 
 !!! warning "Mikä näissä vuoissa on toteutuksen valintaa"
     Samalla varauksella kuin `v`:n arvo — nämä eivät ole määrittelyn sanelemia:
@@ -494,7 +495,7 @@ kohdasta, ei ristiriidasta.
 **Tilannekuvan käskyjen myöhästyminen.** N3 vaatii että myöhästyminen
 raportoidaan `late[]`-listalla; N8 sanoo että tilannekuvan käskyt käsitellään
 kuin käskyt, ja niiden `atTick` on määritelmän mukaan menneisyydessä. Kumpi
-lause voittaa, ei ole tekstissä. Kohta on **H36**, avoin — katso yllä.
+lause voittaa, ei ole tekstissä. Kohta oli **H36**, ratifioitu 18.9.2026 — katso yllä.
 
 **`v`-kentän arvo oli tämän listan kolmas kohta, ja se on nyt päätetty.**
 H30 ratkesi 13.9.2026: arvo on `commontime/1` yhteensopivuustunnuksena.

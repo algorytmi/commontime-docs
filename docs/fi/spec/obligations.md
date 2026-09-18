@@ -46,7 +46,7 @@ menetelmillä, se on vain osoitus protokollan joustavuudesta.
     latausta uudelleen.** Toteutus joka hakee kerran, epäonnistuu eikä yritä
     enää, noudattaa V3:a kirjaimellisesti ja on hiljaa ikuisesti. Kumpi tahansa
     sanamuoto ensimmäiselle kohdalle ei sido mitään sellaista asiakasta vasten,
-    joten ne on ratkaistava yhdessä. Kohta on **avoin**.
+    joten ne ratkaistiin yhdessä. **Ratifioitu 18.9.2026.**
 
     Velvoite tarvitsee myös rajan, ja sekin on mitattu. Kun toteuttaja rakensi
     uudelleenyrityksen ja kokeili sitä materiaaliin jonka haku *epäonnistuu*,

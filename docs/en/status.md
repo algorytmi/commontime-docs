@@ -5,15 +5,21 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 15 | not run |
+| 1.2a | 2 | 0 | 6 | not run |
 
-The 14 is the count of **numbered** open items (H24–H39, of which H30 is
-decided). It has moved every time something was found: H30 was settled and
-left, F19 became H36, the snapshot fault became **H37**, and the most recent
-one, reproduced in production, became **H38**; reading the fix for H38 then turned up **H39**.
+The 6 is the count of **numbered** open items: H24, H28, H31, H32, H33 and
+H34. **On 18 September 2026 the owner ratified nine items in one act** — H25,
+H26, H27, H29, H35, H36, H37, H38 and H39 — and they go into version 1.3. The
+count fell from fifteen to six.
 
-The last three were found by **running**, not by reading — two of them in
-production. More findings than that are
+Of what remains, H32 is measured as passing and could be ratified cheaply; the
+other four are unmeasured. H34 was left out on purpose: correcting its appendix
+from "observed" to "required" *is* deciding the item, and it is not decided by
+implication.
+
+Of the last five findings, three were found by **running** — two of them in
+production — and two by **reading a fix** before it reached production. Both
+are needed. More findings than that are
 recorded: an implementer records a finding under their own identifier (`F7`,
 `F-B2`) and proposes it for review, but the H-number is assigned by the
 specification. Some recorded findings are still waiting for one. Which number is
@@ -76,7 +82,8 @@ out to be convergent** — but two of them more narrowly than was first recorded
 Both implementers arrived at the same answer without consulting each other, and
 for H27 at the same **chain of reasoning**: one derived the clearing of the list
 separately, from the same argument. The joining message order (H32) **passes**
-when run. They are waiting only for ratification.
+when run. **The four were ratified on 18 September 2026** with the scopings
+above.
 
 See [The ask](contribute.md) for what actually predicts divergence — it is not
 the size of the consequence.

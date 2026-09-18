@@ -5,12 +5,12 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 14 | not run |
+| 1.2a | 2 | 0 | 15 | not run |
 
-The 14 is the count of **numbered** open items (H24–H38, of which H30 is
+The 14 is the count of **numbered** open items (H24–H39, of which H30 is
 decided). It has moved every time something was found: H30 was settled and
 left, F19 became H36, the snapshot fault became **H37**, and the most recent
-one, reproduced in production, became **H38**.
+one, reproduced in production, became **H38**; reading the fix for H38 then turned up **H39**.
 
 The last three were found by **running**, not by reading — two of them in
 production. More findings than that are

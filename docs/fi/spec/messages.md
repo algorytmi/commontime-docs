@@ -76,3 +76,19 @@ tilannekuva näyttää, kun kaksi käskyä kilpailee samasta slotista.
     Myöskään Snapshot (tilannekuva) ei ole mikään erillinen, monimutkainen
     tietorakenne. Se on yksinkertaisesti kokoelma parhaillaan voimassa olevia
     käskyjä, joista jokainen on säilyttänyt alkuperäisen `atTick`-aikaleimansa.
+
+!!! danger "H39 · montako vastausta `ct.load` saa?"
+    §4:n taulukko antaa `ct.load`ille vastaussarakkeen ja N3 sanoo asiakkaan
+    **vastaavan** `ct.refuse`illa — yksikössä molemmissa. Mutta **määrittely ei
+    sano missään montako vastausta lataus saa.** Merkkijonoja "exactly one",
+    "one response" tai "at most one" ei esiinny tekstissä lainkaan.
+
+    Se on se aukko, joka päästi uudelleenyrityssilmukan lähettämään 20
+    kieltäytymistä sekunnissa yhtä `ct.load`ia kohden — noudattaen jokaista
+    lausetta joka on olemassa.
+
+    Ja heti kun asiakas velvoitetaan yrittämään uudelleen (H38), seuraa toinen
+    kysymys jota ei ole koskaan esitetty: **kieltäytynyt asiakas voi myöhemmin
+    onnistua.** Onko kieltäytyminen lopullinen sille `ref`ille — jolloin
+    palvelin lähettää uuden `ct.load`in — vai saako asiakas lähettää myöhässä
+    tulevan `ct.ready`n? Kohta on **avoin**.

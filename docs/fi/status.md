@@ -5,12 +5,12 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 14 | ei ajettu |
+| 1.2a | 2 | 0 | 15 | ei ajettu |
 
-Luku 14 on **numeroitujen** avointen kohtien määrä (H24–H38, joista H30 on
+Luku 14 on **numeroitujen** avointen kohtien määrä (H24–H39, joista H30 on
 päätetty). Se on liikkunut joka kerta kun jotain on löytynyt: H30 ratkesi ja
 poistui, F19 sai numeron H36, tilannekuvan vika numeron **H37**, ja viimeisin
-tuotannossa toistettu löydös numeron **H38**.
+tuotannossa toistettu löydös numeron **H38** — ja H38:n korjausta lukiessa löytyi **H39**.
 
 Kolme viimeisintä löytyi **ajamalla**, ei lukemalla — kaksi niistä
 tuotannossa. Kirjattuja löydöksiä on

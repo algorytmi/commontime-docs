@@ -46,3 +46,10 @@ demonstration that the protocol is flexible.
     never tries again follows V3 to the letter and is silent for ever. Any
     wording for the first point binds nothing against such a client, so the two
     have to be settled together. The item is **open**.
+
+    The obligation also needs a bound, and that too has been measured. When the
+    implementer built the retry and tried it against a material whose fetch
+    *fails*, the result was **twenty fetches and twenty `ct.refuse` messages a
+    second** for every missing material — "keep trying", read literally, is a
+    denial of service against one's own server. See **H39**: the bound does not
+    belong in the fetch loop but in what reaches the wire.

@@ -73,3 +73,17 @@ snapshot looks like when two commands compete for one slot.
     Nor is a snapshot a separate, complicated data structure. It is simply a
     collection of the commands currently in force, each of which has kept its
     original `atTick` timestamp.
+
+!!! danger "H39 · how many answers does a `ct.load` get?"
+    §4's table gives `ct.load` a Response column and N3 says a client
+    **answers** with `ct.refuse` — singular in both places. But **the
+    specification never says how many answers a load gets.** The strings
+    "exactly one", "one response" and "at most one" appear nowhere in it.
+
+    That is the gap that let a retry loop send twenty refusals a second for a
+    single `ct.load`, while conforming to every sentence that exists.
+
+    And the moment a client is obliged to keep trying (H38), a second question
+    follows that has never been asked: **a client that refused may later
+    succeed.** Is the refusal final for that `ref`, so the server issues a new
+    `ct.load`, or may the client send a late `ct.ready`? The item is **open**.

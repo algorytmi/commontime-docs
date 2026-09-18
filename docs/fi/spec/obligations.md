@@ -47,3 +47,10 @@ menetelmillä, se on vain osoitus protokollan joustavuudesta.
     enää, noudattaa V3:a kirjaimellisesti ja on hiljaa ikuisesti. Kumpi tahansa
     sanamuoto ensimmäiselle kohdalle ei sido mitään sellaista asiakasta vasten,
     joten ne on ratkaistava yhdessä. Kohta on **avoin**.
+
+    Velvoite tarvitsee myös rajan, ja sekin on mitattu. Kun toteuttaja rakensi
+    uudelleenyrityksen ja kokeili sitä materiaaliin jonka haku *epäonnistuu*,
+    tulos oli **20 hakua ja 20 `ct.refuse`-sanomaa sekunnissa** jokaista
+    puuttuvaa materiaalia kohden — "yritä uudelleen" kirjaimellisesti luettuna
+    on palvelunestohyökkäys omaa palvelinta vastaan. Katso **H39**: raja ei
+    kuulu hakusilmukkaan vaan siihen mitä lankaan lähtee.

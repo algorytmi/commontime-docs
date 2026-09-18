@@ -5,12 +5,15 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 13 | ei ajettu |
+| 1.2a | 2 | 0 | 14 | ei ajettu |
 
-Luku 13 on **numeroitujen** avointen kohtien määrä (H24–H37, joista H30 on
-päätetty). Se on liikkunut kahdesti: H30 ratkesi ja poistui, F19 sai numeron
-H36 ja tuli tilalle — ja nyt toteuttajan tuotannossa havaitsema F-B11 on
-saanut numeron **H37**. Kirjattuja löydöksiä on
+Luku 14 on **numeroitujen** avointen kohtien määrä (H24–H38, joista H30 on
+päätetty). Se on liikkunut joka kerta kun jotain on löytynyt: H30 ratkesi ja
+poistui, F19 sai numeron H36, tilannekuvan vika numeron **H37**, ja viimeisin
+tuotannossa toistettu löydös numeron **H38**.
+
+Kolme viimeisintä löytyi **ajamalla**, ei lukemalla — kaksi niistä
+tuotannossa. Kirjattuja löydöksiä on
 enemmän: toteuttaja kirjaa löydöksen omalla tunnuksellaan (`F7`, `F-B2`) ja
 ehdottaa sitä katselmointiin, mutta H-numero syntyy vasta määrittelyssä. Osa
 kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa

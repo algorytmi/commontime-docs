@@ -26,3 +26,24 @@ menetelmillä, se on vain osoitus protokollan joustavuudesta.
     **kielletty**, sillä ne eivät poista verkon jonotuksesta johtuvaa
     epäsymmetriaa. Sovelluksen on raportoitava suoraan `minRttMs`-arvo, eikä se
     saa yrittää esittää mitattua aikaeroa täysin eksaktina.
+
+!!! danger "H38 · V3 määrittelee hiljaisuuden muttei poistumista siitä"
+    V3 sanoo mitä tapahtuu hetkellä T, jolloin materiaalia ei ole. **Mikään ei
+    sano mitä tapahtuu hetkellä T + n, kun materiaali on saapunut.** Siitä
+    seuraa kaksi lukutapaa jotka johtavat eri toteutukseen: joko slot poistuu
+    hiljaisuudesta heti materiaalin valmistuttua ja jatkaa N10:n antamasta
+    kohdasta, tai se pysyy hiljaa kyseisen `start`in ajan, koska mikään lause ei
+    käske aloittamaan ja *"ei saa odottaa"* voidaan lukea myös "älä yritä
+    myöhäistä aloitusta".
+
+    Jälkimmäinen tuottaa täsmälleen sen mitä tuotannossa nähtiin: selain joka
+    liittyi 2–4 sekuntia ennen levynvaihtoa soitti lähtevän dekin loppuun eikä
+    koskaan aloittanut tulevaa — **−91 dBFS koko 128 sekunnin levyn ajan**,
+    samalla kun asiakas raportoi itsensä synkatuksi, ei kieltäytynyt mistään ja
+    pysyi yhteydessä. Toistettu kolmesti kolmesta.
+
+    Ja saman takana on toinen puute: **määrittely ei velvoita yrittämään
+    latausta uudelleen.** Toteutus joka hakee kerran, epäonnistuu eikä yritä
+    enää, noudattaa V3:a kirjaimellisesti ja on hiljaa ikuisesti. Kumpi tahansa
+    sanamuoto ensimmäiselle kohdalle ei sido mitään sellaista asiakasta vasten,
+    joten ne on ratkaistava yhdessä. Kohta on **avoin**.

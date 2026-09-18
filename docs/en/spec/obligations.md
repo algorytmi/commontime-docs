@@ -26,3 +26,23 @@ demonstration that the protocol is flexible.
     neither removes the asymmetry caused by network queueing. An implementation
     must report `minRttMs` directly, and must not attempt to present the
     measured offset as exact.
+
+!!! danger "H38 · V3 defines the silence but not the way out of it"
+    V3 says what happens at tick T, when the material is not held. **Nothing
+    says what happens at T + n, once it has arrived.** Two readings follow, and
+    they produce different implementations: either the slot leaves the silence
+    the moment the material is ready and resumes at the position N10 gives, or
+    it stays silent for that `start`, because no sentence tells it to begin and
+    *"must not wait"* can be read as "do not attempt a late start".
+
+    The second produces exactly what was seen in production: a browser that
+    joined 2–4 seconds before a deck change played the outgoing deck to its end
+    and never started the incoming one — **−91 dBFS for the whole 128-second
+    track**, while the client reported itself synchronised, refused nothing and
+    stayed connected. Reproduced three times out of three.
+
+    Behind it lies a second absence: **the specification does not oblige a
+    client to retry a fetch.** An implementation that tries once, fails and
+    never tries again follows V3 to the letter and is silent for ever. Any
+    wording for the first point binds nothing against such a client, so the two
+    have to be settled together. The item is **open**.

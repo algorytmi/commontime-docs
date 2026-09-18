@@ -5,11 +5,15 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.2a | 2 | 0 | 13 | not run |
+| 1.2a | 2 | 0 | 14 | not run |
 
-The 13 is the count of **numbered** open items (H24–H37, of which H30 is
-decided). It has moved twice: H30 was settled and left, F19 was numbered H36
-and took its place — and now **H37**, which an implementer found in production. More findings than that are
+The 14 is the count of **numbered** open items (H24–H38, of which H30 is
+decided). It has moved every time something was found: H30 was settled and
+left, F19 became H36, the snapshot fault became **H37**, and the most recent
+one, reproduced in production, became **H38**.
+
+The last three were found by **running**, not by reading — two of them in
+production. More findings than that are
 recorded: an implementer records a finding under their own identifier (`F7`,
 `F-B2`) and proposes it for review, but the H-number is assigned by the
 specification. Some recorded findings are still waiting for one. Which number is

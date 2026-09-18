@@ -86,6 +86,11 @@ separately, from the same argument. The joining message order (H32) **passes**
 when run. **The four were ratified on 18 September 2026** with the scopings
 above.
 
+Measured after 1.3: H26 **was binding on one implementation**. The answer
+said 20–300; the code accepted zero — and at zero the tick never advances,
+and nothing says so. A matching answer is not matching code; that is why
+every item here has two rows, specification and measured.
+
 See [The ask](contribute.md) for what actually predicts divergence — it is not
 the size of the consequence.
 
@@ -139,7 +144,9 @@ been ordered. Audio is a different gate and different work.
     The comparison is byte for byte, not parsed as a version number and not
     normalised. On a mismatch the connection closes with code **4001**; a
     generic 1000 is indistinguishable from a normal close, and the symptom would
-    then be "nothing happens".
+    then be "nothing happens". Version 1.3 is the rule's first evidence: it
+    changed nine items and not the value of `v`, because the wire did not
+    break.
 
     The reasoning rests on N16's own logic rather than on either implementer's
     value. N16 forbids version negotiation and requires closing on mismatch, so

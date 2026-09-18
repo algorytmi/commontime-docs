@@ -52,6 +52,7 @@ extra_css:
   - assets/css/readout.css
   - assets/css/lang.css
   - assets/css/mark.css
+  - assets/css/layout.css
 
 extra_javascript:
   - assets/js/readout.js

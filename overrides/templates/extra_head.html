@@ -1,6 +1,10 @@
 {# Overrides the theme's own extension point (see shadcn/templates/extra_head.html).
    Kept to this one hook on purpose: copying header.html to add a link would
    pin us to that template's markup, and the theme is at 0.12 and moving. #}
+{# The theme (0.12) emits no viewport meta. Without it a phone lays the
+   page out ~980px wide and only boosts the text, so the columns and the
+   header run off the right edge. #}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
   /* The two languages are two separate mkdocs builds — the theme has no
      content i18n — so the link between them is configuration, not nav.

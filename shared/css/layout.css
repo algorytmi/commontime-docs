@@ -1,0 +1,16 @@
+/* ============================================================
+   Narrow screens.
+
+   The theme gives tables a scrolling wrapper but gives code blocks
+   nothing, so a 75-character line widens the whole column on a phone.
+   Long lines scroll inside their box; the page never scrolls sideways.
+   ============================================================ */
+
+article pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+article .table-wrapper {
+  max-width: 100%;
+}

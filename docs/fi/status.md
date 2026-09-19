@@ -104,8 +104,9 @@ keskustelemalla.
 
 ## Mitattu
 
-**Versio 1.7 on tuotannossa 19.9.2026 klo 23:50** (H47: kaksi muokkausta,
-10 minuuttia), **1.6 klo 23:15** (N25: kolme muokkausta, 15 minuuttia) ja
+**Versio 1.8 on tuotannossa 20.9.2026 klo 00:10** (H50: kaksi muokkausta, 10
+minuuttia — sisäkkäinen `param`-arvo saapui kuuntelijalle sanasta sanaan),
+**1.7 19.9. klo 23:50** (H47: kaksi muokkausta, 10 minuuttia), **1.6 klo 23:15** (N25: kolme muokkausta, 15 minuuttia) ja
 **1.5 klo 22:44**, kolmetoista minuuttia 1.4:n
 jälkeen: seitsemän muokkausta, noin 45 minuuttia mittauksineen. N14:n
 puolimillisekunnit, N6:n tasatilanne ja N24:n tarkistus ennen mutaatiota

@@ -5,9 +5,9 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.5 | 2 | 0 | 1 | ei ajettu |
+| 1.6 | 2 | 0 | 0 | ei ajettu |
 
-Luku 1 on **numeroitujen** avointen kohtien määrä: H40. Seitsemän numeroitiin
+Luku 0 on **numeroitujen** avointen kohtien määrä. Seitsemän numeroitiin
 19.9.2026 mittaamalla kahden toteutuksen koodia, ja **omistaja hyväksyi
 samana iltana kuusi niistä — H41–H46 — versioon 1.5.** Ne olivat: **H40**, `ct.refuse`-sanoman
 `reason`-sanasto — toinen käyttää neljää keksittyä merkkijonoa, toinen vapaata
@@ -26,7 +26,9 @@ ennen tuloa, ja 201 ms:n RTT antaa pysyvän yhden kelloaskeleen eron; ja
 kaksi oikeaa kaavaa eroavat viimeisessä bitissä, ja kuultava ramppi ei ole
 kummankaan bittitarkka toteutus. Jokainen kuudesta mitattiin molemmilta
 toteutuksilta ennen kuin sen lause kirjoitettiin — toisin kuin 1.4:ssä, jossa
-viisi kuudesta meni päätöksellä ennen mittausta. H40 odottaa. **Omistaja ratifioi
+viisi kuudesta meni päätöksellä ennen mittausta. **H40 hyväksyttiin
+myöhemmin samana iltana versioon 1.6**: N25, kieltäytymisen syy — viisi
+tokenia ja vapaa häntä, ei uutta kenttää. **Omistaja ratifioi
 18.9.2026 yhdeksän kohtaa** — H25, H26, H27, H29, H35, H36, H37, H38 ja H39 —
 versioon 1.3, ja **19.9.2026 loput kuusi** — H24, H28, H31, H32, H33 ja H34 —
 versioon 1.4. Luku putosi viidestätoista nollaan kahdessa päivässä.
@@ -48,6 +50,12 @@ kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
 kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
+
+Versio 1.6 on hyväksytty 19.9.2026 — kolmas versio samana iltana. Se sulki
+H40:n: N25 nimeää `ct.refuse`-sanoman syyn viidellä tokenilla (`unavailable`,
+`format`, `length`, `commensurability`, `protocol`), joiden jälkeen on vapaata
+tekstiä jota vastaanottaja ei tulkitse; `ct.load` ennen `ct.session`ia
+vastataan `protocol`-syyllä kerran. Avoimia H-kohtia ei ole; seuraava on H47.
 
 Versio 1.5 on hyväksytty 19.9.2026, samana iltana kuin 1.4. Se sulki H41–H46:
 N24 lisättiin (sanoma jota ei voi soveltaa), N6, N7 ja N14 laajenivat, K7:n

@@ -13,7 +13,7 @@ site_author: Common Time (Juho Hietala)
 # site otherwise makes no third-party request at all.
 repo_url: https://github.com/algorytmi/commontime-docs
 repo_name: algorytmi/commontime-docs
-copyright: commontime/1 · 1.5
+copyright: commontime/1 · 1.6
 
 docs_dir: docs/fi
 site_dir: site/fi

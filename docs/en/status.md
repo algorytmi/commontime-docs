@@ -5,9 +5,9 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.5 | 2 | 0 | 1 | not run |
+| 1.6 | 2 | 0 | 0 | not run |
 
-The 1 is the count of **numbered** open items: H40. Seven were numbered on
+The 0 is the count of **numbered** open items. Seven were numbered on
 19 September 2026 by measuring the code of two implementations, and **the
 owner approved six of them the same evening — H41–H46 — into version 1.5.**
 They were: **H40**, the `reason`
@@ -28,7 +28,9 @@ of 201 ms gives a permanent one-tick difference; and **H46**, what K7's
 the last bit, and the audible ramp is a bit-exact realisation of neither.
 Each of the six was measured on both implementations before its sentence
 was written — unlike 1.4, where five of six went in by decision before
-measurement. H40 waits.
+measurement. **H40 was approved later the same evening into version
+1.6**: N25, the reason of a refusal — five tokens and a free tail, no new
+field.
 **On 18 September 2026 the
 owner ratified nine items** — H25, H26, H27, H29, H35, H36, H37, H38 and H39 —
 into version 1.3, and **on 19 September the remaining six** — H24, H28, H31,
@@ -54,6 +56,13 @@ correct depends on which is being asked for, and on this page it is the numbered
 ones.
 
 ## Decided
+
+Version 1.6 was approved on 19 September 2026 — the third version that
+evening. It closed H40: N25 names the reason of a `ct.refuse` with five
+tokens (`unavailable`, `format`, `length`, `commensurability`, `protocol`)
+followed by free text a receiver does not interpret; a `ct.load` before
+`ct.session` is answered `protocol`, once. No H-items are open; the next is
+H47.
 
 Version 1.5 was approved on 19 September 2026, the same evening as 1.4. It
 closed H41–H46: N24 added (a message that cannot be applied), N6, N7 and N14

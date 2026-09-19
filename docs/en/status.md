@@ -65,11 +65,20 @@ rather than by discussion.
 
 ## Measured
 
+**Version 1.4 is in production as of 19 September 2026, 22:31** — the owner's
+decision. `boundMs` cost seven edits and about 40 minutes including the
+measurement. The first `ct.state` carries 1000 ms (wide, not `degraded`, as
+N20 says), then 1 ms on the LAN and 1–2 ms through the public HTTPS proxy,
+measured over real `ct.pong` rounds. The relay reads the field when it is a
+number and never closes on its absence or wrong type — measured over a
+socket. N21 is checked at both ends. The other implementation is aligned to
+1.4 at 193 tests.
+
 The tick arithmetic passes **47 tests** with no dependencies, in integers
 throughout: `ct-core` pulls in nothing and touches no audio, no network and no
 browser. The whole suite — `ct-core`, the client, the clock server and
-conformance together — is 155 tests, with the rig's calibration another 18
-beside it. The measurement rig reads a known 10.0000 ms delay correctly — but
+conformance together — was 155 tests on 13 September and is 193 on 19 September,
+with the rig's calibration another 18 beside it. The measurement rig reads a known 10.0000 ms delay correctly — but
 only after PHAT weighting was added: unweighted cross-correlation read the same
 tape as **0.9086 ms**, exactly two periods off, with a correlation coefficient
 of 0.9969 and no warning of any kind. A correct engine holds p95 0.394 ms

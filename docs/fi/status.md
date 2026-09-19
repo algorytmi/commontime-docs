@@ -61,11 +61,20 @@ keskustelemalla.
 
 ## Mitattu
 
+**Versio 1.4 on tuotannossa 19.9.2026 klo 22:31** — omistajan päätös. `boundMs`
+maksoi seitsemän muokkausta ja noin 40 minuuttia mittauksineen. Ensimmäinen
+`ct.state` kantaa arvoa 1000 ms (leveä, ei `degraded`, kuten N20 sanoo), sen
+jälkeen 1 ms lähiverkosta ja 1–2 ms julkisen HTTPS-proxyn läpi, mitattuna
+oikeiden `ct.pong`-kierrosten yli. Rele lukee kentän kun se on luku eikä
+koskaan sulje sen puuttumisesta tai väärästä tyypistä — mitattu socketin yli.
+N21 tarkistetaan molemmissa päissä. Toinen toteutus on sovitettu 1.4:ään 193
+testillä.
+
 Kelloaskelaritmetiikka läpäisee **47 testiä** ilman riippuvuuksia,
 kokonaislukuina läpi koko ketjun: `ct-core` ei tuo yhtään riippuvuutta eikä
 koske audioon, verkkoon tai selaimeen. Koko testisarja — `ct-core`,
-asiakas, kellopalvelin ja konformanssi yhdessä — on 155 testiä, ja telineen
-kalibrointi omat 18 sen lisäksi. Mittausteline lukee tunnetun 10,0000 ms:n viiveen oikein —
+asiakas, kellopalvelin ja konformanssi yhdessä — oli 155 testiä 13.9. ja on 193 testiä 19.9., ja
+telineen kalibrointi omat 18 sen lisäksi. Mittausteline lukee tunnetun 10,0000 ms:n viiveen oikein —
 mutta vasta PHAT-painotuksen jälkeen: painottamaton ristikorrelaatio luki saman
 nauhan arvona **0,9086 ms**, tasan kaksi jaksoa pielessä, korrelaatiokertoimella
 0,9969 ja ilman minkäänlaista varoitusta. Oikea moottori pitää p95 0,394 ms

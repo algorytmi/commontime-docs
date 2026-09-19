@@ -5,13 +5,12 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.7 | 2 | 0 | 1 | not run |
+| 1.8 | 2 | 0 | 0 | not run |
 
-The 1 is the count of **numbered** open items: **H50**, the shape of a
-`param` value — N26 covers a message's fields, not the keys of the value
-object; one implementation rejects a third key, the other accepts it but
-the relay strips it when forwarding. Found in 1.7's text right after
-publication. The three before it were numbered
+The 0 is the count of **numbered** open items. **H50** — the shape of a
+`param` value, found in 1.7's text right after publication — was approved
+into version 1.8 together with the `ppq` keyword. The three before it were
+numbered
 late on 19 September, measured on both implementations, and **approved the
 same night into version 1.7**. **H48**: is a message's field
 set closed — one rejects an unknown field, the other ignores it; N20's
@@ -72,6 +71,14 @@ correct depends on which is being asked for, and on this page it is the numbered
 ones.
 
 ## Decided
+
+Version 1.8 was approved on 19 September 2026 — the fifth version that
+evening. It closed H50: a `param` value is application data, a receiver
+rejects it only for a non-string `name` or an absent `value` key, and a
+relay passes it through unchanged. And §2 now says with a keyword that
+`ppq` MUST be 960 — both implementations used the given value and neither
+checked, so a third that hard-coded 960 would have disagreed with the clock
+by a factor of two without anyone noticing. The next is H51.
 
 Version 1.7 was approved on 19 September 2026 — the fourth version that
 evening. It closed H47–H49: `rampTicks` is an integer in every command and

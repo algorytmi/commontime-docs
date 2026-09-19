@@ -5,13 +5,11 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.7 | 2 | 0 | 1 | ei ajettu |
+| 1.8 | 2 | 0 | 0 | ei ajettu |
 
-Luku 1 on **numeroitujen** avointen kohtien määrä: **H50**, `param`-käskyn
-arvon muoto — N26 koskee sanoman kenttiä, ei arvo-olion avaimia; toinen
-toteutus hylkää kolmannen avaimen, toinen hyväksyy mutta rele karsii sen
-välittäessään. Löytyi 1.7:n tekstistä heti julkaisun jälkeen. Kolme edellistä
-numeroitiin
+Luku 0 on **numeroitujen** avointen kohtien määrä. **H50** — `param`-arvon
+muoto, löytyi 1.7:n tekstistä heti julkaisun jälkeen — hyväksyttiin versioon
+1.8 yhdessä `ppq`-avainsanan kanssa. Kolme sitä edeltävää numeroitiin
 19.9. myöhään illalla molemmista toteutuksista mitattuina ja **hyväksyttiin
 samana yönä versioon 1.7**. **H48**: onko sanoman
 kenttäjoukko suljettu — toinen hylkää tuntemattoman kentän, toinen ohittaa;
@@ -65,6 +63,14 @@ kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
 kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
+
+Versio 1.8 on hyväksytty 19.9.2026 — viides versio samana iltana. Se sulki
+H50:n: `param`-arvo on sovelluksen dataa, vastaanottaja hylkää sen vain jos
+`name` ei ole merkkijono tai `value`-avain puuttuu, välittäjä välittää sen
+muuttamattomana. Ja §2 sanoo nyt avainsanalla että `ppq` ON 960 — molemmat
+toteutukset käyttivät ilmoitettua arvoa eikä kumpikaan tarkistanut, joten
+kolmas joka olisi kovakoodannut 960:n olisi ollut eri mieltä kellosta
+kertoimella kaksi kenenkään huomaamatta. Seuraava on H51.
 
 Versio 1.7 on hyväksytty 19.9.2026 — neljäs versio samana iltana. Se sulki
 H47–H49: `rampTicks` on kokonaisluku jokaisessa käskyssä ja sen arvo

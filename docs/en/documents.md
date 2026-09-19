@@ -23,8 +23,8 @@ does not have to argue for itself, apologise for itself, or keep a diary.
 
 | Document | Description | Version |
 | --- | --- | --- |
-| Common Time Core | The normative specification. Authoritative version. | `1.7` |
-| Common Time Core | Finnish version. The working version; English takes precedence. | `1.7` |
+| Common Time Core | The normative specification. Authoritative version. | `1.8` |
+| Common Time Core | Finnish version. The working version; English takes precedence. | `1.8` |
 | Rationale | Four refusals, eight measured decisions, eighteen rejected alternatives. | `1` |
 | Implementation plan | Six phases, five of them measurements. One gate each. | `1e` |
 | Conformance plan | The test suite as an audit of the specification. Every test cites a clause. | `1d` |

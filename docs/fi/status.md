@@ -5,9 +5,15 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.6 | 2 | 0 | 1 | ei ajettu |
+| 1.6 | 2 | 0 | 3 | ei ajettu |
 
-Luku 1 on **numeroitujen** avointen kohtien määrä: **H47**, epämuodostunut
+Luku 3 on **numeroitujen** avointen kohtien määrä, kaikki numeroitu 19.9.
+myöhään illalla molemmista toteutuksista mitattuina. **H48**: onko sanoman
+kenttäjoukko suljettu — toinen hylkää tuntemattoman kentän, toinen ohittaa;
+N20:n lause kentän lisäämisestä on tyhjä jos joukko on suljettu. **H49**:
+tilannekuva joka kantaa enemmän kuin N8:n vähimmäismuodon — toinen hylkää
+muodoltaan vääränä eikä liity, toinen soveltaa joukon ja saa N8:n voittajan.
+Ja **H47**, epämuodostunut
 `rampTicks` käskyssä joka ei ota ramppia — toinen toteutus hylkää sanoman
 koska kentällä on §4:ssä tyyppi, toinen ohittaa koska teksti sanoo
 "ohitettava". Numeroitu 19.9.2026 illalla, molemmat mitattu; ennen kuin toinen

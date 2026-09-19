@@ -5,9 +5,15 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.6 | 2 | 0 | 1 | not run |
+| 1.6 | 2 | 0 | 3 | not run |
 
-The 1 is the count of **numbered** open items: **H47**, a malformed
+The 3 is the count of **numbered** open items, all numbered late on 19
+September, measured on both implementations. **H48**: is a message's field
+set closed — one rejects an unknown field, the other ignores it; N20's
+sentence about adding a field is empty if the set is closed. **H49**: a
+snapshot carrying more than N8's minimum shape — one rejects it as malformed
+and does not join, the other applies the set and gets N8's winner. And
+**H47**, a malformed
 `rampTicks` on a command that takes no ramp — one implementation rejects
 the message because the field has a type in §4, the other ignores it because
 the text says "ignored". Numbered on the evening of 19 September 2026, both

@@ -5,9 +5,12 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.4 | 2 | 0 | 0 | not run |
+| 1.4 | 2 | 0 | 1 | not run |
 
-The 0 is the count of **numbered** open items. **On 18 September 2026 the
+The 1 is the count of **numbered** open items: H40, the `reason` vocabulary
+of `ct.refuse`, numbered on 19 September 2026 because two implementations
+already use different strings and neither set comes from the specification.
+**On 18 September 2026 the
 owner ratified nine items** — H25, H26, H27, H29, H35, H36, H37, H38 and H39 —
 into version 1.3, and **on 19 September the remaining six** — H24, H28, H31,
 H32, H33 and H34 — into version 1.4. The count fell from fifteen to zero in two
@@ -35,7 +38,7 @@ ones.
 
 Version 1.4 was approved on 19 September 2026. It closed the remaining six
 items: N20–N23 were added, N11 and N14 extended, `ct.state` gained `boundMs`,
-and V4 now says which bound it refers to. No H-items are open; the next is H40.
+and V4 now says which bound it refers to. Zero open lasted a few hours: H40 was numbered the same day.
 
 Version 1.3 was approved on 18 September 2026. It closed nine of the fifteen
 items raised after 1.2a; the twenty-three raised during drafting had all been

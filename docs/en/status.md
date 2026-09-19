@@ -5,9 +5,14 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.6 | 2 | 0 | 0 | not run |
+| 1.6 | 2 | 0 | 1 | not run |
 
-The 0 is the count of **numbered** open items. Seven were numbered on
+The 1 is the count of **numbered** open items: **H47**, a malformed
+`rampTicks` on a command that takes no ramp — one implementation rejects
+the message because the field has a type in §4, the other ignores it because
+the text says "ignored". Numbered on the evening of 19 September 2026, both
+measured; before one of them changed its code, both rejected. Seven were
+numbered on
 19 September 2026 by measuring the code of two implementations, and **the
 owner approved six of them the same evening — H41–H46 — into version 1.5.**
 They were: **H40**, the `reason`

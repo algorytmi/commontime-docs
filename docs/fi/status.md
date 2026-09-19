@@ -5,9 +5,13 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.6 | 2 | 0 | 0 | ei ajettu |
+| 1.6 | 2 | 0 | 1 | ei ajettu |
 
-Luku 0 on **numeroitujen** avointen kohtien määrä. Seitsemän numeroitiin
+Luku 1 on **numeroitujen** avointen kohtien määrä: **H47**, epämuodostunut
+`rampTicks` käskyssä joka ei ota ramppia — toinen toteutus hylkää sanoman
+koska kentällä on §4:ssä tyyppi, toinen ohittaa koska teksti sanoo
+"ohitettava". Numeroitu 19.9.2026 illalla, molemmat mitattu; ennen kuin toinen
+muutti koodiaan, molemmat hylkäsivät. Seitsemän numeroitiin
 19.9.2026 mittaamalla kahden toteutuksen koodia, ja **omistaja hyväksyi
 samana iltana kuusi niistä — H41–H46 — versioon 1.5.** Ne olivat: **H40**, `ct.refuse`-sanoman
 `reason`-sanasto — toinen käyttää neljää keksittyä merkkijonoa, toinen vapaata

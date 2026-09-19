@@ -5,9 +5,13 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.7 | 2 | 0 | 0 | ei ajettu |
+| 1.7 | 2 | 0 | 1 | ei ajettu |
 
-Luku 0 on **numeroitujen** avointen kohtien määrä. Kolme viimeistä numeroitiin
+Luku 1 on **numeroitujen** avointen kohtien määrä: **H50**, `param`-käskyn
+arvon muoto — N26 koskee sanoman kenttiä, ei arvo-olion avaimia; toinen
+toteutus hylkää kolmannen avaimen, toinen hyväksyy mutta rele karsii sen
+välittäessään. Löytyi 1.7:n tekstistä heti julkaisun jälkeen. Kolme edellistä
+numeroitiin
 19.9. myöhään illalla molemmista toteutuksista mitattuina ja **hyväksyttiin
 samana yönä versioon 1.7**. **H48**: onko sanoman
 kenttäjoukko suljettu — toinen hylkää tuntemattoman kentän, toinen ohittaa;

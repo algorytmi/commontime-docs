@@ -5,9 +5,13 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.7 | 2 | 0 | 0 | not run |
+| 1.7 | 2 | 0 | 1 | not run |
 
-The 0 is the count of **numbered** open items. The last three were numbered
+The 1 is the count of **numbered** open items: **H50**, the shape of a
+`param` value — N26 covers a message's fields, not the keys of the value
+object; one implementation rejects a third key, the other accepts it but
+the relay strips it when forwarding. Found in 1.7's text right after
+publication. The three before it were numbered
 late on 19 September, measured on both implementations, and **approved the
 same night into version 1.7**. **H48**: is a message's field
 set closed — one rejects an unknown field, the other ignores it; N20's

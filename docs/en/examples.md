@@ -5,7 +5,7 @@ numbers and in messages.
 
 !!! note "What on this page is normative"
     Some of these are quoted directly from the normative text (*Common Time
-    Core*, commontime/1, version 1.2a) and are marked as such. The rest are
+    Core*, commontime/1, version 1.4) and are marked as such. The rest are
     **implementation examples**: they show what one existing implementation
     does, not what the protocol requires. Where they differ, the specification
     wins.
@@ -98,8 +98,8 @@ applied anyway, and the lateness is reported in the `late` list of `ct.state` as
 
 !!! warning "If you copy this flow"
     **The value of `v` is now decided (H30), and it is `commontime/1`.** It is
-    a compatibility token, not a document version: it does not change with
-    version 1.3. Do not copy a specification version number into it.
+    a compatibility token, not a document version: it did not change with
+    version 1.3 or 1.4. Do not copy a specification version number into it.
 
     **`sha256:3f8a…d7e8` is an abbreviation for reading, not a valid
     identifier.** N13 requires exactly 64 hex characters in lower case, and the

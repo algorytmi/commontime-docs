@@ -28,7 +28,7 @@ does not have to argue for itself, apologise for itself, or keep a diary.
 | Rationale | Four refusals, eight measured decisions, eighteen rejected alternatives. | `1` |
 | Implementation plan | Six phases, five of them measurements. One gate each. | `1e` |
 | Conformance plan | The test suite as an audit of the specification. Every test cites a clause. | `1d` |
-| Roles and open items | Who holds the pen on what, and the twelve items awaiting a decision. | `2b` |
+| Roles and open items | Who holds the pen on what, and the twelve items that awaited a decision on 13 Sep — all decided 18–19 Sep 2026. | `2b` |
 | Prior art | Around fifty-five comparable systems, and what each one does instead. | `—` |
 | How it came about | Non-technical, spoken. Eight chapters and four refusals. | `—` |
 | The mark | Thirteen rings, 92 vertices, phase-locked to a common anchor. | `—` |

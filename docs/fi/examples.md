@@ -5,7 +5,7 @@ sanomina.
 
 !!! note "Mikä tällä sivulla on normatiivista"
     Osa esimerkeistä on lainattu suoraan normatiivisesta tekstistä
-    (*Common Time Core*, commontime/1, versio 1.2a) — ne on merkitty. Loput
+    (*Common Time Core*, commontime/1, versio 1.4) — ne on merkitty. Loput
     ovat **toteutusesimerkkejä**: ne kertovat mitä yksi olemassa oleva
     toteutus tekee, eivät sitä mitä protokolla vaatii. Ristiriidassa
     määrittely voittaa, ja kieliversioista englanti.
@@ -99,8 +99,8 @@ silti, ja myöhästyminen raportoidaan `ct.state`n `late`-listalla muodossa
 
 !!! warning "Jos kopioit tämän vuon"
     **`v`:n arvo on nyt päätetty (H30), ja se on `commontime/1`.** Se on
-    yhteensopivuustunnus eikä dokumentin versio: se ei muutu version 1.3
-    mukana. Älä kopioi siihen määrittelyn versionumeroa.
+    yhteensopivuustunnus eikä dokumentin versio: se ei muuttunut versioiden
+    1.3 eikä 1.4 mukana. Älä kopioi siihen määrittelyn versionumeroa.
 
     **`sha256:3f8a…d7e8` on lyhennys lukemista varten, ei kelvollinen
     tunniste.** N13 vaatii tasan 64 heksamerkkiä pienaakkosin, ja lyhennys ei

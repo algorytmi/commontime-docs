@@ -28,7 +28,7 @@ päiväkirjaa.
 | Perustelut | Neljä kieltäytymistä, kahdeksan mitattua päätöstä, kahdeksantoista hylättyä vaihtoehtoa. | `1` |
 | Toteutussuunnitelma | Kuusi vaihetta, joista viisi mittauksia. Jokaisella portti. | `1e` |
 | Konformanssisuunnitelma | Testisarja määrittelyn auditointina. Jokainen testi sitoo pykälään. | `1d` |
-| Työnjako ja avoimet kohdat | Kuka pitää kynää mistä, ja kaksitoista päätöstä odottavaa kohtaa. | `2b` |
+| Työnjako ja avoimet kohdat | Kuka pitää kynää mistä, ja ne kaksitoista kohtaa jotka odottivat päätöstä 13.9. — kaikki päätetty 18.–19.9.2026. | `2b` |
 | Ennakkotapaukset | Noin viisikymmentäviisi verrattavaa järjestelmää, ja mitä kukin tekee sen sijaan. | `—` |
 | Synty | Ei-tekninen, suusanallinen. Kahdeksan lukua ja neljä kieltäytymistä. | `—` |
 | Merkki | Kolmetoista rengasta, 92 kärkeä, vaihelukittu yhteiseen ankkuriin. | `—` |

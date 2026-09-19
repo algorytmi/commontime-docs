@@ -10,6 +10,13 @@ worst case: shared blind spots fall outside the population entirely, and gaps
 obvious enough for everyone to find inflate the overlap. Both biases point the
 same way.
 
+**Measured afterwards.** That was computed on 13 September 2026. Since then
+eleven more items have been numbered (H36–H46) — seven of them on one day,
+19 September, by asking both implementations the same questions of their
+code and comparing the answers. "Roughly ten unfound" was met in six days
+without a third implementation, and the floor was a floor: nothing says the
+population is now empty.
+
 An implementer finds the gaps that their own structure runs into. One
 implementation sends loads to a joining client, so its author hit the joining
 message order; the other does not send them, so its author never did. This is

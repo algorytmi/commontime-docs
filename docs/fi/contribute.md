@@ -10,6 +10,13 @@ pahimman tapauksen arvio: yhteiset katvealueet jäävät populaation ulkopuolell
 kokonaan, ja niin ilmeiset aukot että jokainen löytää ne kasvattavat
 päällekkäisyyttä. Molemmat harhat osoittavat samaan suuntaan.
 
+**Mitattu jälkikäteen.** Tuo laskettiin 13.9.2026. Sen jälkeen on numeroitu
+yksitoista kohtaa lisää (H36–H46) — seitsemän niistä yhtenä päivänä, 19.9.,
+kysymällä molemmilta toteutuksilta samat kysymykset niiden koodista ja
+vertaamalla vastauksia. "Noin kymmenen löytämättä" täyttyi kuudessa päivässä
+ilman kolmatta toteutusta, ja alaraja oli alaraja: mikään ei sano että
+populaatio on nyt tyhjä.
+
 Toteuttaja löytää ne aukot joihin sen oma rakenne osuu. Toinen toteutus lähettää
 latauksia liittyvälle asiakkaalle, joten sen tekijä törmäsi liittyjän
 sanomajärjestykseen; toinen ei lähetä, joten sen tekijä ei törmännyt. Tästä

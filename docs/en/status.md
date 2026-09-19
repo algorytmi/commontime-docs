@@ -5,10 +5,11 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.6 | 2 | 0 | 3 | not run |
+| 1.7 | 2 | 0 | 0 | not run |
 
-The 3 is the count of **numbered** open items, all numbered late on 19
-September, measured on both implementations. **H48**: is a message's field
+The 0 is the count of **numbered** open items. The last three were numbered
+late on 19 September, measured on both implementations, and **approved the
+same night into version 1.7**. **H48**: is a message's field
 set closed — one rejects an unknown field, the other ignores it; N20's
 sentence about adding a field is empty if the set is closed. **H49**: a
 snapshot carrying more than N8's minimum shape — one rejects it as malformed
@@ -67,6 +68,13 @@ correct depends on which is being asked for, and on this page it is the numbered
 ones.
 
 ## Decided
+
+Version 1.7 was approved on 19 September 2026 — the fourth version that
+evening. It closed H47–H49: `rampTicks` is an integer in every command and
+its value ignored on three; N26 (unknown fields: open on receipt, closed on
+emission, N11 named as the exception); N8: the snapshot shape is the
+sender's obligation and a receiver does not reject the surplus. The next is
+H50.
 
 Version 1.6 was approved on 19 September 2026 — the third version that
 evening. It closed H40: N25 names the reason of a `ct.refuse` with five

@@ -5,10 +5,11 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.6 | 2 | 0 | 3 | ei ajettu |
+| 1.7 | 2 | 0 | 0 | ei ajettu |
 
-Luku 3 on **numeroitujen** avointen kohtien määrä, kaikki numeroitu 19.9.
-myöhään illalla molemmista toteutuksista mitattuina. **H48**: onko sanoman
+Luku 0 on **numeroitujen** avointen kohtien määrä. Kolme viimeistä numeroitiin
+19.9. myöhään illalla molemmista toteutuksista mitattuina ja **hyväksyttiin
+samana yönä versioon 1.7**. **H48**: onko sanoman
 kenttäjoukko suljettu — toinen hylkää tuntemattoman kentän, toinen ohittaa;
 N20:n lause kentän lisäämisestä on tyhjä jos joukko on suljettu. **H49**:
 tilannekuva joka kantaa enemmän kuin N8:n vähimmäismuodon — toinen hylkää
@@ -60,6 +61,12 @@ kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
 kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
+
+Versio 1.7 on hyväksytty 19.9.2026 — neljäs versio samana iltana. Se sulki
+H47–H49: `rampTicks` on kokonaisluku jokaisessa käskyssä ja sen arvo
+ohitetaan kolmessa; N26 (tuntemattomat kentät: avoin vastaanotossa, suljettu
+lähetyksessä, N11 nimettynä poikkeuksena); N8: tilannekuvan muoto on
+lähettäjän velvoite eikä vastaanottaja hylkää ylimääräistä. Seuraava on H50.
 
 Versio 1.6 on hyväksytty 19.9.2026 — kolmas versio samana iltana. Se sulki
 H40:n: N25 nimeää `ct.refuse`-sanoman syyn viidellä tokenilla (`unavailable`,

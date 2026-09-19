@@ -5,10 +5,11 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.4 | 2 | 0 | 7 | ei ajettu |
+| 1.5 | 2 | 0 | 1 | ei ajettu |
 
-Luku 7 on **numeroitujen** avointen kohtien määrä, kaikki numeroitu 19.9.2026
-mittaamalla kahden toteutuksen koodia: **H40**, `ct.refuse`-sanoman
+Luku 1 on **numeroitujen** avointen kohtien määrä: H40. Seitsemän numeroitiin
+19.9.2026 mittaamalla kahden toteutuksen koodia, ja **omistaja hyväksyi
+samana iltana kuusi niistä — H41–H46 — versioon 1.5.** Ne olivat: **H40**, `ct.refuse`-sanoman
 `reason`-sanasto — toinen käyttää neljää keksittyä merkkijonoa, toinen vapaata
 tekstiä; **H41**, `rampTicks` `start`- ja `stop`-käskyssä — teksti sanoo että
 se pätee niihin, ja *molemmat* toteutukset ovat itsenäisesti tehneet siitä
@@ -23,8 +24,9 @@ puolen millisekunnin eksaktina tikkiin asti, toinen pyöristää millisekunnin
 ennen tuloa, ja 201 ms:n RTT antaa pysyvän yhden kelloaskeleen eron; ja
 **H46**, mitä K7:n "identtinen nimellistila" tarkoittaa rampin keskellä —
 kaksi oikeaa kaavaa eroavat viimeisessä bitissä, ja kuultava ramppi ei ole
-kummankaan bittitarkka toteutus. Jokaiselle on ehdotus, ja ne odottavat
-omistajaa. **Omistaja ratifioi
+kummankaan bittitarkka toteutus. Jokainen kuudesta mitattiin molemmilta
+toteutuksilta ennen kuin sen lause kirjoitettiin — toisin kuin 1.4:ssä, jossa
+viisi kuudesta meni päätöksellä ennen mittausta. H40 odottaa. **Omistaja ratifioi
 18.9.2026 yhdeksän kohtaa** — H25, H26, H27, H29, H35, H36, H37, H38 ja H39 —
 versioon 1.3, ja **19.9.2026 loput kuusi** — H24, H28, H31, H32, H33 ja H34 —
 versioon 1.4. Luku putosi viidestätoista nollaan kahdessa päivässä.
@@ -46,6 +48,12 @@ kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
 kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
+
+Versio 1.5 on hyväksytty 19.9.2026, samana iltana kuin 1.4. Se sulki H41–H46:
+N24 lisättiin (sanoma jota ei voi soveltaa), N6, N7 ja N14 laajenivat, K7:n
+"identtinen" sai määritelmän, käskyjoukosta poistui ramppi `start`- ja
+`stop`-käskyiltä koska molemmat toteutukset olivat jo tehneet niin, ja §7 sai
+toisen vektorin parittomalla kiertoajalla. Avoinna on H40.
 
 Versio 1.4 on hyväksytty 19.9.2026. Se sulki loput kuusi kohtaa: N20–N23
 lisättiin, N11 ja N14 laajenivat, `ct.state` sai kentän `boundMs`, ja V4 sanoo

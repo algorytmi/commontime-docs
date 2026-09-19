@@ -5,10 +5,12 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.4 | 2 | 0 | 7 | not run |
+| 1.5 | 2 | 0 | 1 | not run |
 
-The 7 is the count of **numbered** open items, all numbered on 19 September
-2026 by measuring the code of two implementations: **H40**, the `reason`
+The 1 is the count of **numbered** open items: H40. Seven were numbered on
+19 September 2026 by measuring the code of two implementations, and **the
+owner approved six of them the same evening — H41–H46 — into version 1.5.**
+They were: **H40**, the `reason`
 vocabulary of `ct.refuse` — one uses four invented strings, the other free
 text; **H41**, `rampTicks` on `start` and `stop` — the text says it applies
 to them, and *both* implementations independently made it inert there, so
@@ -24,7 +26,9 @@ the tick, the other rounds the millisecond before the product, and an RTT
 of 201 ms gives a permanent one-tick difference; and **H46**, what K7's
 "identical nominal state" means mid-ramp — two correct formulas differ in
 the last bit, and the audible ramp is a bit-exact realisation of neither.
-Each has a proposal, and they await the owner.
+Each of the six was measured on both implementations before its sentence
+was written — unlike 1.4, where five of six went in by decision before
+measurement. H40 waits.
 **On 18 September 2026 the
 owner ratified nine items** — H25, H26, H27, H29, H35, H36, H37, H38 and H39 —
 into version 1.3, and **on 19 September the remaining six** — H24, H28, H31,
@@ -50,6 +54,12 @@ correct depends on which is being asked for, and on this page it is the numbered
 ones.
 
 ## Decided
+
+Version 1.5 was approved on 19 September 2026, the same evening as 1.4. It
+closed H41–H46: N24 added (a message that cannot be applied), N6, N7 and N14
+extended, K7's "identical" given a definition, the ramp removed from `start`
+and `stop` in the command set because both implementations had already done
+so, and §7 given a second vector with an odd round trip. H40 is open.
 
 Version 1.4 was approved on 19 September 2026. It closed the remaining six
 items: N20–N23 were added, N11 and N14 extended, `ct.state` gained `boundMs`,

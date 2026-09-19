@@ -23,8 +23,8 @@ päiväkirjaa.
 
 | Dokumentti | Kuvaus | Versio |
 | --- | --- | --- |
-| Common Time Core | Normatiivinen määrittely. Määräävä versio. | `1.4` |
-| Common Time Core | Suomenkielinen versio. Työversio; englanti voittaa ristiriidassa. | `1.4` |
+| Common Time Core | Normatiivinen määrittely. Määräävä versio. | `1.5` |
+| Common Time Core | Suomenkielinen versio. Työversio; englanti voittaa ristiriidassa. | `1.5` |
 | Perustelut | Neljä kieltäytymistä, kahdeksan mitattua päätöstä, kahdeksantoista hylättyä vaihtoehtoa. | `1` |
 | Toteutussuunnitelma | Kuusi vaihetta, joista viisi mittauksia. Jokaisella portti. | `1e` |
 | Konformanssisuunnitelma | Testisarja määrittelyn auditointina. Jokainen testi sitoo pykälään. | `1d` |

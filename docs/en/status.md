@@ -5,15 +5,18 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.4 | 2 | 0 | 2 | not run |
+| 1.4 | 2 | 0 | 4 | not run |
 
-The 2 is the count of **numbered** open items, both numbered on 19 September
+The 4 is the count of **numbered** open items, all numbered on 19 September
 2026 by measuring the code of two implementations: **H40**, the `reason`
 vocabulary of `ct.refuse` — one uses four invented strings, the other free
-text, and neither comes from the specification; and **H41**, what
-`rampTicks` means on `start` and `stop` — the text says it applies to them,
-N7 defines a ramp as reaching a value, and they carry none; one
-implementation ignores the field, the other ramps something.
+text; **H41**, `rampTicks` on `start` and `stop` — the text says it applies
+to them, and *both* implementations independently made it inert there, so
+the divergence is between the text and the implementations; **H42**, a tie
+in minimum RTT — one picks the freshest sample, the other the oldest, two
+offsets from one sample set; and **H43**, a non-numeric `param` under a
+ramp — one leaves the command unapplied, the other applies it at once.
+Each has a proposal, and they await the owner.
 **On 18 September 2026 the
 owner ratified nine items** — H25, H26, H27, H29, H35, H36, H37, H38 and H39 —
 into version 1.3, and **on 19 September the remaining six** — H24, H28, H31,
@@ -42,7 +45,8 @@ ones.
 
 Version 1.4 was approved on 19 September 2026. It closed the remaining six
 items: N20–N23 were added, N11 and N14 extended, `ct.state` gained `boundMs`,
-and V4 now says which bound it refers to. Zero open lasted a few hours: H40 and H41 were numbered the same day.
+and V4 now says which bound it refers to. Zero open lasted a few hours: H40–H43 were numbered the same day, each
+from the code of two implementations.
 
 Version 1.3 was approved on 18 September 2026. It closed nine of the fifteen
 items raised after 1.2a; the twenty-three raised during drafting had all been

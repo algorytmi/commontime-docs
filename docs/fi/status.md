@@ -5,15 +5,18 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.4 | 2 | 0 | 2 | ei ajettu |
+| 1.4 | 2 | 0 | 4 | ei ajettu |
 
-Luku 2 on **numeroitujen** avointen kohtien määrä, molemmat numeroitu
-19.9.2026 mittaamalla kahden toteutuksen koodia: **H40**, `ct.refuse`-sanoman
+Luku 4 on **numeroitujen** avointen kohtien määrä, kaikki numeroitu 19.9.2026
+mittaamalla kahden toteutuksen koodia: **H40**, `ct.refuse`-sanoman
 `reason`-sanasto — toinen käyttää neljää keksittyä merkkijonoa, toinen vapaata
-tekstiä, eikä kumpikaan ole määrittelystä; ja **H41**, mitä `rampTicks`
-tarkoittaa `start`- ja `stop`-käskyssä — teksti sanoo että se pätee niihin,
-N7 määrittelee rampin arvon saavuttamisena, eikä niillä ole arvoa; toinen
-toteutus ohittaa kentän, toinen ramppaa jotain. **Omistaja ratifioi
+tekstiä; **H41**, `rampTicks` `start`- ja `stop`-käskyssä — teksti sanoo että
+se pätee niihin, ja *molemmat* toteutukset ovat itsenäisesti tehneet siitä
+vaikutuksettoman, eli ero on tekstin ja toteutusten välillä; **H42**,
+tasatilanne pienimmässä RTT:ssä — toinen valitsee tuoreimman, toinen
+vanhimman, samasta otosjoukosta kaksi eri erotusta; ja **H43**, ei-numeerinen
+`param` rampilla — toinen jättää käskyn soveltamatta, toinen soveltaa heti.
+Jokaiselle on ehdotus, ja ne odottavat omistajaa. **Omistaja ratifioi
 18.9.2026 yhdeksän kohtaa** — H25, H26, H27, H29, H35, H36, H37, H38 ja H39 —
 versioon 1.3, ja **19.9.2026 loput kuusi** — H24, H28, H31, H32, H33 ja H34 —
 versioon 1.4. Luku putosi viidestätoista nollaan kahdessa päivässä.
@@ -38,7 +41,8 @@ kysytään, ja tällä sivulla se on numeroidut.
 
 Versio 1.4 on hyväksytty 19.9.2026. Se sulki loput kuusi kohtaa: N20–N23
 lisättiin, N11 ja N14 laajenivat, `ct.state` sai kentän `boundMs`, ja V4 sanoo
-nyt mihin rajaan se viittaa. Nolla avointa kesti muutaman tunnin: H40 ja H41 numeroitiin samana päivänä.
+nyt mihin rajaan se viittaa. Nolla avointa kesti muutaman tunnin: H40–H43 numeroitiin samana päivänä,
+jokainen kahden toteutuksen koodista.
 
 Versio 1.3 on hyväksytty 18.9.2026. Se sulki yhdeksän kohtaa 1.2a:n jälkeen
 nousseesta viidestätoista; kaikki laadinnan aikaiset kaksikymmentäkolme oli

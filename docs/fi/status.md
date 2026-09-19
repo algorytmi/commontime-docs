@@ -94,8 +94,9 @@ keskustelemalla.
 
 ## Mitattu
 
-**Versio 1.6 on tuotannossa 19.9.2026 klo 23:15** (N25: kolme muokkausta,
-15 minuuttia) ja **1.5 klo 22:44**, kolmetoista minuuttia 1.4:n
+**Versio 1.7 on tuotannossa 19.9.2026 klo 23:50** (H47: kaksi muokkausta,
+10 minuuttia), **1.6 klo 23:15** (N25: kolme muokkausta, 15 minuuttia) ja
+**1.5 klo 22:44**, kolmetoista minuuttia 1.4:n
 jälkeen: seitsemän muokkausta, noin 45 minuuttia mittauksineen. N14:n
 puolimillisekunnit, N6:n tasatilanne ja N24:n tarkistus ennen mutaatiota
 mitattiin asiakkaan omilta lähderiveiltä; hylätty käsky ei enää kuluta

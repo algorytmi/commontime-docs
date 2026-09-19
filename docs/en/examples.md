@@ -25,6 +25,12 @@ session  anchor = 1789232400000, bpm = 118, beatsPerBar = 4, ppq = 960
 local clock  1789232460000
          serverNow = 1789232460900    elapsed = 60900
          tick = 60900 × 118 × 960 / 60000 = 114,979
+
+the same, with an odd round trip (1.5, H45)
+pong     t1 = 1789232401000        response received at 1789232400201
+         → offset = t1 − (t0 + 201/2) = +899.5 ms
+         serverNow = 1789232460899.5  elapsed = 60899.5
+         tick = floor(121799 × 118 × 960 / 120000) = 114,978
 ```
 
 An uncorrected implementation — one that ignores the offset between clocks —
@@ -34,6 +40,14 @@ reads the same instant as **113,280**. The difference is **1,699 ticks**, about
 That is the point of the vector. §7 also records a rejected one: a 40 ms offset
 at 118 BPM is two percent of a bar, so the corrected and uncorrected answers
 round to the same number — and a faulty implementation passes.
+
+The second vector came with version 1.5 (H45), and it reaches a case the
+first cannot: an odd round trip. N6's `rtt/2` yields half a millisecond, and
+N14 says time is carried exactly — an implementation that rounds to the
+millisecond gives **114,979**, the exact one **114,978**. One tick,
+permanently, on a quarter of all odd round trips. Both implementations were
+measured before the sentence was written: one carried the half, the other
+rounded.
 
 ## The five operations
 

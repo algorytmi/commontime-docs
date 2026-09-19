@@ -75,7 +75,11 @@ rather than by discussion.
 
 ## Measured
 
-**Version 1.4 is in production as of 19 September 2026, 22:31** — the owner's
+**Version 1.5 is in production as of 19 September 2026, 22:44**, thirteen
+minutes after 1.4: seven edits, about 45 minutes including measurement.
+N14's half-milliseconds, N6's tie rule and N24's check-before-mutation were
+measured on the client's own source lines; a rejected command no longer
+burns an id. **Version 1.4 reached production at 22:31** — the owner's
 decision. `boundMs` cost seven edits and about 40 minutes including the
 measurement. The first `ct.state` carries 1000 ms (wide, not `degraded`, as
 N20 says), then 1 ms on the LAN and 1–2 ms through the public HTTPS proxy,

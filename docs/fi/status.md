@@ -69,7 +69,11 @@ keskustelemalla.
 
 ## Mitattu
 
-**Versio 1.4 on tuotannossa 19.9.2026 klo 22:31** — omistajan päätös. `boundMs`
+**Versio 1.5 on tuotannossa 19.9.2026 klo 22:44**, kolmetoista minuuttia 1.4:n
+jälkeen: seitsemän muokkausta, noin 45 minuuttia mittauksineen. N14:n
+puolimillisekunnit, N6:n tasatilanne ja N24:n tarkistus ennen mutaatiota
+mitattiin asiakkaan omilta lähderiveiltä; hylätty käsky ei enää kuluta
+id-numeroa. **Versio 1.4 tuli tuotantoon klo 22:31** — omistajan päätös. `boundMs`
 maksoi seitsemän muokkausta ja noin 40 minuuttia mittauksineen. Ensimmäinen
 `ct.state` kantaa arvoa 1000 ms (leveä, ei `degraded`, kuten N20 sanoo), sen
 jälkeen 1 ms lähiverkosta ja 1–2 ms julkisen HTTPS-proxyn läpi, mitattuna

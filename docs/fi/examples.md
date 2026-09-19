@@ -25,6 +25,12 @@ session  anchor = 1789232400000, bpm = 118, beatsPerBar = 4, ppq = 960
 paikallinen kello  1789232460000
          serverNow = 1789232460900    kulunut = 60900
          kelloaskel = 60900 × 118 × 960 / 60000 = 114 979
+
+sama parittomalla kiertoajalla (1.5, H45)
+pong     t1 = 1789232401000        vastaus saapui 1789232400201
+         → offset = t1 − (t0 + 201/2) = +899,5 ms
+         serverNow = 1789232460899,5  kulunut = 60899,5
+         kelloaskel = floor(121799 × 118 × 960 / 120000) = 114 978
 ```
 
 Korjaamaton toteutus — sellainen joka jättää kellojen eron huomiotta — saa
@@ -35,6 +41,14 @@ Tämä on koko vektorin tarkoitus. §7 kertoo myös hylätyn vektorin: 40 ms:n
 poikkeama 118 BPM:n tempossa on kaksi prosenttia tahdista, jolloin korjattu ja
 korjaamaton vastaus pyöristyvät samaksi luvuksi — ja viallinen toteutus läpäisee
 testin.
+
+Toinen vektori tuli versiossa 1.5 (H45), ja se tavoittaa tapauksen jota
+ensimmäinen ei tavoita: parittoman kiertoajan. N6:n `rtt/2` tuottaa puolen
+millisekunnin, ja N14 sanoo että aika kannetaan eksaktina — millisekuntiin
+pyöristävä toteutus antaa **114 979**, eksakti **114 978**. Yksi kelloaskel,
+pysyvästi, neljäsosassa kaikista parittomista kiertoajoista. Molemmat
+toteutukset mitattiin ennen kuin lause kirjoitettiin: toinen kantoi puolikkaan,
+toinen pyöristi.
 
 ## Viisi operaatiota
 

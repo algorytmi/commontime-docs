@@ -117,13 +117,13 @@ maksoi seitsemän muokkausta ja noin 40 minuuttia mittauksineen. Ensimmäinen
 jälkeen 1 ms lähiverkosta ja 1–2 ms julkisen HTTPS-proxyn läpi, mitattuna
 oikeiden `ct.pong`-kierrosten yli. Rele lukee kentän kun se on luku eikä
 koskaan sulje sen puuttumisesta tai väärästä tyypistä — mitattu socketin yli.
-N21 tarkistetaan molemmissa päissä. Toinen toteutus on sovitettu 1.4:ään 193
-testillä.
+N21 tarkistetaan molemmissa päissä. Toinen toteutus on sovitettu 1.8:aan 204
+testillä, ja sen merkittyjen arvausten luku on nolla ensimmäistä kertaa.
 
 Kelloaskelaritmetiikka läpäisee **47 testiä** ilman riippuvuuksia,
 kokonaislukuina läpi koko ketjun: `ct-core` ei tuo yhtään riippuvuutta eikä
 koske audioon, verkkoon tai selaimeen. Koko testisarja — `ct-core`,
-asiakas, kellopalvelin ja konformanssi yhdessä — oli 155 testiä 13.9. ja on 193 testiä 19.9., ja
+asiakas, kellopalvelin ja konformanssi yhdessä — oli 155 testiä 13.9. ja on 204 testiä 20.9., ja
 telineen kalibrointi omat 18 sen lisäksi. Mittausteline lukee tunnetun 10,0000 ms:n viiveen oikein —
 mutta vasta PHAT-painotuksen jälkeen: painottamaton ristikorrelaatio luki saman
 nauhan arvona **0,9086 ms**, tasan kaksi jaksoa pielessä, korrelaatiokertoimella

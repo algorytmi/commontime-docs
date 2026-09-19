@@ -5,17 +5,22 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.3 | 2 | 0 | 6 | not run |
+| 1.4 | 2 | 0 | 0 | not run |
 
-The 6 is the count of **numbered** open items: H24, H28, H31, H32, H33 and
-H34. **On 18 September 2026 the owner ratified nine items in one act** — H25,
-H26, H27, H29, H35, H36, H37, H38 and H39 — and they go into version 1.3. The
-count fell from fifteen to six.
+The 0 is the count of **numbered** open items. **On 18 September 2026 the
+owner ratified nine items** — H25, H26, H27, H29, H35, H36, H37, H38 and H39 —
+into version 1.3, and **on 19 September the remaining six** — H24, H28, H31,
+H32, H33 and H34 — into version 1.4. The count fell from fifteen to zero in two
+days.
 
-Of what remains, H32 is measured as passing and could be ratified cheaply; the
-other four are unmeasured. H34 was left out on purpose: correcting its appendix
-from "observed" to "required" *is* deciding the item, and it is not decided by
-implication.
+The second act was different from the first, and the difference is worth
+saying out loud. Of the first nine, seven had been measured as converging or
+found by running. Of the second six, **only H32 was measured**; five went in
+by decision, and the change log says so. A decision does not make a thing
+measured: if any of the five turns out wrong in production, it is a finding
+H40– like any other, and ratification does not protect it. H34's appendix
+correction from "observed" to "required" is now made — by decision, not by
+implication, as it should be.
 
 Of the last five findings, three were found by **running** — two of them in
 production — and two by **reading a fix** before it reached production. Both
@@ -27,6 +32,10 @@ correct depends on which is being asked for, and on this page it is the numbered
 ones.
 
 ## Decided
+
+Version 1.4 was approved on 19 September 2026. It closed the remaining six
+items: N20–N23 were added, N11 and N14 extended, `ct.state` gained `boundMs`,
+and V4 now says which bound it refers to. No H-items are open; the next is H40.
 
 Version 1.3 was approved on 18 September 2026. It closed nine of the fifteen
 items raised after 1.2a; the twenty-three raised during drafting had all been

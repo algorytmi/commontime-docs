@@ -429,6 +429,70 @@ with one common gain, which preserves the relative levels between tracks.
     bars, at most three tracks at once. But several clients have not been run
     together over a real network, so there is no figure for it here.
 
+## Musikklubben: one page, three roles
+
+!!! warning "Application layer — not the protocol"
+    This describes one application, written from its implementer's words and
+    checked against code on 19 September 2026. The specification requires
+    none of it, and this claims nothing the specification has not measured.
+
+An ordinary net radio sends music: one plays, the rest listen. In the club's
+own mode, Musikklubben does it the other way round. **The server sends no
+music at all.** It sends a clock and commands. Every listener has fetched the
+material itself and plays it itself — and because everyone has the same clock
+and the same commands, everyone plays the same point of the same material on
+the same tick.
+
+Why: the club does not play one audio file but six tracks at once — drums,
+bass, sequence, chords, melody, vocal — on four decks, from which the DJ swaps
+one track at a time for another. That cannot be sent as finished audio,
+because it is mixed only at the listener's end. A recipe is sent instead, and
+every listener carries it out.
+
+**One page, three roles.** The DJ console, the visitor's browser and the
+server's invisible player are the same `index.html`: the same session-joining
+player, the same recipe playback, no local audio that bypasses the clock. The
+auto-DJ's decisions are made in the relay and sent as commands; the only
+DJ-specific code is the console's interface, not the audio path. The
+invisible player is literally the same page in Firefox, and its audio is
+captured into Icecast → AzuraCast as an ordinary radio stream. It does not
+imitate the room — *it is the room*, one guest among the others who happens
+to carry a microphone. That is why the radio cannot sound different from the
+room.
+
+**Two modes, the switch in configuration.** The visitor's browser always
+joins the session and receives the commands. Whether it plays them itself or
+listens to a finished stream is one file (`house.json`), which the relay
+reads every 20 seconds. When the file points at a stream, the client's player
+is muted and an ordinary `<audio>` plays the stream; when it is empty, every
+browser plays from the recipe. Both modes have been in production within the
+same week. **Today (19 September 2026) a visitor hears the stream** — the
+mixtape has been on since 18 September, 23:19.
+
+This settles what "the same moment in many places" means today. In stream
+mode it is true to the precision of the Icecast buffer, seconds. In recipe
+mode it is true to the precision of the clock — and that precision is
+exactly the number the specification has not yet measured (V1). This page
+claims milliseconds for neither.
+
+**The clock waits for no one.** If a track is missing, it is silent and
+everything else continues in time (V3). When the track arrives, it starts
+from where it should be now, not from the beginning (N10). Two faults were
+found only with real listeners: a joiner that knew when the material would
+*end* but not that it was *playing* (H37), and a browser that joined seconds
+before a change and did not load the new material (H38). Both became a rule
+that now binds every future implementation. And because the invisible player
+is the only thing feeding the radio, it has a watchdog: if the room says
+music is playing but the player has been silent for a minute and a half, it
+restarts itself — and lands at the right point, because the time is not in
+the player but in the clock.
+
+**What this is not.** When the club plays a mixtape — whole tracks that do
+not sit on the bar grid — ordinary radio software plays them, and the audio
+does not pass through Common Time at all. Common Time exists so that the
+same music comes into being in many places at the same moment. When there is
+one music and it comes into being in one place, it is not needed.
+
 ## The same loop, at different tempi
 
 This is what a fractional bar position does not give. Loop length **in ticks**
@@ -481,17 +545,20 @@ vectors.
 
 ## What an example cannot show
 
-Two items are still open, and neither can be shown as an example without the
-example deciding the matter on the specification's behalf.
+The items in this section were open when it was written, and they stay here
+for the same reason: an example must not decide a matter on the
+specification's behalf. All three are now decided, and each says when.
 
-**The joining client's message order.** Not specified. The two existing
+**The joining client's message order.** Was unspecified. The two existing
 implementations differ (item **H32**): one sends a joiner `ct.hello` →
 `ct.session` → `ct.snapshot` and no `ct.load` messages at all; the other sends a
 `ct.load` for every material before the snapshot. The latter has a good reason: without
 `ct.load` the client has no `lengthTicks`, so it cannot compute the N10
 position, and the slot stays silent permanently. The implementations
-interoperate: H32 **passes** when run. This is an open item, not an
-incompatibility.
+interoperate: H32 **passes** when run. The item was ratified on 19 September
+2026 and is now **N22**: `ct.session` first, and every material a snapshot
+refers to loaded earlier on the same connection. The first way is no longer
+conforming.
 
 **Lateness of commands applied from a snapshot.** N3 requires lateness to be
 reported in `late[]`; N8 says a snapshot's commands are processed as commands

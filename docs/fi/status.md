@@ -5,17 +5,20 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.3 | 2 | 0 | 6 | ei ajettu |
+| 1.4 | 2 | 0 | 0 | ei ajettu |
 
-Luku 6 on **numeroitujen** avointen kohtien määrä: H24, H28, H31, H32, H33 ja
-H34. **Omistaja ratifioi 18.9.2026 yhdellä päätöksellä yhdeksän kohtaa** —
-H25, H26, H27, H29, H35, H36, H37, H38 ja H39 — ja ne menevät versioon 1.3.
-Luku putosi viidestätoista kuuteen.
+Luku 0 on **numeroitujen** avointen kohtien määrä. **Omistaja ratifioi
+18.9.2026 yhdeksän kohtaa** — H25, H26, H27, H29, H35, H36, H37, H38 ja H39 —
+versioon 1.3, ja **19.9.2026 loput kuusi** — H24, H28, H31, H32, H33 ja H34 —
+versioon 1.4. Luku putosi viidestätoista nollaan kahdessa päivässä.
 
-Jäljellä olevista H32 on mitattu läpäiseväksi ja voitaisiin ratifioida halvalla;
-neljä muuta on mittaamatta. H34 jäi tarkoituksella pois: sen liitekorjaus
-"havaitusta" "tarvittavaan" *on* kohdan päättäminen, eikä sitä päätetä
-implisiittisesti.
+Toinen päätös oli erilainen kuin ensimmäinen, ja ero kannattaa sanoa ääneen.
+Ensimmäisen yhdeksästä kohdasta seitsemän oli mitattu yhteneviksi tai löytynyt
+ajamalla. Toisen kuudesta **vain H32 oli mitattu**; viisi meni sisään
+päätöksellä, ja muutosloki sanoo sen. Päätös ei tee mitatusta: jos jokin
+viidestä osoittautuu tuotannossa vääräksi, se on löydös H40– kuten mikä tahansa
+muu, eikä ratifiointi suojaa sitä. H34:n liitekorjaus "havaitusta"
+"tarvittavaan" on nyt tehty — päätöksellä, ei implisiittisesti, kuten piti.
 
 Viidestä viimeisimmästä löydöksestä kolme löytyi **ajamalla** — kaksi niistä
 tuotannossa — ja kaksi **lukemalla korjausta** ennen kuin se ehti tuotantoon.
@@ -26,6 +29,10 @@ kirjatuista odottaa yhä numeroa. Kumpi luku on oikea riippuu siitä kumpaa
 kysytään, ja tällä sivulla se on numeroidut.
 
 ## Päätetty
+
+Versio 1.4 on hyväksytty 19.9.2026. Se sulki loput kuusi kohtaa: N20–N23
+lisättiin, N11 ja N14 laajenivat, `ct.state` sai kentän `boundMs`, ja V4 sanoo
+nyt mihin rajaan se viittaa. Avoimia H-kohtia ei ole; seuraava on H40.
 
 Versio 1.3 on hyväksytty 18.9.2026. Se sulki yhdeksän kohtaa 1.2a:n jälkeen
 nousseesta viidestätoista; kaikki laadinnan aikaiset kaksikymmentäkolme oli

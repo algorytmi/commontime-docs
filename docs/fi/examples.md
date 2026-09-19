@@ -427,6 +427,68 @@ keskinäiset suhteet säilyvät.
     enimmillään kolme raitaa yhtä aikaa. Mutta montaa asiakasta ei ole ajettu
     yhtä aikaa oikean verkon yli, joten tässä ei ole lukua siitä.
 
+## Musikklubben: yksi sivu, kolme roolia
+
+!!! warning "Sovelluskerros — ei protokolla"
+    Tämä on kuvaus yhdestä sovelluksesta, kirjoitettu sen toteuttajan sanoista
+    ja tarkistettu koodista 19.9.2026. Määrittely ei vaadi mitään tästä, ja
+    tämä ei väitä mitään mitä määrittely ei ole mitannut.
+
+Tavallinen nettiradio lähettää musiikkia: yksi soittaa, muut kuuntelevat.
+Klubin omassa tilassa Musikklubben tekee sen toisin päin. **Palvelin ei lähetä
+musiikkia lainkaan.** Se lähettää kellon ja käskyjä. Jokainen kuulija on
+hakenut materiaalit itse ja soittaa ne itse — ja koska kaikilla on sama kello
+ja samat käskyt, jokainen soittaa samaa kohtaa samasta materiaalista samalla
+kelloaskeleella.
+
+Miksi näin: klubilla ei soi yksi äänitiedosto vaan kuusi raitaa päällekkäin —
+rummut, basso, sekvenssi, soinnut, melodia, laulu — ja neljä lautasta, joista
+DJ vaihtaa yhden raidan kerrallaan toiselle. Sellaista ei voi lähettää valmiina
+äänenä, koska se miksataan vasta kuulijan päässä. Lähetetään resepti, ja
+jokainen kuulija toteuttaa sen.
+
+**Yksi sivu, kolme roolia.** DJ-konsoli, vieraan selain ja palvelimen näkymätön
+soittaja ovat sama `index.html`: sama istuntoon liittyvä soitin, sama reseptin
+toisto, ei paikallista kellon ohittavaa ääntä. Auto-DJ:n päätökset tehdään
+releessä ja lähetetään käskyinä; ainoa DJ-erityinen koodi on konsolin
+käyttöliittymä, ei äänipolku. Näkymätön soittaja on kirjaimellisesti sama sivu
+Firefoxissa, ja sen ääni napataan Icecastiin → AzuraCastiin tavalliseksi
+radiovirraksi. Se ei jäljittele huonetta — *se on huone*, yksi vieras muiden
+joukossa, jolla sattuu olemaan mikrofoni. Siksi radio ei voi soida eri tavalla
+kuin huone.
+
+**Kaksi tilaa, kytkin konfiguraatiossa.** Vieraan selain liittyy istuntoon ja
+vastaanottaa käskyt aina. Se, soittaako se ne itse vai kuunteleeko valmista
+virtaa, on yksi tiedosto (`house.json`), jonka rele lukee 20 sekunnin välein.
+Kun tiedosto osoittaa virtaan, asiakkaan soitin mykistetään ja tavallinen
+`<audio>` soittaa virtaa; kun se on tyhjä, jokainen selain soittaa reseptistä.
+Molemmat tilat ovat olleet tuotannossa saman viikon aikana. **Tänään
+(19.9.2026) vieras kuulee virran** — mixtape on ollut päällä 18.9. klo 23:19
+lähtien.
+
+Tämä ratkaisee, mitä "sama hetki monessa paikassa" tarkoittaa tänään. Virran
+tilassa se on totta Icecast-puskurin tarkkuudella, sekunteja. Reseptin tilassa
+se on totta kellon tarkkuudella — ja se tarkkuus on juuri se luku, jota
+määrittely ei ole vielä mitannut (V1). Kumpaakaan ei tällä sivulla väitetä
+millisekunneiksi.
+
+**Kello ei odota ketään.** Jos raita puuttuu, se on hiljaa ja muu jatkaa
+ajassa (V3). Kun raita saapuu, se alkaa siitä kohdasta missä sen kuuluu nyt
+olla, ei alusta (N10). Kaksi vikaa löytyi vasta oikeiden kuulijoiden kanssa:
+liittyjä, joka tiesi milloin materiaali *loppuu* muttei että se *soi* (H37),
+ja selain, joka liittyi sekunteja ennen vaihtoa eikä ladannut uutta
+materiaalia (H38). Molemmista tuli sääntö, joka koskee nyt jokaista tulevaa
+toteutusta. Ja koska näkymätön soittaja on ainoa joka syöttää radiota, sillä
+on vahti: jos huone sanoo että musiikkia soi mutta soittaja on hiljaa
+puolitoista minuuttia, se käynnistää itsensä uudelleen — ja laskeutuu oikeaan
+kohtaan, koska aika ei ole soittajassa vaan kellossa.
+
+**Mitä tämä ei ole.** Kun klubi soittaa mixtapea — kokonaisia kappaleita jotka
+eivät istu tahtiruudukkoon — ne soittaa tavallinen radio-ohjelmisto, eikä ääni
+kulje Common Timen kautta lainkaan. Common Time on sitä varten, että sama
+musiikki syntyy monessa paikassa samalla hetkellä. Kun musiikkia on yksi ja se
+syntyy yhdessä paikassa, sitä ei tarvita.
+
 ## Sama silmukka, eri tempo
 
 Tämä on se ominaisuus jota murtolukuinen tahtisijainti ei anna. Silmukan pituus
@@ -480,17 +542,20 @@ se mitä N5 sanoo testivektorien valinnasta.
 
 ## Mitä esimerkki ei voi näyttää
 
-Kaksi kohtaa on yhä auki, eikä kumpaakaan voi esittää esimerkkinä ilman että
-esimerkki päättäisi asian sivun omin päin.
+Tämän osion kohdat olivat auki kun se kirjoitettiin, ja ne ovat tässä yhä
+samasta syystä: esimerkki ei saa päättää asiaa sivun omin päin. Kaikki kolme on
+nyt päätetty, ja jokaisen kohdalla lukee milloin.
 
-**Liittyvän asiakkaan sanomajärjestys.** Ei määritelty. Kaksi olemassa olevaa
+**Liittyvän asiakkaan sanomajärjestys.** Oli määrittelemättä. Kaksi olemassa olevaa
 toteutusta tekee eri tavalla (kohta **H32**): toinen lähettää liittyjälle
 `ct.hello` → `ct.session` → `ct.snapshot` eikä `ct.load`-sanomia lainkaan,
 toinen lähettää `ct.load`in jokaisesta materiaalista ennen tilannekuvaa. Jälkimmäisen perustelu
 on hyvä: ilman `ct.load`ia asiakkaalla ei ole `lengthTicks`iä, eikä se voi
 laskea N10:n mukaista sijaintia, jolloin slot vaikenee pysyvästi. Toteutukset
-ovat keskenään yhteensopivia: H32 **läpäisee** ajettuna. Kyse on avoimesta
-kohdasta, ei ristiriidasta.
+ovat keskenään yhteensopivia: H32 **läpäisee** ajettuna. Kohta ratifioitiin
+19.9.2026 ja on nyt **N22**: `ct.session` ensin, ja jokainen tilannekuvan
+viittaama materiaali ladattu aiemmin samalla yhteydellä. Ensimmäinen tapa ei
+enää ole määrittelyn mukainen.
 
 **Tilannekuvan käskyjen myöhästyminen.** N3 vaatii että myöhästyminen
 raportoidaan `late[]`-listalla; N8 sanoo että tilannekuvan käskyt käsitellään

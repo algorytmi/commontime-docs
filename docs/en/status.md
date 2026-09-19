@@ -84,7 +84,8 @@ rather than by discussion.
 
 ## Measured
 
-**Version 1.5 is in production as of 19 September 2026, 22:44**, thirteen
+**Version 1.6 is in production as of 19 September 2026, 23:15** (N25: three
+edits, 15 minutes) and **1.5 as of 22:44**, thirteen
 minutes after 1.4: seven edits, about 45 minutes including measurement.
 N14's half-milliseconds, N6's tie rule and N24's check-before-mutation were
 measured on the client's own source lines; a rejected command no longer

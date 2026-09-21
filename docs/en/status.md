@@ -5,10 +5,17 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 3 | not run |
+| 1.8 | 2 | 0 | 4 | not run |
 
-The 3 is the count of **numbered** open items, and one is larger than the
-others. **H53: what does `commontime/1` promise across revisions?** An
+The 4 is the count of **numbered** open items, and one is larger than the
+others. The newest is **H54**: the types of `ct.state`'s fields, and that a
+relay does not invent. One implementation types every field and drops what
+fails; the other coerces `degraded` to a boolean, so the string `"ei"` marks
+a client silent and nothing downstream can tell it from a real report. An
+untyped field forwards rubbish; **a coerced field forwards a false value that
+looks valid.** The same item covers one gap that reaches the audio: of seven
+telemetry fields exactly one makes the other party *act* — `minLeadTicks`,
+which a sender places commands by — and nothing stops it being negative. **H53: what does `commontime/1` promise across revisions?** An
 implementer ran their own version 1.4 and version 1.8 side by side against
 the same messages: **in six measured places they disagree**, and both carry
 the same token. In four of them the difference is "the client joins or does

@@ -5,10 +5,18 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 3 | ei ajettu |
+| 1.8 | 2 | 0 | 4 | ei ajettu |
 
-Luku 3 on **numeroitujen** avointen kohtien määrä, ja yksi niistä on isompi
-kuin muut. **H53: mitä `commontime/1` lupaa versioiden yli?** Toteuttaja ajoi
+Luku 4 on **numeroitujen** avointen kohtien määrä, ja yksi niistä on isompi
+kuin muut. Uusin on **H54**: `ct.state`n kenttien tyypit, ja se että välittäjä
+ei keksi. Toinen toteutus tyypittää jokaisen kentän ja pudottaa kelvottoman;
+toinen pakottaa `degraded`in totuusarvoksi, jolloin merkkijono `"ei"` merkitsee
+asiakkaan vaienneeksi eikä kukaan voi erottaa sitä oikeasta ilmoituksesta.
+Tyypittämätön kenttä välittää roskaa, **pakotettu kenttä välittää väärän arvon
+joka näyttää kelvolliselta.** Samassa kohdassa on yksi aukko joka osuu ääneen
+asti: seitsemästä telemetriakentästä tasan yksi saa toisen osapuolen
+*toimimaan* — `minLeadTicks`, jonka mukaan lähettäjä sijoittaa käskynsä — eikä
+mikään estä sitä olemasta negatiivinen. **H53: mitä `commontime/1` lupaa versioiden yli?** Toteuttaja ajoi
 oman toteutuksensa version 1.4 ja version 1.8 rinnakkain samoja sanomia
 vasten: **kuudessa mitatussa kohdassa ne ovat eri mieltä**, ja molemmat
 kantavat samaa tunnusta. Neljässä niistä ero on "asiakas liittyy tai ei" tai

@@ -5,9 +5,16 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 0 | ei ajettu |
+| 1.8 | 2 | 0 | 1 | ei ajettu |
 
-Luku 0 on **numeroitujen** avointen kohtien määrä. **H50** — `param`-arvon
+Luku 1 on **numeroitujen** avointen kohtien määrä: **H51**, saako
+vastaanottaja hylätä `param`-käskyn jonka nimi alkaa varatulla `ct.`-
+etuliitteellä. Teksti varaa etuliitteen *sovelluksen* velvoitteena eikä sano
+vastaanottajasta mitään; toinen toteutus hylkää vastaanottajana, toinen
+hylkää käskyn **myöntäjänä** — missä virhe palautuu lähettäjälle — ja
+hyväksyy vastaanottajana. Kolme käyttäytymistä, ja jälkimmäinen pari ei ole
+ristiriitainen: myöntäjällä on vastauskanava, vastaanottajalla ei (N3).
+**H50** — `param`-arvon
 muoto, löytyi 1.7:n tekstistä heti julkaisun jälkeen — hyväksyttiin versioon
 1.8 yhdessä `ppq`-avainsanan kanssa. Kolme sitä edeltävää numeroitiin
 19.9. myöhään illalla molemmista toteutuksista mitattuina ja **hyväksyttiin

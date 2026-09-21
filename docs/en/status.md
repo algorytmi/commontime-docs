@@ -5,9 +5,15 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 0 | not run |
+| 1.8 | 2 | 0 | 1 | not run |
 
-The 0 is the count of **numbered** open items. **H50** — the shape of a
+The 1 is the count of **numbered** open items: **H51**, whether a receiver
+may reject a `param` command whose name carries the reserved `ct.` prefix.
+The text reserves it as an *application's* obligation and says nothing about
+a receiver; one implementation rejects as receiver, the other rejects as
+**issuer** — where the error returns to the sender — and accepts as
+receiver. Three behaviours, and the latter pair is not a contradiction: an
+issuer has a response channel, a receiver does not (N3). **H50** — the shape of a
 `param` value, found in 1.7's text right after publication — was approved
 into version 1.8 together with the `ppq` keyword. The three before it were
 numbered

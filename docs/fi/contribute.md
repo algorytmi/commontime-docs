@@ -10,6 +10,15 @@ pahimman tapauksen arvio: yhteiset katvealueet jäävät populaation ulkopuolell
 kokonaan, ja niin ilmeiset aukot että jokainen löytää ne kasvattavat
 päällekkäisyyttä. Molemmat harhat osoittavat samaan suuntaan.
 
+**Kolme vikaa, kolme löytötapaa.** 19.–21.9.2026 löytyi kolme vikaa
+tuotantokoodista. Ensimmäinen löytyi kun toteuttaja etsi väärästä tiedostosta
+jotain muuta. Toinen löytyi luettelosta joka käy läpi koko hyväksyntäpinnan
+eikä kysy keneltäkään mitä kannattaisi testata. Kolmas löytyi kysymyksestä
+jota kumpikaan toteuttaja ei olisi itselleen keksinyt. **Vain yksi kolmesta
+olisi löytynyt testillä jonka olisi osannut kirjoittaa etukäteen** — ja se on
+sama syy miksi tämä sivu pyytää kolmatta toteutusta eikä kolmatta
+katselmointikierrosta.
+
 **Mitattu jälkikäteen.** Tuo laskettiin 13.9.2026. Sen jälkeen on numeroitu
 yksitoista kohtaa lisää (H36–H46) — seitsemän niistä yhtenä päivänä, 19.9.,
 kysymällä molemmilta toteutuksilta samat kysymykset niiden koodista ja

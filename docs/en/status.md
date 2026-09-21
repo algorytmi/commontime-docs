@@ -5,10 +5,18 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 4 | not run |
+| 1.8 | 2 | 0 | 5 | not run |
 
-The 4 is the count of **numbered** open items, and one is larger than the
-others. The newest is **H54**: the types of `ct.state`'s fields, and that a
+The 5 is the count of **numbered** open items, and one is larger than the
+others. The newest, **H55**, was found by reading: the specification never
+says what `ref` is. It appears in §4's table and in N3 — *"a `ct.load` is
+answered once"* and *"a refusal is final for that `ref`"* — so **two
+obligations turn on the identity of a thing the document never defines.**
+Nothing says `ref` is the `id` of the `ct.load` being answered, nothing types
+it, and nothing says how two are compared. It is H25's mistake in a new
+place: `5` and `"5"` are one key in one implementation and two values under a
+numeric comparison, so "answered once" binds different sets at the two ends
+and neither side sees it. The newest is **H54**: the types of `ct.state`'s fields, and that a
 relay does not invent. One implementation types every field and drops what
 fails; the other coerces `degraded` to a boolean, so the string `"ei"` marks
 a client silent and nothing downstream can tell it from a real report. An

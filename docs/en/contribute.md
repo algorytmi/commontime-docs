@@ -10,6 +10,15 @@ worst case: shared blind spots fall outside the population entirely, and gaps
 obvious enough for everyone to find inflate the overlap. Both biases point the
 same way.
 
+**Three faults, three ways of finding them.** Between 19 and 21 September
+2026 three faults were found in production code. The first turned up while an
+implementer was looking in the wrong file for something else. The second came
+from a listing that walks the whole acceptance surface and asks nobody what is
+worth testing. The third came from a question neither implementer would have
+thought to ask itself. **Only one of the three would have been caught by a
+test written in advance** — which is the same reason this page asks for a
+third implementation rather than a third review pass.
+
 **Measured afterwards.** That was computed on 13 September 2026. Since then
 eleven more items have been numbered (H36–H46) — seven of them on one day,
 19 September, by asking both implementations the same questions of their

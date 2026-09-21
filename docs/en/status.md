@@ -23,10 +23,14 @@ a client silent and nothing downstream can tell it from a real report. An
 untyped field forwards rubbish; **a coerced field forwards a false value that
 looks valid.** The same item covers one gap that reaches the audio: of seven
 telemetry fields exactly one makes the other party *act* — `minLeadTicks`,
-which a sender places commands by — and nothing stops it being negative. That
-gap is **measured on one implementation and not on the other**, and even on
-the measured side the danger is proved on paper rather than on tape: its
-server does not yet place commands by `minLeadTicks` at all. **H53: what does `commontime/1` promise across revisions?** An
+which a sender places commands by — and nothing stops it being negative. The gap is now **measured on both**, and the result is more
+interesting than the gap: neither places commands by `minLeadTicks`. On one,
+because the application is unwritten — on the other, the application is
+written and places commands constantly, and still never asks. N23 says this
+is the only telemetry field whose reading reaches the audio; across two
+implementations it reaches it in **neither**. That does not refute the
+clause, but it moves it to *possible, realised in neither* — a different
+thing from *one side has not got there yet*. **H53: what does `commontime/1` promise across revisions?** An
 implementer ran their own version 1.4 and version 1.8 side by side against
 the same messages: **in six measured places they disagree**, and both carry
 the same token. In four of them the difference is "the client joins or does

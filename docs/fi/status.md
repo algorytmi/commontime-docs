@@ -24,10 +24,14 @@ Tyypittämätön kenttä välittää roskaa, **pakotettu kenttä välittää vä
 joka näyttää kelvolliselta.** Samassa kohdassa on yksi aukko joka osuu ääneen
 asti: seitsemästä telemetriakentästä tasan yksi saa toisen osapuolen
 *toimimaan* — `minLeadTicks`, jonka mukaan lähettäjä sijoittaa käskynsä — eikä
-mikään estä sitä olemasta negatiivinen. Tuo aukko on **mitattu toisesta
-toteutuksesta, toista ei ole mitattu**, ja mitatullakin puolella vaara on
-todistettu paperilla eikä nauhalta: sen palvelin ei vielä sijoita käskyjä
-`minLeadTicks`in mukaan lainkaan. **H53: mitä `commontime/1` lupaa versioiden yli?** Toteuttaja ajoi
+mikään estä sitä olemasta negatiivinen. Aukko on nyt **mitattu molemmista**, ja tulos on
+kiinnostavampi kuin aukko: kumpikaan ei sijoita käskyjä `minLeadTicks`in
+mukaan. Toisella syy on että sovellus on kirjoittamatta — toisella se on
+kirjoitettu ja sijoittaa käskyjä jatkuvasti, eikä silti kysy sitä. N23 sanoo
+että tämä on ainoa telemetriakenttä jonka lukema päätyy ääneen; kahdesta
+toteutuksesta se päätyy **ei kummassakaan**. Se ei kumoa kohtaa, mutta siirtää
+sen tilaan *mahdollinen, ei toteutunut kummassakaan* — eri asia kuin *toinen ei
+ole vielä ehtinyt*. **H53: mitä `commontime/1` lupaa versioiden yli?** Toteuttaja ajoi
 oman toteutuksensa version 1.4 ja version 1.8 rinnakkain samoja sanomia
 vasten: **kuudessa mitatussa kohdassa ne ovat eri mieltä**, ja molemmat
 kantavat samaa tunnusta. Neljässä niistä ero on "asiakas liittyy tai ei" tai

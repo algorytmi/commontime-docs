@@ -168,6 +168,29 @@ rather than by discussion.
 
 ## Measured
 
+!!! danger "The first measured incompatibility"
+    21 September 2026: one implementation ran the other's real payload shape
+    over a real socket. Result: a `ct.load` whose identifier is the string
+    `"ld7"` is rejected in the receiver's validator, **the answer N3
+    describes never leaves**, the connection correctly stays open (N24) — and
+    the sender waits for a reply that never comes. No material, no slot, no
+    audio, no diagnosis at either end.
+
+    Every earlier difference was a reading that showed only when the two were
+    held side by side; this stops material from moving at the first
+    `ct.load`. It is **H55's case**, and it changes what that item is: not
+    cosmetic but severing.
+
+    Two things the measurement taught beyond the fault. It was **found
+    without the network** — the implementation generated the other's message
+    shape locally and ran it against itself; the cross-run would have found
+    it in its first second, which is a measure of what not running it has
+    cost. And **the gap blocks the diagnosis too**: N25's `protocol` reason
+    means the sender broke a MUST, and nothing types `ct.load`'s identifier —
+    so the sender broke nothing, and the receiver cannot honestly say what
+    happened.
+
+
 !!! warning "The cross-run tool would have filed a false finding"
     The tool was written during version 1.2 and had never been run. On its
     first run it would have reported item H32 as open — it was closed three

@@ -162,6 +162,29 @@ keskustelemalla.
 
 ## Mitattu
 
+!!! danger "Ensimmäinen mitattu yhteensopimattomuus"
+    21.9.2026: toinen toteutus ajoi toisen todellisen kuorman muodon oikean
+    socketin yli. Tulos: `ct.load` jonka tunniste on merkkijono `"ld7"`
+    hylätään vastaanottajan validaattorissa, **N3:n kuvaama vastaus ei lähde
+    koskaan**, yhteys jää oikein auki (N24) — ja lähettäjä jää odottamaan
+    vastausta joka ei tule. Ei materiaalia, ei slottia, ei ääntä, ei
+    diagnoosia kummassakaan päässä.
+
+    Kaikki aiemmat erot olivat lukutapoja jotka näkyivät vasta rinnakkain;
+    tämä pysäyttää materiaalin kulun ensimmäisellä `ct.load`illa. Se on
+    **H55:n kohta**, ja se muuttaa kohdan luonteen: se ei ole kosmeettinen
+    vaan katkaiseva.
+
+    Kaksi asiaa jotka mittaus opetti itse vian lisäksi. Se **löytyi ilman
+    verkkoa** — toteutus tuotti toisen sanomamuodon paikallisesti ja ajoi sen
+    itseään vasten; ristiin ajo olisi löytänyt sen ensimmäisen sekunnin
+    sisällä, ja se on mitta siitä mitä ajamatta jättäminen on maksanut. Ja
+    **aukko estää myös diagnoosin**: N25:n `protocol`-syy tarkoittaa että
+    lähettäjä rikkoi MUST-lausetta, eikä mikään tyypitä `ct.load`in
+    tunnistetta — joten lähettäjä ei rikkonut mitään, eikä vastaanottaja voi
+    rehellisesti sanoa mitä tapahtui.
+
+
 !!! warning "Ristiin ajon työkalu olisi kirjannut väärän löydöksen"
     Työkalu oli kirjoitettu version 1.2 aikaan eikä ajettu kertaakaan.
     Ensimmäisellä ajollaan se olisi tulostanut kohdan H32 avoimena — se

@@ -10,6 +10,24 @@ pahimman tapauksen arvio: yhteiset katvealueet jäävät populaation ulkopuolell
 kokonaan, ja niin ilmeiset aukot että jokainen löytää ne kasvattavat
 päällekkäisyyttä. Molemmat harhat osoittavat samaan suuntaan.
 
+**Julkaise se mitä lähetät, älä vain se minkä hyväksyt.** Toteutuksen
+hyväksyntäpinnan voi luetella työkalulla: jokainen sanoma, jokainen kenttä
+puuttuvana ja väärän tyyppisenä. Se on puolet. Toinen puoli on **lähtöpinta**
+— jokainen sanoma jonka toteutus todella lähettää, tuotettuna ajamalla sen
+omaa koodia eikä kirjoittamalla esimerkkejä käsin. Käsin kirjoitettu esimerkki
+kertoo mitä toteutuksen *oletetaan* lähettävän, ja juuri se oletus oli väärin
+kohdassa H55.
+
+Kun kaksi toteutusta julkaisee lähtöpintansa, kumpikin voi ajaa toisen
+lähtöpinnan omaa vastaanottopintaansa vasten. Se löytää katkaisevat
+yhteensopimattomuudet **ilman verkkoa, ilman lupia ja ilman että kumpikaan
+muuttaa riviäkään** — eikä se korvaa oikeaa ristiin ajoa, joka mittaa
+järjestystä, ajoitusta ja tilaa, vaan tyhjentää sen vikaluokan joka
+pysäyttäisi ajon ensimmäisellä sekunnilla. Tämän projektin ensimmäinen
+katkaiseva yhteensopimattomuus löytyi siitä että toinen toteuttaja **mainitsi
+tunnisteensa muodon ohimennen keskustelussa.** Se on huono tapa löytää
+sellaisia.
+
 **Kolme vikaa, kolme löytötapaa.** 19.–21.9.2026 löytyi kolme vikaa
 tuotantokoodista. Ensimmäinen löytyi kun toteuttaja etsi väärästä tiedostosta
 jotain muuta. Toinen löytyi luettelosta joka käy läpi koko hyväksyntäpinnan

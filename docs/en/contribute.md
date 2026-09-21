@@ -10,6 +10,23 @@ worst case: shared blind spots fall outside the population entirely, and gaps
 obvious enough for everyone to find inflate the overlap. Both biases point the
 same way.
 
+**Publish what you send, not only what you accept.** An
+implementation's acceptance surface can be listed by a tool: every message,
+every field missing and mistyped. That is half. The other half is the
+**emission surface** — every message the implementation actually sends,
+produced by running its own code rather than by writing examples by hand. A
+hand-written example states what an implementation is *assumed* to send, and
+that assumption is precisely what was wrong in item H55.
+
+When two implementations publish their emission surfaces, each can run the
+other's against its own acceptance surface. That finds severing
+incompatibilities **with no network, no permissions, and neither side
+changing a line** — and it does not replace a real cross-run, which measures
+order, timing and state; it empties the class of fault that would stop such a
+run in its first second. This project's first severing incompatibility was
+found because one implementer **mentioned their identifier format in passing
+in conversation.** That is a poor way to find them.
+
 **Three faults, three ways of finding them.** Between 19 and 21 September
 2026 three faults were found in production code. The first turned up while an
 implementer was looking in the wrong file for something else. The second came

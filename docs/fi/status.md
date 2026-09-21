@@ -5,9 +5,20 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 2 | ei ajettu |
+| 1.8 | 2 | 0 | 3 | ei ajettu |
 
-Luku 2 on **numeroitujen** avointen kohtien määrä. **H52** on niistä
+Luku 3 on **numeroitujen** avointen kohtien määrä, ja yksi niistä on isompi
+kuin muut. **H53: mitä `commontime/1` lupaa versioiden yli?** Toteuttaja ajoi
+oman toteutuksensa version 1.4 ja version 1.8 rinnakkain samoja sanomia
+vasten: **kuudessa mitatussa kohdassa ne ovat eri mieltä**, ja molemmat
+kantavat samaa tunnusta. Neljässä niistä ero on "asiakas liittyy tai ei" tai
+"käsky sovelletaan tai katoaa hiljaa". N16 sanoo että tunnus muuttuu vain jos
+lankamuoto rikkoutuu, eikä yksikään kuudesta rikkonut sitä. Tunnus siis lupaa
+että kaksi toteutusta saa **yhteyden**; se ei lupaa että ne ovat **samaa
+mieltä**. Kumpi näistä on tarkoitus, ei lue missään, ja kaksi lukijaa luki sen
+eri tavalla saman viikon sisällä.
+
+**H52** on niistä
 harvinainen: se ei ole ero toteutusten välillä vaan **aukko tekstin sisällä**
 — `ct.`-etuliite on varattu protokollan tuleville versioille, mutta N16 sanoo
 että `v` muuttuu vain jos lankamuoto rikkoutuu, eikä ydinparametrin nimeäminen

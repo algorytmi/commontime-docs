@@ -5,9 +5,20 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 2 | not run |
+| 1.8 | 2 | 0 | 3 | not run |
 
-The 2 is the count of **numbered** open items. **H52** is the rare kind: not
+The 3 is the count of **numbered** open items, and one is larger than the
+others. **H53: what does `commontime/1` promise across revisions?** An
+implementer ran their own version 1.4 and version 1.8 side by side against
+the same messages: **in six measured places they disagree**, and both carry
+the same token. In four of them the difference is "the client joins or does
+not" or "the command is applied or vanishes silently". N16 says the token
+changes only if the wire format breaks, and none of the six broke it. So the
+token promises that two implementations can **connect**; it does not promise
+that they **agree**. Which of the two is intended is written nowhere, and two
+readers read it differently inside one week.
+
+**H52** is the rare kind: not
 a divergence between implementations but a **gap inside the text** — the
 `ct.` prefix is reserved for future versions of the protocol, but N16 says
 `v` changes only if the wire format breaks, and naming a core parameter does

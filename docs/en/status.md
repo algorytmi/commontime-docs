@@ -5,9 +5,16 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 1 | not run |
+| 1.8 | 2 | 0 | 2 | not run |
 
-The 1 is the count of **numbered** open items: **H51**, whether a receiver
+The 2 is the count of **numbered** open items. **H52** is the rare kind: not
+a divergence between implementations but a **gap inside the text** — the
+`ct.` prefix is reserved for future versions of the protocol, but N16 says
+`v` changes only if the wire format breaks, and naming a core parameter does
+not break it. A version defining `ct.foo` as core would still carry
+`commontime/1`, and an older client would apply the same command as an
+application parameter — different audio, with nothing on the wire to
+separate them. Found while reading H51's rationale. And **H51**, whether a receiver
 may reject a `param` command whose name carries the reserved `ct.` prefix.
 The text reserves it as an *application's* obligation and says nothing about
 a receiver; one implementation rejects as receiver, the other rejects as

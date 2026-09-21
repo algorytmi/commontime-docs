@@ -5,9 +5,16 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 1 | ei ajettu |
+| 1.8 | 2 | 0 | 2 | ei ajettu |
 
-Luku 1 on **numeroitujen** avointen kohtien määrä: **H51**, saako
+Luku 2 on **numeroitujen** avointen kohtien määrä. **H52** on niistä
+harvinainen: se ei ole ero toteutusten välillä vaan **aukko tekstin sisällä**
+— `ct.`-etuliite on varattu protokollan tuleville versioille, mutta N16 sanoo
+että `v` muuttuu vain jos lankamuoto rikkoutuu, eikä ydinparametrin nimeäminen
+riko sitä. Versio joka määrittelee `ct.foo`:n ytimeksi kantaisi siis yhä
+tunnusta `commontime/1`, ja vanha asiakas soveltaisi saman käskyn
+sovellusparametrina — eri ääni, eikä mikään langalla erottaisi niitä.
+Löytyi H51:n perustelua lukiessa. Ja **H51**, saako
 vastaanottaja hylätä `param`-käskyn jonka nimi alkaa varatulla `ct.`-
 etuliitteellä. Teksti varaa etuliitteen *sovelluksen* velvoitteena eikä sano
 vastaanottajasta mitään; toinen toteutus hylkää vastaanottajana, toinen

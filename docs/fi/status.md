@@ -1,7 +1,9 @@
 # Missä tämä todella menee
 
 Protokollasivu joka väittää olevansa valmis ei kerro mitään tarkistettavaa.
-Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
+Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei. Raja on
+se jonka toteuttaja muotoili mitatessaan samaa lukua kolmesti: **luku joka ei
+ennusta seuraavaa mittausta ei ole mittaus vaan raportti.**
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |

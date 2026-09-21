@@ -1,7 +1,10 @@
 # Where this actually stands
 
 A protocol page that claims to be finished is not telling you anything you can
-check. This one is deliberately specific about what is measured and what is not.
+check. This one is deliberately specific about what is measured and what is not. The
+line between them is one an implementer arrived at while measuring the same
+number three times: **a number that does not predict the next measurement is
+not a measurement but a report.**
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |

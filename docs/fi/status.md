@@ -5,7 +5,7 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 5 | ei ajettu, työkalu korjattu |
+| 1.8 | 2 | 0 | 5 | **ajettu 21.9.** |
 
 Luku 5 on **numeroitujen** avointen kohtien määrä, ja yksi niistä on isompi
 kuin muut. Uusin, **H55**, löytyi lukemalla: määrittely ei koskaan sano mitä
@@ -166,6 +166,33 @@ keskustelemalla.
 
 ## Mitattu
 
+!!! success "Ohjaustason ristiin ajo on ajettu — 21.9.2026 klo 12:44 UTC"
+    Kuusi läpi, nolla ei, kahdeksan ilman odotusarvoa. **Aikaperusta toimii,
+    ja tässä ovat projektin ensimmäiset oikeat verkkoluvut:**
+
+    | | |
+    | --- | --- |
+    | N16 | vastapuoli lähetti `commontime/1`, tavu tavulta |
+    | N11 | 21 kehystä jäsennetty, 0 hylättyä |
+    | N26 | ei yhtään kenttää §4:n ulkopuolelta |
+    | N24 | vastapuoli ei sulkenut yhteyttä kertaakaan |
+    | N6 | 20 pingiä, **minRTT 3 ms**, erotus 5,5–6,5 ms |
+
+    Jokainen tämän projektin aiempi luku on ollut osoitteesta 127.0.0.1. Ja
+    N26:n läpimeno tarkoittaa että vastapuoli lähettää vain §4:n kentät —
+    version 1.7 vaatimus mitattuna vastakkaiselta puolelta ensimmäistä kertaa.
+
+    **Ohjaustaso ei käynnistynyt, ja se on ajon löydös.** Vastapuoli ei
+    lähettänyt `ct.session`ia kertaakaan, joten tikkiä ei voinut laskea eikä
+    yhtään käskyä, latausta tai tilannekuvaa seurannut — kahdeksan tarkistusta
+    jäi ilman mitattavaa. Se tarkoittaa yhtä kolmesta, eikä siitä kirjata
+    löydöstä ennen kuin tiedetään kumpi: settiä ei ollut auki; rele odottaa
+    asiakkaalta jotain mitä tämä ei lähetä; **tai mikään ei vaadi palvelinta
+    lähettämään `ct.session`ia lainkaan.** N22 sanoo että sen on edellettävä
+    jokaista `ct.load`ia, `ct.cmd`:tä ja `ct.snapshot`ia — mikä toteutuu
+    triviaalisti jos yhtäkään niistä ei lähetetä. Toteutus joka ei lähetä sitä
+    koskaan olisi **muodollisesti konformi ja käytännössä mykkä.**
+
 !!! danger "Ensimmäinen mitattu yhteensopimattomuus"
     21.9.2026: toinen toteutus ajoi toisen todellisen kuorman muodon oikean
     socketin yli. Tulos: `ct.load` jonka tunniste on merkkijono `"ld7"`
@@ -221,6 +248,9 @@ oikeiden `ct.pong`-kierrosten yli. Rele lukee kentän kun se on luku eikä
 koskaan sulje sen puuttumisesta tai väärästä tyypistä — mitattu socketin yli.
 N21 tarkistetaan molemmissa päissä. Toinen toteutus on sovitettu 1.8:aan 204
 testillä, ja sen merkittyjen arvausten luku on nolla ensimmäistä kertaa.
+
+Projektin tila yhtenä lauseena: **kaikki mitä voi todistaa laskemalla on
+todistettu; mitään mitä voi todistaa vain kuuntelemalla ei ole.**
 
 Kelloaskelaritmetiikka läpäisee **47 testiä** ilman riippuvuuksia,
 kokonaislukuina läpi koko ketjun: `ct-core` ei tuo yhtään riippuvuutta eikä

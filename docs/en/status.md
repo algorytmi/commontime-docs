@@ -5,7 +5,7 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 5 | not run, tool repaired |
+| 1.8 | 2 | 0 | 5 | **run 21 Sep** |
 
 The 5 is the count of **numbered** open items, and one is larger than the
 others. The newest, **H55**, was found by reading: the specification never
@@ -173,6 +173,32 @@ rather than by discussion.
 
 ## Measured
 
+!!! success "The control-plane cross-run has been run — 21 September 2026, 12:44 UTC"
+    Six pass, zero fail, eight without an expected value. **The time base
+    works, and these are the project's first real network numbers:**
+
+    | | |
+    | --- | --- |
+    | N16 | the peer sent `commontime/1`, byte for byte |
+    | N11 | 21 frames parsed, 0 rejected |
+    | N26 | no field from outside §4 |
+    | N24 | the peer never closed the connection |
+    | N6 | 20 pings, **minRTT 3 ms**, offset 5.5–6.5 ms |
+
+    Every earlier number in this project came from 127.0.0.1. And N26 passing
+    means the peer emits only §4's fields — version 1.7's requirement,
+    measured from the opposite end for the first time.
+
+    **The control plane never started, and that is the run's finding.** The
+    peer never sent `ct.session`, so no tick could be computed and no
+    command, load or snapshot followed — eight checks had nothing to measure.
+    It means one of three, and no finding is recorded until it is known
+    which: no set was open; the relay waits for something the client does not
+    send; **or nothing requires a server to send `ct.session` at all.** N22
+    says it MUST precede every `ct.load`, `ct.cmd` and `ct.snapshot` — which
+    holds trivially if none is ever sent. An implementation that never sends
+    it would be **formally conforming and practically mute.**
+
 !!! danger "The first measured incompatibility"
     21 September 2026: one implementation ran the other's real payload shape
     over a real socket. Result: a `ct.load` whose identifier is the string
@@ -229,6 +255,9 @@ measured over real `ct.pong` rounds. The relay reads the field when it is a
 number and never closes on its absence or wrong type — measured over a
 socket. N21 is checked at both ends. The other implementation is aligned to
 1.8 at 204 tests, and its count of marked guesses is zero for the first time.
+
+The project in one sentence: **everything that can be proved by counting has
+been proved; nothing that can only be proved by listening has been.**
 
 The tick arithmetic passes **47 tests** with no dependencies, in integers
 throughout: `ct-core` pulls in nothing and touches no audio, no network and no

@@ -5,7 +5,7 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 5 | ei ajettu |
+| 1.8 | 2 | 0 | 5 | ei ajettu, työkalu korjattu |
 
 Luku 5 on **numeroitujen** avointen kohtien määrä, ja yksi niistä on isompi
 kuin muut. Uusin, **H55**, löytyi lukemalla: määrittely ei koskaan sano mitä
@@ -155,6 +155,23 @@ koska sen määräävää mittausta ei ole tehty, ja se suljetaan mittaamalla ei
 keskustelemalla.
 
 ## Mitattu
+
+!!! warning "Ristiin ajon työkalu olisi kirjannut väärän löydöksen"
+    Työkalu oli kirjoitettu version 1.2 aikaan eikä ajettu kertaakaan.
+    Ensimmäisellä ajollaan se olisi tulostanut kohdan H32 avoimena — se
+    suljettiin kolme päivää sitten ja on nyt N22. Ja itsetestissä se
+    ilmoitti että vastapuoli rikkoi N20:tä sulkemalla yhteyden `ct.state`n
+    jälkeen: **palvelin ei sulkenut mitään, vaan luotain sulki oman
+    yhteytensä ajon päätteeksi ja tarkistus luki oman hyvästinsä toisen
+    teoksi.** Sama sekaannus oli N24:n tarkistuksessa.
+
+    Jos työkalu olisi ajettu toista toteutusta vasten ensin, tämä olisi
+    raportoitu **löydöksenä sitä vastaan** — kaksi normatiivista kohtaa,
+    molemmat väärin, molemmat työkalun omia. Toteuttajan lause siitä on
+    tämän sivun arvoinen: *mittaus joka ei voi epäonnistua ei ole mittaus;
+    sellainen joka ei voi onnistua on pahempi, koska se näyttää
+    löydökseltä.* Korjattu ennen ensimmäistä ulospäin menevää ajoa;
+    itsetesti 16 läpi, 0 ei, 2 ilman odotusarvoa.
 
 **Versio 1.8 on tuotannossa 20.9.2026 klo 00:10** (H50: kaksi muokkausta, 10
 minuuttia — sisäkkäinen `param`-arvo saapui kuuntelijalle sanasta sanaan),

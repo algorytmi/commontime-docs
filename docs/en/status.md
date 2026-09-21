@@ -5,7 +5,7 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 5 | not run |
+| 1.8 | 2 | 0 | 5 | not run, tool repaired |
 
 The 5 is the count of **numbered** open items, and one is larger than the
 others. The newest, **H55**, was found by reading: the specification never
@@ -162,6 +162,23 @@ that determines it has not been performed, and it will be closed by measurement
 rather than by discussion.
 
 ## Measured
+
+!!! warning "The cross-run tool would have filed a false finding"
+    The tool was written during version 1.2 and had never been run. On its
+    first run it would have reported item H32 as open — it was closed three
+    days ago and is now N22. And on its self-test it reported that the other
+    party had broken N20 by closing after a `ct.state`: **the server closed
+    nothing. The probe closed its own connection at the end of the run, and
+    the check read its own goodbye as the other party's act.** The same
+    confusion was in the N24 check.
+
+    Had the tool been pointed at the other implementation first, this would
+    have been reported as **a finding against it** — two normative clauses,
+    both wrong, both the tool's own. The implementer's sentence about it
+    earns its place here: *a measurement that cannot fail is not a
+    measurement; one that cannot succeed is worse, because it looks like a
+    finding.* Repaired before the first outbound run; self-test 16 pass, 0
+    fail, 2 without an expected value.
 
 **Version 1.8 is in production as of 20 September 2026, 00:10** (H50: two
 edits, 10 minutes — a nested `param` value reached the listener verbatim),

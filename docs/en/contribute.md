@@ -10,6 +10,26 @@ worst case: shared blind spots fall outside the population entirely, and gaps
 obvious enough for everyone to find inflate the overlap. Both biases point the
 same way.
 
+**Pin what works by accident — then make the pin fail.** An
+implementation does things correctly for reasons nobody chose: a prefix on a
+name, a predicate reused from elsewhere, a container picked for an unrelated
+reason. Such an accident is not merely unargued but **fragile** — it holds
+until some unrelated tidying walks past it. The right treatment is not to
+justify it afterwards but to pin it with a test: a justification ages with
+the reader, a test does not.
+
+But **the pin is itself a claim, and a claim must be tested.** In this
+project two such accidents were pinned and then broken one at a time in a
+copy. One pin held. **The other did not: the change passed all 209 tests
+unnoticed**, because the implementation had two independent guards and only
+the first did any work — the second was a spare part. No amount of reading
+would have shown it. **Two overlapping protections hide which one works**,
+and the only way to find out is to remove one.
+
+A pin never seen to fail therefore does not demonstrate fragility; it
+demonstrates belief in it — and a convincingly written wrong pin is worse
+than no pin, because it looks like work already done.
+
 **Publish what you send, not only what you accept.** An
 implementation's acceptance surface can be listed by a tool: every message,
 every field missing and mistyped. That is half. The other half is the

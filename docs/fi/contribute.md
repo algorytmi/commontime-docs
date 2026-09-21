@@ -10,6 +10,26 @@ pahimman tapauksen arvio: yhteiset katvealueet jäävät populaation ulkopuolell
 kokonaan, ja niin ilmeiset aukot että jokainen löytää ne kasvattavat
 päällekkäisyyttä. Molemmat harhat osoittavat samaan suuntaan.
 
+**Kiinnitä se mikä toimii vahingossa — ja koettele kiinnitys kaatumaan.**
+Toteutus tekee asioita oikein syistä joita kukaan ei valinnut: nimen etuliite,
+predikaatti jota käytettiin uudelleen, säiliö joka valittiin muusta syystä.
+Sellainen onnenkantamoinen ei ole vain perustelematon vaan **hauras** — se
+kestää kunnes jokin siihen liittymätön siivous kävelee ohi. Oikea hoito ei ole
+sen perusteleminen jälkikäteen vaan sen kiinnittäminen testillä: perustelu
+vanhenee lukijan mukana, testi ei.
+
+Mutta **kiinnitys on itsekin väite, ja väite pitää koetella.** Tässä
+projektissa kiinnitettiin kaksi tällaista vahinkoa ja rikottiin ne yksi
+kerrallaan kopiossa. Toinen kiinnitys piti. **Toinen ei: muutos meni läpi
+koko 209 testin sarjasta huomaamatta**, koska toteutuksessa oli kaksi
+riippumatonta vartijaa ja vain ensimmäinen teki työtä — toinen oli varaosa.
+Kukaan ei olisi nähnyt sitä lukemalla. **Kaksi päällekkäistä suojaa piilottaa
+sen kumpi niistä toimii**, ja ainoa tapa tietää on poistaa toinen.
+
+Kiinnitys jota ei ole nähty pettämässä ei siis todista haurautta vaan uskoa
+siihen — ja vakuuttavasti kirjoitettu väärä kiinnitys on pahempi kuin ei
+kiinnitystä, koska se näyttää tehdyltä työltä.
+
 **Julkaise se mitä lähetät, älä vain se minkä hyväksyt.** Toteutuksen
 hyväksyntäpinnan voi luetella työkalulla: jokainen sanoma, jokainen kenttä
 puuttuvana ja väärän tyyppisenä. Se on puolet. Toinen puoli on **lähtöpinta**

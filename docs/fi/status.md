@@ -13,10 +13,14 @@ kuin muut. Uusin, **H55**, löytyi lukemalla: määrittely ei koskaan sano mitä
 kerran"* ja *"kieltäytyminen on lopullinen sille `ref`ille"* — eli **kaksi
 velvoitetta nojaa sellaisen asian identiteettiin jota dokumentti ei määrittele.**
 Mikään ei sano että `ref` on vastattavan `ct.load`in `id`, mikään ei tyypitä
-sitä eikä sano miten kahta `ref`iä verrataan. Se on H25:n virhe uudessa
-paikassa: `5` ja `"5"` ovat toisessa toteutuksessa sama avain ja numeerisesti
-verrattuna eri arvot, jolloin "vastataan kerran" sitoo eri joukkoa eri päissä
-eikä kumpikaan näe sitä. Uusin on **H54**: `ct.state`n kenttien tyypit, ja se että välittäjä
+sitä eikä sano miten kahta `ref`iä verrataan. Ensimmäinen ehdotukseni oli verrata `ref`iä
+numeerisesti kuten N17 vertaa käskyn `id`:tä. Se oli väärä analogia, ja
+mittaus osoitti sen: N17 vertaa numeerisesti koska käskyjen `id`:t ovat
+**järjestyksessä** — tasatilanne ratkeaa suuremmalla. `ref`iä ei koskaan
+järjestetä, se vertaillaan vain **yhtäsuuruudelle**. Ja tarkkaan
+yhtäsuuruuteen määrittelyssä on jo sääntö: N16 vertaa `v`:tä tavu tavulta.
+Kaksi vertailutapaa, kumpikin perusteltu: **järjestys → numeerinen,
+identiteetti → tarkka.** Uusin on **H54**: `ct.state`n kenttien tyypit, ja se että välittäjä
 ei keksi. Toinen toteutus tyypittää jokaisen kentän ja pudottaa kelvottoman;
 toinen pakottaa `degraded`in totuusarvoksi, jolloin merkkijono `"ei"` merkitsee
 asiakkaan vaienneeksi eikä kukaan voi erottaa sitä oikeasta ilmoituksesta.

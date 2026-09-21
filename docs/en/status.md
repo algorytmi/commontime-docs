@@ -13,10 +13,13 @@ says what `ref` is. It appears in §4's table and in N3 — *"a `ct.load` is
 answered once"* and *"a refusal is final for that `ref`"* — so **two
 obligations turn on the identity of a thing the document never defines.**
 Nothing says `ref` is the `id` of the `ct.load` being answered, nothing types
-it, and nothing says how two are compared. It is H25's mistake in a new
-place: `5` and `"5"` are one key in one implementation and two values under a
-numeric comparison, so "answered once" binds different sets at the two ends
-and neither side sees it. The newest is **H54**: the types of `ct.state`'s fields, and that a
+it, and nothing says how two are compared. My first proposal was to compare `ref`
+numerically, as N17 compares a command's `id`. That was the wrong analogy,
+and measurement showed it: N17 compares numerically because command ids are
+**ordered** — a tie goes to the higher. A `ref` is never ordered; it is
+compared only for **equality**. And the document already has a rule for exact
+equality: N16 compares `v` byte for byte. Two kinds of comparison, each with
+its reason: **order → numeric, identity → exact.** The newest is **H54**: the types of `ct.state`'s fields, and that a
 relay does not invent. One implementation types every field and drops what
 fails; the other coerces `degraded` to a boolean, so the string `"ei"` marks
 a client silent and nothing downstream can tell it from a real report. An

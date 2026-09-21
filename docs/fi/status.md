@@ -33,7 +33,13 @@ kiinnostavampi kuin aukko: kumpikaan ei sijoita käskyjä `minLeadTicks`in
 mukaan. Toisella syy on että sovellus on kirjoittamatta — toisella se on
 kirjoitettu ja sijoittaa käskyjä jatkuvasti, eikä silti kysy sitä. N23 sanoo
 että tämä on ainoa telemetriakenttä jonka lukema päätyy ääneen; kahdesta
-toteutuksesta se päätyy **ei kummassakaan**. Se ei kumoa kohtaa, mutta siirtää
+toteutuksesta se päätyy **ei kummassakaan** — ja mitattuna se tarkoittaa
+sekuntia: toisen kiinteä etuaika on 1920 kelloaskelta eli 1017 ms siinä
+missä toinen vaatii nollan. Sama kohta korjasi myös luokittelun:
+`boundMs` ei ole numero jota kukaan ei käytä, vaan **V4 sitoo sen
+toleranssiin** ja toinen toteutus laskee siitä kokoelma-arvon — yksi
+asiakas joka lähettää siihen suuren luvun vie V4:n kynnykseltä
+merkityksen kaikilta. Se ei kumoa kohtaa, mutta siirtää
 sen tilaan *mahdollinen, ei toteutunut kummassakaan* — eri asia kuin *toinen ei
 ole vielä ehtinyt*. **H53: mitä `commontime/1` lupaa versioiden yli?** Toteuttaja ajoi
 oman toteutuksensa version 1.4 ja version 1.8 rinnakkain samoja sanomia

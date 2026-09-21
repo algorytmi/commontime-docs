@@ -31,7 +31,12 @@ interesting than the gap: neither places commands by `minLeadTicks`. On one,
 because the application is unwritten — on the other, the application is
 written and places commands constantly, and still never asks. N23 says this
 is the only telemetry field whose reading reaches the audio; across two
-implementations it reaches it in **neither**. That does not refute the
+implementations it reaches it in **neither** — and measured, that is about
+a second: one side's fixed lead is 1920 ticks, 1017 ms, where the other
+requires zero. The same item also corrected a classification: `boundMs` is
+not a number nobody acts on. **V4 binds it to the tolerance**, and one
+implementation aggregates it — a single client sending a large value there
+empties V4's threshold of meaning for everyone. That does not refute the
 clause, but it moves it to *possible, realised in neither* — a different
 thing from *one side has not got there yet*. **H53: what does `commontime/1` promise across revisions?** An
 implementer ran their own version 1.4 and version 1.8 side by side against

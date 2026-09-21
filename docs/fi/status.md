@@ -5,7 +5,7 @@ Tämä on tarkoituksella täsmällinen siitä mikä on mitattu ja mikä ei.
 
 | Määrittely | Toteutuksia | Valinnaisia | Avoimia H-kohtia | Ristiin ajo |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 5 | **ajettu 21.9.** |
+| 1.8 | 2 | 0 | 6 | **ajettu 21.9.** |
 
 Luku 5 on **numeroitujen** avointen kohtien määrä, ja yksi niistä on isompi
 kuin muut. Uusin, **H55**, löytyi lukemalla: määrittely ei koskaan sano mitä
@@ -185,13 +185,21 @@ keskustelemalla.
     **Ohjaustaso ei käynnistynyt, ja se on ajon löydös.** Vastapuoli ei
     lähettänyt `ct.session`ia kertaakaan, joten tikkiä ei voinut laskea eikä
     yhtään käskyä, latausta tai tilannekuvaa seurannut — kahdeksan tarkistusta
-    jäi ilman mitattavaa. Se tarkoittaa yhtä kolmesta, eikä siitä kirjata
-    löydöstä ennen kuin tiedetään kumpi: settiä ei ollut auki; rele odottaa
-    asiakkaalta jotain mitä tämä ei lähetä; **tai mikään ei vaadi palvelinta
-    lähettämään `ct.session`ia lainkaan.** N22 sanoo että sen on edellettävä
-    jokaista `ct.load`ia, `ct.cmd`:tä ja `ct.snapshot`ia — mikä toteutuu
-    triviaalisti jos yhtäkään niistä ei lähetetä. Toteutus joka ei lähetä sitä
-    koskaan olisi **muodollisesti konformi ja käytännössä mykkä.**
+    jäi ilman mitattavaa. **Syy on mitattu:** settiä ei ollut auki. Vastapuolen
+    koodi lähettää `ct.session`in jokaiselle kuuntelijalle heti kättelyn
+    jälkeen jos setti on olemassa, ja loki näyttää nolla settiä koko sen
+    bootin ajalta.
+
+    **Mutta ajo paljasti aukon joka on riippumaton siitä — H56.** Mikään ei
+    vaadi palvelinta lähettämään `ct.session`ia koskaan. N22 vaatii vain että
+    se edeltää latauksia, käskyjä ja tilannekuvia, ja se ehto täyttyy tyhjästi
+    jos yhtäkään niistä ei lähetetä. **Toteutus joka ei lähetä sitä koskaan on
+    muodollisesti konformi ja käytännössä mykkä** — ja vastapuolen rele oli
+    ajon hetkellä täsmälleen siinä tilassa, täysin luvallisesti. Ilman
+    `ct.session`ia asiakas ei voi laskea kelloaskelta, joten jokainen muu
+    dokumentin velvoite on saavuttamattomissa. Ehdotus: palvelimen **ON**
+    lähetettävä `ct.session` kättelyn läpäisseelle asiakkaalle heti kun sessio
+    on olemassa — jolloin sen puuttuminen tarkoittaa tasan yhtä asiaa.
 
 !!! danger "Ensimmäinen mitattu yhteensopimattomuus"
     21.9.2026: toinen toteutus ajoi toisen todellisen kuorman muodon oikean

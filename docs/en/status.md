@@ -5,7 +5,7 @@ check. This one is deliberately specific about what is measured and what is not.
 
 | Specification | Implementations | Optional features | Open H-items | Cross-run |
 | --- | --- | --- | --- | --- |
-| 1.8 | 2 | 0 | 5 | **run 21 Sep** |
+| 1.8 | 2 | 0 | 6 | **run 21 Sep** |
 
 The 5 is the count of **numbered** open items, and one is larger than the
 others. The newest, **H55**, was found by reading: the specification never
@@ -192,12 +192,20 @@ rather than by discussion.
     **The control plane never started, and that is the run's finding.** The
     peer never sent `ct.session`, so no tick could be computed and no
     command, load or snapshot followed — eight checks had nothing to measure.
-    It means one of three, and no finding is recorded until it is known
-    which: no set was open; the relay waits for something the client does not
-    send; **or nothing requires a server to send `ct.session` at all.** N22
-    says it MUST precede every `ct.load`, `ct.cmd` and `ct.snapshot` — which
-    holds trivially if none is ever sent. An implementation that never sends
-    it would be **formally conforming and practically mute.**
+    **The cause is measured:** no set was open. The peer's
+    code sends `ct.session` to every listener immediately after the handshake
+    if a session exists, and its log shows zero sessions for that whole boot.
+
+    **But the run exposed a gap independent of that — H56.** Nothing requires
+    a server to send `ct.session` ever. N22 requires only that it precede
+    loads, commands and snapshots, and that holds vacuously when none is
+    sent. **An implementation that never sends it is formally conforming and
+    practically mute** — and the peer's relay was in exactly that state at
+    the time of the run, entirely lawfully. Without `ct.session` a client
+    cannot compute a tick, so every other obligation in the document is
+    unreachable. Proposal: a server **MUST** send `ct.session` to a client
+    that has completed the handshake as soon as a session exists — after
+    which its absence means exactly one thing.
 
 !!! danger "The first measured incompatibility"
     21 September 2026: one implementation ran the other's real payload shape

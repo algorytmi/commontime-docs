@@ -19,7 +19,12 @@ and measurement showed it: N17 compares numerically because command ids are
 **ordered** — a tie goes to the higher. A `ref` is never ordered; it is
 compared only for **equality**. And the document already has a rule for exact
 equality: N16 compares `v` byte for byte. Two kinds of comparison, each with
-its reason: **order → numeric, identity → exact.** The newest is **H54**: the types of `ct.state`'s fields, and that a
+its reason: **order → numeric, identity → exact.** And the identifier's
+upper bound of 2^53−1 is not tidiness: above 2^53 JSON loses every other
+integer — 9,007,199,254,740,993 parses as …992 — so an implementation does
+not reject such a value, it **never sees it**, and two different loads
+arrive indistinguishable. The same reasoning as N12's, unwritten in exactly
+that one field. The newest is **H54**: the types of `ct.state`'s fields, and that a
 relay does not invent. One implementation types every field and drops what
 fails; the other coerces `degraded` to a boolean, so the string `"ei"` marks
 a client silent and nothing downstream can tell it from a real report. An

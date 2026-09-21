@@ -20,7 +20,11 @@ mittaus osoitti sen: N17 vertaa numeerisesti koska käskyjen `id`:t ovat
 järjestetä, se vertaillaan vain **yhtäsuuruudelle**. Ja tarkkaan
 yhtäsuuruuteen määrittelyssä on jo sääntö: N16 vertaa `v`:tä tavu tavulta.
 Kaksi vertailutapaa, kumpikin perusteltu: **järjestys → numeerinen,
-identiteetti → tarkka.** Uusin on **H54**: `ct.state`n kenttien tyypit, ja se että välittäjä
+identiteetti → tarkka.** Ja tunnisteen yläraja 2⁵³−1 ei ole siisteyttä:
+JSON menettää 2⁵³:n yläpuolella joka toisen kokonaisluvun — 9 007 199 254
+740 993 jäsentyy arvoksi …992 — joten toteutus ei hylkää sellaista vaan **ei
+koskaan näe sitä**, ja kaksi eri latausta näyttäisi samalta. Sama perustelu
+kuin N12:ssa, kirjoittamatta juuri siinä yhdessä kentässä. Uusin on **H54**: `ct.state`n kenttien tyypit, ja se että välittäjä
 ei keksi. Toinen toteutus tyypittää jokaisen kentän ja pudottaa kelvottoman;
 toinen pakottaa `degraded`in totuusarvoksi, jolloin merkkijono `"ei"` merkitsee
 asiakkaan vaienneeksi eikä kukaan voi erottaa sitä oikeasta ilmoituksesta.
